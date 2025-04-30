@@ -1,0 +1,1047 @@
+/*
+filename: style.css
+
+author: Monique Vilardo, Riley Tuckett, Stacey Millers, Victoria Rogers
+
+created: 30/03/2025
+
+last modified: 14/04/2025
+
+description: index.html, jobs.html, apply.html, about.html
+*/
+
+/* This forces all the text on the website to be part of the same font family/font style. */
+* { font-family: Georgia, 'Times New Roman', Times, serif}
+
+/* This forces all paragraphs to have a similar colour, to make the website continuous. */
+p {color: #011e0a;}
+
+/* The Unordered list in the navigation bar (the whole group hyper links that take you to different pages) styling. */
+nav ul{
+    /* This removes the list dot point from the unordered list. */
+    list-style-type: none;
+    /* It removes space around the elements outside the borders. */
+    margin: 0;
+    /* Creates space between the text/elements inside and the border. */
+    padding: 8px;
+    /* This hides elements if content overflows out of the box. */
+    overflow: hidden;
+    /* This rounds the edges of the border. */
+    border-radius: 8px;
+    background-color: #065321;
+    /* Forces the page to a change where all the elements are displayed in a line so that they can adapt while the screen changes sizes. */
+    display: flex;
+    /* Evenly Space Everything Out. */
+    justify-content: space-around;
+    align-items: center;
+    /* Creates a slight shadow for the outside  */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* The hyper links to other pages in the navigation bar styling.*/
+nav a {
+    /* There is no underline that is usually seen on hyperlinks. */
+    text-decoration: none;
+    padding: 15px;
+    color: #cffdd1;
+    padding: 8px;
+    text-align: center;
+}
+
+/* What happens when you hover over each hyperlinks, styling. */
+nav a:hover {
+    color: #065321;
+    background-color: #cffdd1;
+    /* When you hover it transitions the page hyperlinks from the original navigation state to the hover state. */
+    transition: 0.5s;
+}
+
+/* Company logo styling */
+.Company_Logo{
+    border-radius: 100%;
+    height: 60px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Company name styling */
+.Company_Name{
+    color: #011e0a;
+    text-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* The header styling. */
+header{
+    border-radius: 8px;
+    padding: 20px;
+    background-color:  #4EB774;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #f2fff2;
+}
+
+/* The main contents of the page styling. */
+main{
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #cffdd1;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* FOOTER STYLING */
+
+/* Footer background styling.*/
+footer{
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #4EB774;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* The Unordered list in the navigation bar in the footer (the whole group hyper links that take you to different pages) styling. */
+footer ul{
+    /* This removes the list dot point from the unordered list. */
+    list-style-type: none;
+    /* It removes space around the elements outside the borders. */
+    margin: 0;
+    /* Creates space between the text/elements inside and the border. */
+    padding: 4px;
+    /* This hides elements if content overflows out of the box. */
+    overflow: hidden;
+    /* This rounds the edges of the border. */
+    border-radius: 8px;
+    background-color: #065321;
+    /* Forces the page to a change where all the elements are displayed in a line so that they can adapt while the screen changes sizes. */
+    display: flex;
+    /* Evenly Space Everything Out. */
+    justify-content: space-around;
+    /* Creates a slight shadow for the outside  */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* The hyper links to other pages in the navigation bar styling.*/
+footer li a {
+    /* There is no underline that is usually seen on hyperlinks. */
+    text-decoration: none;
+    padding: 15px;
+    color: #cffdd1;
+    padding: 8px;
+    text-align: center;
+}
+
+/* What happens when you hover over each hyperlinks, styling. */
+footer a:hover {
+    color: #065321;
+    background-color: #b0ffb4;
+    /* When you hover it transitions the page hyperlinks from the original navigation state to the hover state. */
+    transition: 0.5s;
+}
+
+/* The colour for the footer links on all pages. */
+.Footer_Links{
+    color: #011508;
+}
+
+/* This forces the Jira Link in the footer to the centre. */
+.Jira_Link_Footer{
+    text-align: center;
+}
+
+/* This forces the company email in the footer on all pages to the centre. */
+.Company_Email{
+    text-align: center;
+}
+
+/* Company copy right styling. */
+.Copyright_in_footer{
+    text-align: center;
+    color: #011e0a;
+}
+
+/*Website github link styling*/
+.Github_Link_Footer{
+    text-align: center;
+}
+
+/* JOB LISTING PAGES STYLING */
+/* There is a difference between job specific and job listing pages, job listing page is jobs.html wheras job specific pages are,
+data_anaylst_job_page.html and junior_software_developer_job_page.html. Although they are clump all together in this same section of
+the CSS page as many of the classes are used in both job listing and job specific pages. */
+
+/* This forces the company names to the left to allow the company logo float on the right of the same line. */
+.Random_Company_Names{
+    float: left;
+}
+
+/* This forces the company location to the right of the page. */
+.Company_Location{
+    float: right;
+}
+
+/* This forces the job salary to the left on the main job page. */
+.Job_Salary_Job_Page{
+    float: left;
+}
+
+/* This forces all job reference numbers to the right of the page. */
+.Job_Reference_Number_Job_Page{
+    float: right;
+}
+
+/* This class makes the table of job listings, specifically the main data section is nice and covers 75% of the page. */
+.Jobs_Table_Data{
+    width: 75%;
+    display: table-cell;
+    border: 1px solid #065321;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #011e0a;
+}
+
+/* This forces each row in the table to have the same background colour. */
+.Jobs_Table_Row{
+    background-color: #e0ffe1;
+}
+
+/* When a user hovers their cursur over the row it highlights it and has a nice transition to make it look smooth when going
+from one background colour to another. */
+.Jobs_Table_Row:hover{
+    background-color: #a6eac6;
+    transition: 0.5s;
+}
+
+/* This makes the apply button on the job listing page look nice. */
+.Apply_Here{
+    text-decoration: none;
+    padding: 15px 15px;
+    border: 4px solid #065321;
+    background-color: #065321;
+    border-radius: 8px;
+    color: #cffdd1;
+    padding: 8px;
+    text-align: center;
+}
+
+/* This makes it so that when you hover over the apply button it changes text & background colour with a 0.5s transition. */
+.Apply_Here:hover{
+    color: #065321;
+    background-color: #cffdd1;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+}
+
+/* This makes the main image on the job specific Data Analyst page to be the certain image, and be 
+reactive if you shrink or expand your screen. */
+#Job_Discription_Image_Data_Analyst{
+    width: fit-content;
+    max-width: 1300px;
+    height: 300px;
+    /* Makes the image resize and fit the container its in. */
+    object-fit: cover;
+    width: 100%;
+    background-image: url("/styles/images/Office_People.jpg");
+    /* Stretch the background image to fit across the container. */
+    background-size: 100% 100%;
+}
+
+/* This makes the main image on the job specific Junior Software Developer page to be the certain image, 
+and be reactive if you shrink or expand your screen. */
+#Job_Discription_Image_Junior_Software_Developer{
+    width: fit-content;
+    max-width: 1300px;
+    height: 300px;
+    /* Makes the image resize and fit the container its in. */
+    object-fit: cover;
+    width: 100%;
+    background-image: url("/styles/images/Office_People_2.jpg");
+    /* Stretch the background image to fit across the container. */
+    background-size: 100% 100%;
+}
+
+/* The general company logo styling that makes it round and have a shadow. */
+.Companies_Logo_Image{
+    border-radius: 100%;
+    height: 40px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    float: right;
+}
+
+/* This makes the job position align horizontaly and wrap if the page is squished in a way that the two peices of content
+can't fit on the same line. */
+.Job_Position_And_Logo{
+    /* Makes things aligned horizontaly. */
+    display: flex;
+    /**/
+    flex-wrap: wrap;
+}
+
+/* This is the job titles and forces them left while allowing it to stay on one line while sharing space with the logo. */
+.Job_Title{
+    /* Allows the job title to take as much space as possible on the line while still allowing the logo to share the area. */
+    flex: 1;
+    text-align: left;
+}
+
+/* This formats the reporting to person, email link forces it left and makes it a specific colour. */
+.Reporting_To_Job{
+    color:  #011508;
+    text-align: left;
+    float: left;
+}
+
+/* This formats the see more button and aligns the text to the center of the section, but forces it to the right of the page,
+with a transition for when you hover over it, it's smooth. */
+.See_More{
+    color:  #011508;
+    text-align: center;
+    float: right;
+    transition: 0.5s;
+}
+
+/* This make sure that if you hover over the see more putton it changes the colour of the background and text,
+while also making it appear more like a proper button rather than a hyperlink with a nice transition to top it off. */
+.See_More:hover{
+    border: 1px solid #065321;
+    background-color: #065321;
+    color:  #cffdd1;
+    transition: 0.5s;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+/* This is for the job specific pages, for their main employment details font size be a little bigger than the generic one. */
+.Main_Employment_Details{
+    font-size: 18px;
+}
+
+/* This is for the job specific pages, and forces the qualifications part to be 75% of the total table width, as well as
+makes the edges curved and nice. */
+.Qualifications_Table{
+    width: 75%;
+    display: table-cell;
+    border: 1px solid #065321;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #011e0a;
+    background-color: #e0ffe1;
+}
+
+/* This is for the job specific pages, and is the essential/preffered side of the table and does the same things as the one above
+except makes it the size of 25% of its total table width. */
+.Qualifications_Table_Essential_Preffered{
+    width: 25%;
+    display: table-cell;
+    border: 1px solid #065321;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #011e0a;
+    background-color: #e0ffe1;
+}
+
+/* This is so when you hover over the essential/preferred information it changes colour and adds some interactivity into the page. */
+.Qualifications_Table_Essential_Preffered:hover{
+    background-color: #a6eac6;
+    transition: 0.5s;
+}
+
+/* This makes all rows have a simular colour and have space between all the content. */
+.Qualifications_Table_Row{
+    background-color: #e0ffe1;
+    padding: 20px;
+}
+
+/* This is so when you hover over the main qualifications information it changes colour and adds some interactivity into the page. */
+.Qualifications_Table:hover{
+    background-color: #a6eac6;
+    transition: 0.5s;
+}
+
+/* This gets the header of the qualifications table on the job specifc pages to have darker mroe vibrant colours. */
+.Qualifications_Table_Header{
+    background-color: #4EB774;
+    display: table-cell;
+    border: 1px solid #065321;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #011e0a;
+    font-size: 20px;
+}
+
+/* This makes all the employment details on the job specific pages live in a content box and float it to the left so the summary
+can go to the right this also makes this section take up 45% of the full page. */
+.Main_Employment_Details_Background{
+    background-color: #e0ffe1;
+    border: 1px solid #065321;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #011e0a;
+    width: 45%;
+    float: left;
+}
+
+/* This makes the qualifications table in the job specific pages align into the center of the page while also being reactive
+to if the page is streched or shrunk. */
+.Qualifications_Whole_Table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* This makes the employment summary on the job specific pages to have a certain colour and background and forces it to the 
+right, right next to the employment details, and it allows the data to take up 50% of the full page width. */
+.Employment_Summary{
+    background-color: #e0ffe1;
+    border: 1px solid #065321;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #011e0a;
+    width: 50%;
+    float: right;
+}
+
+/* Makes the Benifits in the job specific pages align to the centre and take up 1000px of the page. */
+.Benifits_Of_Job{
+    background-color: #e0ffe1;
+    border: 1px solid #065321;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #011e0a;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* This makes the back button on the job specific page look nice and look like a button and not like a hyperlink. */
+.Back_Button_Job_Page{
+    text-decoration: none;
+    padding: 15px 15px;
+    border: 4px solid #065321;
+    background-color: #065321;
+    border-radius: 8px;
+    color: #cffdd1;
+    padding: 8px;
+    text-align: center;
+    float: right;
+}
+
+/* This makes the button revert colours on the job specific page when it is hovered on, and has a nice transition. */
+.Back_Button_Job_Page:hover{
+    color: #065321;
+    background-color: #cffdd1;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+    float: right;
+}
+
+/* This makes the headers on the job specific page have a double boder to sperate sections from each other. */
+.Job_Headers_Other_Page{
+    text-align: center;
+    padding: 8px;
+    border-top: 5px double ;
+    border-bottom: 5px double;
+}
+
+/* This forces the hyperlinks to the mangers emails and bolder so you can tell it is special but it doesn't look like a link. */
+.Reporting_To_Jobs_Specific{
+    text-decoration: none;
+    color: #011e0a;
+    font-weight: bold;
+}
+
+/* This changes the h1 titles of the jobs to have its own short hand font property. */
+#Data_Anaylst_Job_Title, #Junior_Software_Developer_Job_Title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: bold;
+}
+
+
+/* End of Job Listing Pages Styling */
+
+/* APPLY PAGE STYLING*/
+ /* Responsive Design - Ensuring everything is still readable when on a smaller screen*/
+ @media (max-width: 768px) {
+    #apply_body {padding: 10px;}
+
+    /* The gap and column coding for the form */
+    #apply_form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Adds space between each stacked fieldset */
+    }
+
+    /* the display and margin for the beginning h1 text and p */
+    #application_start {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Make fieldsets take full width */
+    #apply_form fieldset,
+    #apply_form #buttons {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* resize form elements for smaller screens */
+    .personal_details input, textarea, select {width: 100%;}
+
+    /* adjusts gender radio button fieldset */
+    #gender {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* adjusts the submit and reset buttons */
+    #buttons {
+        text-align: center;
+        padding: 10px;
+    }
+    }
+
+ /* ID Selector: Heading Section Text Alignment & Grid Positioning*/
+  #application_start {text-align: center;}
+ 
+ /* Element: Labels are all uniform in colour and size to the universal <p> colouring*/
+ label, p {color: #011e0a;;}
+ 
+ /* Class: Making all headings (excluding h1) in Apply Page consistent in size and formatting */
+ .form_headings {
+    text-transform: uppercase; /* Makes the label all caps */
+    border-bottom: 2px solid #000; /* Adds a subtle underline */
+    display: flex;
+    text-align: center;
+    box-sizing: border-box;
+    max-width: 100%; 
+    overflow-wrap: break-word;
+    font-size: clamp(1rem, 1vw, 1rem); /* Font size will adjust based on viewport width */  
+   }
+ 
+ /* Element: Fieldset Padding, Colour & Border*/
+ fieldset {
+    border: 1px double #065321;
+    border-radius: 8px;
+    color: #011e0a;
+    background-color:#f4fff4;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    padding: 8px;
+ }
+
+ /* ID Selector: GRID FLEX STYLING*/
+ #apply_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns - amended with GenAI see below*/
+    grid-template-rows: repeat(26, auto); /* Adjust the row sizes as needed - amended with GenAI see below*/
+    gap: 20px; 
+    width: 100%; 
+    box-sizing: border-box; /* Makes sure padding doesn't affect the width */
+    position: relative; /* This allows positioning of the pseudo-element */
+    padding: 0 10px;
+   }
+ /* the grid-template-columns and rows for apply page were GenAI (https://chatgpt.com/). Initally manually coded it as a large number of rows and columns. Prompt: I will give you my css, simplify my grid to make it more efficient.*/
+
+ /* JOB REFERENCE No. | ID Selector: Text Alignment & Grid Positioning for Application Fieldset*/
+ #fieldset_reference {
+    text-align: center;
+    grid-column: 1;  
+    grid-row: 1 / 3; 
+ } /* Above GRID; Generated by same GenAI Prompt: I will give you my css, simplify my grid to make it more efficient.*/
+
+  /* PERSONAL DETAILS | Grid Positioning for personal details fieldset*/
+ #fieldset_personal {
+    grid-column: 1; 
+    grid-row: 3 / 27; 
+ }/* Above GRID; Generated by same GenAI Prompt: I will give you my css, simplify my grid to make it more efficient.*/
+ 
+ /* PERSONAL DETAILS | Child combination - Class ID & Input: personal_details input styling*/
+ .personal_details input {
+   display: block;
+   width: 80%;
+   margin-bottom: 20px;
+   margin-top: 20px;
+ }
+
+ /* PERSONAL DETAILS | ID Selector: Centered Gender Fieldset */
+  #gender { 
+    text-align: center;    
+    display: flex;
+    justify-content:center;
+    align-items: center; /* To vertically and horizontally center the gender options */
+    gap: 15px; /* Adds space between the radio buttons */
+ }
+
+ /* PERSONAL DETAILS | Child: Gender ID & Label: Radio buttons are evenly spaced*/
+ #gender label { 
+    width: 100%;
+    display: flex;
+    align-items: center; /* Ensures the radio button and label are vertically centered */
+    gap: 8px; /* Adds space between the radio button and the label text */
+ }
+
+ /* PERSONAL DETAILS | Getting Rid of the List Item Dots*/
+ .apply_personal_list {list-style-type: none;}
+ 
+ /* SKILLS FIELD | Grid Positioning*/
+ #fieldset_skills {
+    grid-column: 2;
+    grid-row: 1 / 18;
+ } /* Above GRID; Same GenAI Prompt: I will give you my css, simplify my grid to make it more efficient.*/
+
+  /* SKILLS FIELD | Input margins so that the checkboxes and text areas aren't so close together*/
+ /* SKILLS FIELD | Required Technial Skills Label margin and display */
+ #skills label {
+    display: block; 
+    margin-bottom: 10px; /* Adds space between checkboxes */
+    }
+
+  /* SKILLS FIELD | the skills checkboxes label margin and width*/
+ #required_skills label {
+    width: 100%;
+    margin-bottom: 10px; 
+    }
+
+ /* SKILLS FIELD | the other skills textarea label margin and display*/
+ #skills_other label {
+    display: block; /* Makes the label a block-level element */
+    margin-bottom: 10px; /* Adds space between label and textarea */
+    margin-top: 35px ; /* Adds space between label and last checkbox input */
+    }
+
+ /* SKILLS FIELD | Text Area Placement */
+ .apply_textarea {
+    text-align: center;
+    margin-bottom: 20px; /* Adds spacing between form fields */
+    }
+
+    /* SKILLS FIELD | Text Area Label, Positioning and Style */
+ .apply_textarea label {
+    display: block; /* Makes the label a block element to stack it above the textarea */
+    margin-bottom: 5px; /* Adds some space between the label and the textarea */
+    font-weight: bold;
+    }
+
+    /* SKILLS FIELD | Text Area - Box border formatting */
+ .apply_textarea textarea {
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; /* Adds a light border around the textarea */
+    border-radius: 4px; /* textarea corners slightly rounded */
+    box-sizing: border-box; /* Ensures padding doesn't affect the element's width */
+    }
+
+ /* JOB EXPECTATIONS | ID Selector: Job Expectations; Grid Positioning*/
+ #job_expectations {
+    grid-column: 2; 
+    grid-row: 18 / 27; 
+ } /* ABOVE GRID; Generated by same GenAI Prompt: I will give you my css, simplify my grid to make it more efficient.*/
+
+ /* JOB EXPECTATIONS | Child combination - Class ID & Input: personal_details sections- Styling*/
+ #salary_scale {
+    width: 50%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+ }
+
+ /* JOB EXPECTATIONS | Ensure time labels are aligned */
+ #working_hours label {
+    display: inline-block;
+    width: 100px; 
+    margin-right: 10px;
+ }
+
+ #working_hours {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+ /* BUTTONS | ID Selector: Button Position & Size Adjustments*/
+ #buttons {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px; /* Matches #apply_form gap */
+    justify-content: start; /* Align with form’s column start */
+    border: none;
+    background-color: #cffdd1;
+    font-size: 25px;   
+    width: 100%;
+    cursor: pointer;    /* Change cursor to pointer */
+    padding: 10px 0;    /* Top and bottom padding only */
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    grid-column: 1 / 3; 
+    grid-row: auto; /* Automatically position in a new row */
+    max-height: 500px;
+ } /* Above GRID; Generated by same GenAI Prompt: I will give you my css, simplify my grid to make it more efficient.*/
+
+ /* BUTTONS | Submit and Reset Buttons - Styling & Shadow */
+ #buttons input[type="submit"],
+ #buttons input[type="reset"] {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #065321;
+    border-radius: 6px;
+    background-color: #065321;
+    color: #cffdd1;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Add shadow */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ /* BUTTONS | Hover Effect - Submit and Reset */
+ #buttons input[type="submit"]:hover,
+ #buttons input[type="reset"]:hover {
+    background-color: #cffdd1;
+    color: #065321;
+ }
+ 
+  /* Pseudo Element - Hovering for all inputs except radio, checkbox and slider, they get their own custom code to prevent boxiness*/
+ #apply_body input:not([type="radio"]):not([type="checkbox"]):not([type="range"]):hover{box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);} /* Darker shadow on hover */
+
+ /* Custom hover effect for checkboxes and radio buttons */
+ #apply_body input[type="radio"]:hover,
+ #apply_body input[type="checkbox"]:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
+ /* SLIDER STYLING */
+ /* The salary input slider styling*/
+ input[type="range"] {
+    width: 100%; 
+    height: 8px; 
+    background: #d4f5d7;
+    border-radius: 5px;
+    outline: none; /* Removes the default outline around the slider */
+    cursor:grab;
+    accent-color: #4EB774;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover effect to slightly darken the track and add a subtle shadow */
+  input[type="range"]:hover {
+    background: #c0eac4; /* Slightly darker green when hovered */
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+  }
+  
+  /* Slider for Salary; display and positioning */
+  #salary_container {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    padding: 10px 0;
+  }
+  
+  /* The salary slider minimum and maximum figures, adjusting font on viewport and colour*/
+  .salary_min_max {
+    color: #065321; 
+    font-size: clamp(1rem, 1vw, 1rem); /* Font size will adjust based on viewport width */  
+  }
+
+ /* hiding the fieldset legends (excepting Gender). Also hides the contact page text area label*/
+ .visually_hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+ }  /* Used code generated by GenAI; Prompt: how do I hide legends in css for html.*/
+ 
+/* END OF APPLY PAGE STYLING*/
+
+/* START OF CONTACT PAGE STYLING */
+    #contact_form p,
+    #contact_form label,
+    email_contact label {
+        display: block; /* Changed from flex to block to fix alignment issue */
+        margin-bottom: 10px;
+        max-width: 600px;
+    }
+
+    /* Ensure consistent width for fields */
+    #reason,
+    #enquiry_box {
+        width: 100%; 
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Ensures padding and border are included in width */
+    }
+
+    /* label for textarea hidden by class - css code at the end of apply page section */
+    /* Center textarea */
+    #enquiry_box {
+        margin: 0 auto;
+        height: 200px; /* Keeps textarea height fixed */
+    }
+
+    /* Button */
+    #contact_buttons input[type="submit"] {
+        padding: 10px 20px;
+        margin: 5px;
+        border: 2px solid #065321;
+        border-radius: 6px;
+        background-color: #065321;
+        color: #cffdd1;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-size: 16px;
+    }
+
+    /* Button hover function */
+    #contact_buttons input[type="submit"]:hover {
+        background-color: #cffdd1;
+        color: #065321;
+    }
+/* END OF CONTACT PAGE STYLING */
+
+/* About Page Styling */
+/*Page resizing*/
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+    .header {
+        font-size: 24px;
+    }
+
+    #About_Team {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "img"
+        "team"
+        "info";
+    }
+
+    .Individual_Profules h2 {
+        font-size: 18px;
+    }
+
+    .Team_Photo img {
+        width: 100%;
+        margin: 5px;
+    }
+
+    .Individual_Profiles table{
+        width: 100%;
+        padding-left: 10px;
+        font-size: 12px;           
+    }
+}
+
+/*Page Styling*/
+#About_Team {
+    display: grid; /*Creates an invisible grid to align everything in columns*/
+    grid-template-areas: 
+    "img team"
+    "info team"; /*Templates the grids*/
+    grid-template-columns: 4fr 1fr; /*What fractions of the pages are used*/
+    gap: 5px; /*Creates a gap between grid blocks*/
+}
+
+/*Grid assign*/
+.Team_Photo {
+    grid-area: img; /*Template areas assigned to the relevant grid template areas*/
+}
+
+.Individual_Profiles {
+    grid-area: info; /*Template areas assigned to the relevant grid template areas*/
+}
+
+.Team_Profile {
+    grid-area: team; /*Template areas assigned to the relevant grid template areas*/
+}
+
+/*Photo styling*/
+.Team_Photo img {
+    display: block;
+    width: 100%; /*Grows the image to fill out the column*/
+    border: 7px black solid; 
+    margin: 10px;
+}
+
+/*Individual profile block styling*/
+.Individual_Profiles h2 {
+    padding: 10px; /*Adds space around the profile headings so they dont overflow out of their box*/
+}
+
+.Individual_Profiles table {
+    padding-left: 15px; /*Pushes the table across from the edge of the block*/
+    
+}
+
+.Individual_Profiles td {
+    vertical-align: top; /*Pulls the text up in its block as to not waste space*/
+    text-align: left; /*Aligns text in data table boxes to the left*/
+}
+
+#Monique {
+    background-color: #b0ffb4; /*Adds colour to the div box*/
+    border: none; /*Removes border from the div box*/
+    border-radius: 25px; /*Curves the corners*/
+}
+
+#Monique table {
+    margin-top: 15px; /*Adds a margin push to the top of the table*/
+    margin-left: 25px; /*Adds a margin push to the left of the table*/
+    margin-right: 25px; /*Adds a margin push to the right of the table*/
+}
+
+#Monique:hover {
+    background-color: #4EB774; 
+}
+
+#Riley {
+    background-color: #b0ffb4; /*Adds colour to the div box*/
+    border: none; /*Removes border from the div box*/
+    border-radius: 25px; /*Curves the corners*/
+}
+
+#Riley table {
+    margin-top: 15px; /*Adds a margin push to the top of the table*/
+    margin-left: 25px; /*Adds a margin push to the left of the table*/
+    margin-right: 25px; /*Adds a margin push to the right of the table*/
+}
+
+#Riley:hover {
+    background-color: #4EB774;
+}
+
+#Stacey {
+    background-color: #b0ffb4; /*Adds colour to the div box*/
+    border: none; /*Removes border from the div box*/
+    border-radius: 25px; /*Curves the corners*/
+}
+
+#Stacey table {
+    margin-top: 15px; /*Adds a margin push to the top of the table*/
+    margin-left: 25px; /*Adds a margin push to the left of the table*/
+    margin-right: 25px; /*Adds a margin push to the right of the table*/
+}
+
+#Stacey:hover {
+    background-color: #4EB774;
+}
+
+#Vic {
+    background-color: #b0ffb4; /*Adds colour to the div box*/
+    border: none; /*Removes border from the div box*/
+    border-radius: 25px; /*Curves the corners*/
+}
+
+#Vic table {
+    margin-top: 15px; /*Adds a margin push to the top of the table*/
+    margin-left: 25px; /*Adds a margin push to the left of the table*/
+    margin-right: 25px; /*Adds a margin push to the right of the table*/
+}
+
+#Vic:hover {
+    background-color: #4EB774;
+}
+
+.Team_Profile {
+    background-color: #b0ffb4; /*Creates a background to the Team_Profile div*/
+    border: none; /*Removes the border*/
+    border-radius: 25px; /*Rounds the corners*/
+    padding-right: 25px; /*Adds padding to the right to push content across*/
+    padding-left: 25px; /*Adds padding to the left to keep more centred*/
+    padding-top: 10px; /*Pushes content down*/
+}
+
+
+
+.Individual_Profiles table{
+    width: 95%; /*Reduces the stretch to the table so that it doesnt push against the borders*/
+    align-content: center; /*Centres the content in the tables in the individual profiles*/
+}
+
+/*Homepage styling*/
+
+#Home_Title{
+    text-align: center; /* Aligns the title to the center */
+}
+
+#TitlePgraph {
+    text-align: center; /* Aligns the paragraph to the center */
+    color: #000000; /* Sets the text color to black for accessability purposes*/
+}
+
+#Who_we_are{
+    float: left; /* Aligns the division to the left */
+    width: 30%; /* Sets the width of the division to 30% */
+}
+
+#Who_we_are p{
+    /* Sets the text color of the paragraph to black for accessability purposes*/
+    color: #000000;
+}
+
+#What_we_do{
+    float: right; /* Aligns the division to the right */
+    width: 30%; /* Sets the width of the division to 30% */
+}
+#What_we_do p{
+    /* Sets the text color of the paragraph to black for accessability purposes*/
+    color: #000000;
+}
+
+#Company_Graphic{
+    display: inline-block; /* Allows the image to be inline with the text */
+    text-align: center; /* Aligns the image to the center */
+    padding: 0.5%;
+    width: 30%; /* Sets the width of the division itself to 30% */
+}
+
+#Company_Graphic img{
+    width: 50%; /* Sets the width of the image to 50% of the division */
+    height: auto;
+    border-radius: 8px;
+}
+
+#Our_Mission{
+    display: inline; /* Allows the text to be inline with the rest of the page */
+    text-align: center; /* Aligns the text to the center */
+    width: 40%; /* Restricts the width of the division to 40% */
+}
+#Our_Mission p{
+    /* Sets the text color of the paragraph to black for accessability purposes*/
+    color: #000000;
+}
+
+#Meet_Us{
+    clear: both; /* Clears the float of the previous divisions */
+    border: 5px double #000000; /* Sets the border of the division to a double line */
+    border-radius: 8px; /* Rounds the corners of the division */
+    text-align: center; /* Aligns the text to the center */
+    background: url("images/Team_Photo.png"); /* Sets the background image of the division */
+    background-color: rgba(255, 255, 255, 0.676);
+    background-blend-mode: lighten; /* Blends the background image with the background color */
+    background-size: cover; /* Sets the background image to cover the entire division */
+    background-position: center; /* Centers the background image */
+    height: 425px; /* Sets a specified height of the image */
+    overflow: scroll; /* Allows the division to scroll if the content overflows */
+}
+#Meet_Us h3{
+    /*Sets the size of the header to medium*/
+    font-size: medium;
+    color: black; /* Sets the text color of the header to black for accessability purposes*/
+}
+
+#Meet_Us p{
+    /* Sets the text color of the paragraph to black for accessability purposes*/
+    color: #000000;
+}

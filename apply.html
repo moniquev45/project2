@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <!--Charset Declaration-->
+        <meta charset="utf-8">
+        <!--Page Description for File-->
+        <meta name="description" content="The page to apply for the Job Applications">
+        <!--Key Words for File-->
+        <meta name="keywords" content="HTML, Form, Tags, apply, job, submit">
+        <!--Author Information-->
+        <meta name="author" content="Stacey Millers" >
+
+        <title>Job Application</title>
+        <!--Icon for the browser-->
+        <link rel="icon" href="images/Pear_Logo_Backgroundless.png" type="image/png">
+        <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
+
+        <link rel="stylesheet" href="styles/styles.css">
+        
+    </head>
+    <body>
+        <header>
+            <div class="Job_Position_And_Logo">
+                <figure>
+                <!--Change to company Logo-->  
+                <a href="index.html"><img src="images/Pear_Company_Logo.png" alt="Pear Company Logo" class="Company_Logo"></a>
+                <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
+                </figure>
+                <h1 class="Company_Name">The Best Big Brain Group </h1>
+            </div>
+            <!--NAVIGATION - Same for all pages -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">  Home  </a></li>
+                    <li><a href="jobs.html">  Jobs Listings  </a></li>
+                    <li><a href="apply.html">  Job Application  </a></li>
+                    <li><a href="contact.html"> Contact </a></li>
+                    <li><a href="about.html"> About Us </a></li>
+                </ul>
+            </nav>
+            <hr>
+        </header>
+        <main id="apply_body">
+            <!--PAGE TITLE-->
+            <div id="application_start">
+                <h2 id="heading_application"><strong>Apply Now</strong></h2>
+
+                <!--Introduction Paragraph Content-->
+                <p> The Best Big Brain Group welcomes all applicants. Please fill out the form below to apply.</p>
+            </div>
+
+            <!--Form Section. Requirements for all: 1. Inputs need labels 2. All form values (excepting'other skills' text area) are required or default value)-->
+            <form id="apply_form" action="https://mercury.swin.edu.au/it000000/formtest.php" method="POST">
+
+                <!--Fieldset 1: Job Reference Number - Drop Down-->
+                <fieldset id="fieldset_reference"> 
+                    <legend class="visually_hidden"> Fieldset Containing Job Reference Numbers </legend>
+                    <!-- Drop Down Boxes-->
+                    <p>
+                        <label for="job_reference"><strong> JOB REFERENCE NUMBER:</strong></label>
+                        <select name="job_reference" id="job_reference" required="required">
+                            <option value="" selected="selected" disabled="disabled">Please Select</option>
+                            <option value="job_reference1">#00001</option>
+                            <option value="job_reference2">#00002</option>
+                        </select>
+                    </p>
+                </fieldset> 
+
+                <!--Fieldset 2: Personal Details-->
+                <fieldset id="fieldset_personal"> 
+                    <legend class="visually_hidden"> Fieldset Containing Personal Details </legend>
+                    <h3 class="form_headings"><strong>Personal Details</strong></h3><br>
+                    <div id="fieldset_name" class="personal_details"> <!-- Name : div 1-->
+                        <ul class="apply_personal_list"> 
+                            <li class="personal_listing">
+                                <!-- Name - Input Text; Format: Max 20 Alpha Characters-->
+                                <label for="first_name">First Name: 
+                                    <input type="text" id="first_name" name="first_name" pattern="[A-Za-z]+" maxlength="20" title="max 20 characters" required="required">
+                                </label><br>
+                            </li>
+                            <li class="personal_listing">
+                                <label for="family_name">Family Name: 
+                                    <input type="text" id="family_name" name="family_name" pattern="[A-Za-z]+" maxlength="20" title="max 20 characters" required="required">
+                                </label> 
+                            </li>
+
+                            <li class="personal_listing">
+                                <!-- Date of Birth ; Format: dd/mm/yyyy-->
+                                <p><label for="dob"> Date of Birth: <input type="date" id="dob" name="dob" required="required"></label></p>
+                            </li>
+                        </ul>
+
+                        <fieldset id="gender"> <!-- Gender : sub fieldset --> 
+                            <legend><strong> Gender </strong></legend>
+                                <!-- Gender - Radio Input ; Needs own Fieldset & Legend-->
+                                <label for="gender1"><input type="radio" id="gender1" name="gender" value="female">Female</label> 
+                                <label for="gender2"><input type="radio" id="gender2" name="gender" value="male">Male</label>
+                                <label for="gender3"><input type="radio" id="gender3" name="gender" value="other">Other</label> 
+                                <label for="gender4"><input type="radio" id="gender4" name="gender" value="NA" checked="checked">Prefer not to say</label>
+                        </fieldset>
+                    </div>
+
+                    <div id="fieldset_address" class="personal_details"> <!-- Address : div 2 -->
+                        <ul class="apply_personal_list">
+                            <li class="personal_listing">
+                                <!-- Street Address- Input Text; Format: Max 20 Alpha Characters-->
+                                <label for="street_address">Street Address: 
+                                    <input type="text" id="street_address" name="street_address" pattern="^\d+\s[A-Za-z\s\.]+$" maxlength="40" title="i.e 123 Main St (max 40 characters)" required="required">
+                                </label>
+                            </li>
+                            <li class="personal_listing">
+                                <!-- Suburb- Input Text; Format: Max 20 Alpha Characters-->
+                                <label for="suburb">Suburb/Town: 
+                                    <input type="text" id="suburb" name="suburb" pattern="[A-Za-z\s]+" maxlength="40" title="max 40 characters" required="required">
+                                </label> 
+                            </li>
+                            <li class="personal_listing">
+                                <!-- State - Drop Down Boxes-->
+                                <p><label for="state">State: </label>
+                                    <select name="state" id="state" required="required">
+                                        <option value="" selected="selected" disabled="disabled">Please Select</option>
+                                        <option value="state_VIC">VIC</option>
+                                        <option value="state_NSW">NSW</option>
+                                        <option value="state_QLD">QLD</option>
+                                        <option value="state_NT">NT</option>
+                                        <option value="state_WA">WA</option>
+                                        <option value="state_SA">SA</option>
+                                        <option value="state_TAS">TAS</option>
+                                        <option value="state_ACT">ACT</option>
+                                    </select>
+                                </p>
+                            </li>
+                            <li class="personal_listing">
+                                <!-- Postcode - Text Input: Four Digits Only; Australia postcodes range from 0200 to 9944 -->
+                                <label for="postcode">Postcode: <input type="text" id="postcode" name="postcode" minlength="4" maxlength="4" pattern="[0-9][2-9][0-4][0-4]" title="4 digits only" required="required"></label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="fieldset_contact" class="personal_details"> <!-- Contact Details : div 3 -->
+                            <ul class="apply_personal_list">
+                                <li class="personal_listing">
+                                    <!-- Email Address - Input type "email" automatically validates email and gives pattern. See contact page for how to do it as a text input with pattern -->
+                                    <label for="email_apply"> Email Address: 
+                                        <input type="email" id="email_apply" name="email_apply" title="example@emailaddress.com.au" required="required">
+                                    </label>
+                                </li>
+                                <li class="personal_listing">
+                                    <!-- Phone Numbers - Input Text: 8-12 digits or spaces -->
+                                    <label for="mobile"> Phone Number: 
+                                        <input type="text" id="mobile" name="mobile" minlength="8" maxlength="12" pattern="[0-9\s]+" title="8-12 digits &amp; spaces only" required="required">
+                                    </label>
+                                </li>
+                            </ul>
+                    </div>
+                </fieldset> 
+
+                <!--Fieldset 3: Job Requirements-->
+                <fieldset id="fieldset_skills">
+                    <legend class="visually_hidden"> Fieldset Containing Job Skills </legend>
+                    <h4 class="form_headings"><strong> Skills Field</strong></h4>
+                    <!--Required Technical List - Checkbox Inputs -->
+                    <div id="required_skills">
+
+                        <h5> Required Technical Skills </h5> 
+                        <!-- Skills from Jobs Page -->
+                            <div id="skills">
+                                <label  for="bachelor">
+                                    <input type="checkbox" id="bachelor" name="skills[]" value="bachelor" checked="checked"> Bachelor Degree in listed area
+                                </label> <!--DEFAULT TICK ON FIRST-->
+                                <label for="experience">
+                                    <input type="checkbox" id="experience" name="skills[]" value="experience"> Minimum 2 years Industry Experience
+                                </label>
+                                <label for="tech_proficiency"><input type="checkbox" id="tech_proficiency" name="skills[]" value="tech_proficiency">
+                                    Proficiency in listed programs
+                                </label>
+                                <label for="communication"><input type="checkbox" id="communication" name="skills[]" value="communication">
+                                    Communication Skills
+                                </label>
+                                <label for="problem_solving"><input type="checkbox" id="problem_solving" name="skills[]" value="problem_solving">
+                                    Detail orientated and problem-solving skills
+                                </label>
+                            </div>
+                    </div>
+
+                        <!--Other Skills - Textbox-->
+                    <div id="skills_other" class="apply_textarea">
+                        <label for="skills_other_textbox"> Other Skills </label>
+                        <textarea id="skills_other_textbox" name="skills_other_textbox" rows="4" cols="60" placeholder="Please provide any other skills here..."></textarea>
+                    </div> 
+
+                    <!--Other Job Requirements: Comments (Textarea)-->
+                    <div id="personal_requirements" class="apply_textarea">
+                        <label for="requirements">Any Additional Personal Requirements?</label>
+                        <textarea id="requirements" name="requirements" rows="4" cols="60" placeholder="Please share any additional personal requirements or information here."></textarea><br><br>
+                    </div>
+                </fieldset>
+
+                <!--(OPTIONAL) Job Expectations section; no required inputs-->
+                <fieldset id="job_expectations">
+                    <legend class="visually_hidden"> Fieldset For Outlining Job Expectations </legend>
+                    <h6 class="form_headings"><strong> Job Expectations (Optional)</strong></h6>
+
+                    <!--Sliding Scale Range for Salary Expectations-->
+                    <label for="salary_scale"> What are your Salary Expectations? (Per Year):</label><br>
+                    <!-- Salary Slider Container -->
+                    <div id="salary_container">
+                        <!-- The minimum salary value label -->
+                        <span class="salary_min_max" id="value_min"><strong>$50,000</strong></span>
+                        <!-- The input for the salary scale -->
+                        <input type="range" id="salary_scale" name="salary_scale" min="1" max="20" step="0.5" value="1" title="slide to provide an approx. salary expectation">
+                        <!-- The maximum salary value label -->
+                        <span class="salary_min_max" id="value_max"><strong>$200,000</strong></span>
+                    </div>
+
+                    <!--Working Hours-->
+                    <p>Please provide your preferred working hours.</p>
+                    <div id="working_hours">
+                        <label for="hours_start"> Start time: </label>
+                        <input type="time" id="hours_start" name="hours_start">
+                    
+                        <label for="hours_end"> End time: </label>
+                        <input type="time" id="hours_end" name="hours_end">
+                    </div>
+                </fieldset>
+                <!--Buttons: Input 'Apply' & 'Reset Form'-->
+                <p id="buttons">
+                    <input type="submit" value="Apply" title="Click to Apply Now">
+                    <input type="reset" value="Reset form" title="Click to Reset Form">
+                </p> 
+            </form>
+        </main>
+
+        <!--Footer: Duplicated Across Pages-->
+        <footer>
+            <!--Horizontal Line that separtes the information above with the information below.-->
+            <hr>
+            <ul>
+                <li><a href="index.html">  Home  </a></li>
+                <li><a href="jobs.html">  Jobs Listings  </a></li>
+                <li><a href="apply.html">  Job Application  </a></li>
+                <li><a href="contact.html"> Contact </a></li>
+                <li><a href="about.html">  About Us  </a></li>
+            </ul>
+            <!--Div, devides the paragraph so i can put the information on the same line but aligning it to either the left or the right.-->
+            <br>
+            <!--A Hyperlink to an external website.-->
+            <div class="Jira_Link_Footer">
+                <a class="Footer_Links" href= "https://thebestbigbraingroup.atlassian.net/jira/software/projects/SCRUM/summary"
+                target="_blank"
+                title="Go to The Best Big Brain Group Jira"
+                hreflang="en">Go To The Company's Jira</a>
+            </div>
+            <!--A Hyperlink to send me the company an email.-->
+            <div class="Company_Email">
+            Email:
+            <a class="Footer_Links" href="mailto:thebestbigbraingroup@gmail.com">info@thebestbigbraingroup.com.au</a></div>
+            <!--Hyperlink to the website's github-->
+            <div class="Github_Link_Footer">
+                Github:
+                <a class="Footer_Links" href="https://github.com/moniquev45/Group_Project" target="_blank">This website's github repository</a>
+            </div>
+            <!--Forces there to be a line break below to not squish all the the hyperlinks to the border of the page.-->
+            <p class="Copyright_in_footer">
+            &copy; <strong>
+                2025 The Best Big Brain Group. All Rights Reserved.
+                </strong>
+             </p>
+            <hr>
+        </footer>
+    </body>
+</html>
