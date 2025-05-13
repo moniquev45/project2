@@ -119,20 +119,20 @@
                                 <p><label for="state">State: </label>
                                     <select name="state" id="state" required="required">
                                         <option value="" selected="selected" disabled="disabled">Please Select</option>
-                                        <option value="state_VIC">VIC</option>
-                                        <option value="state_NSW">NSW</option>
-                                        <option value="state_QLD">QLD</option>
-                                        <option value="state_NT">NT</option>
-                                        <option value="state_WA">WA</option>
-                                        <option value="state_SA">SA</option>
-                                        <option value="state_TAS">TAS</option>
-                                        <option value="state_ACT">ACT</option>
+                                        <option value="VIC">VIC</option>
+                                        <option value="NSW">NSW</option>
+                                        <option value="QLD">QLD</option>
+                                        <option value="NT">NT</option>
+                                        <option value="WA">WA</option>
+                                        <option value="SA">SA</option>
+                                        <option value="TAS">TAS</option>
+                                        <option value="ACT">ACT</option>
                                     </select>
                                 </p>
                             </li>
                             <li class="personal_listing">
                                 <!-- Postcode - Text Input: Four Digits Only; Australia postcodes range from 0200 to 9944 -->
-                                <label for="postcode">Postcode: <input type="text" id="postcode" name="postcode" minlength="4" maxlength="4" pattern="[0-9][2-9][0-4][0-4]" title="4 digits only" required="required"></label>
+                                <label for="postcode">Postcode: <input type="text" id="postcode" name="postcode" minlength="4" maxlength="4" pattern="(0[289][0-9]{2})|([123456789][0-9]{3})" title="4 digits only" required="required"></label>
                             </li>
                         </ul>
                     </div>
