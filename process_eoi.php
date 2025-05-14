@@ -8,12 +8,10 @@ ini_set('display_error', 1);
 // including database settings
 require_once("settings.php");
 
-// Connecting to the database - SETTINGS PAGE NOT SET UP YET, DOUBLE CHECK TO MAKE SURE IT MATCHES WHEN DONE
-$conn = mysqli_connect($host, $username, $password, $database);
-
-// connection check
-if (!$conn) {
-    echo "<p>Could not connect to database: ".mysqli_connect_error()."</p>";
+// connection to database
+$dbconn = mysqli_connect($host, $user, $pwd, $db);
+if (!$dbconn) {
+    die("Connection failed: ".mysqli_connect_error());
 }
 
 // 1: make sure form was submitted with POST
@@ -28,45 +26,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = sanitise_input($_POST["first_name"]);
     $family_name = sanitise_input($_POST["family_name"]);
         // dob
-    $ = sanitise_input($_POST[""]);
+    $dob = sanitise_input($_POST["dob"]);
         // gender
-    $ = sanitise_input($_POST[""]);
+    $gender = sanitise_input($_POST["gender"]);
         // address
-    $ = sanitise_input($_POST[""]);
-    $ = sanitise_input($_POST[""]);
-    $ = sanitise_input($_POST[""]);
-    $ = sanitise_input($_POST[""]);
-    $ = sanitise_input($_POST[""]);
+    $street_address = sanitise_input($_POST["street_address"]);
+    $suburb = sanitise_input($_POST["suburb"]);
+    $state = sanitise_input($_POST["state"]);
+    $postcode = sanitise_input($_POST["postcode"]);
         // contact
-    $ = sanitise_input($_POST[""]);
-    $ = sanitise_input($_POST[""]);
+    $email_apply = sanitise_input($_POST["email_apply"]);
+    $mobile = sanitise_input($_POST["mobile"]);
 
     // skills field
-        //required technical
-    $ = sanitise_input($_POST[""]);
+        //required technical is a checkbox, handled in its own section
         // other skills / textboxes
-    $ = sanitise_input($_POST[""]);
-    $ = sanitise_input($_POST[""]);
+    $skills_other = sanitise_input($_POST["skills_other"]);
+    $requirements = sanitise_input($_POST["requirements"]);
 
     // job expectations
         // salary
-    $ = sanitise_input($_POST[""]);
+    $salary_scale = sanitise_input($_POST["salary_scale"]);
         // working hours
-    $ = sanitise_input($_POST[""]);
-
+    $hours_start = sanitise_input($_POST["hours_start"]);
+    $hours_end = sanitise_input($_POST["hours_end"]);
 
     // 3: Checkboxes (arrays need to be converted)
-    $ = isset($_POST[""]) ? implode(", ", array_map('sanitise_input', $_POST[""])) : "";
+    $ = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
-    // 4: form validation?
+    // 4: form validation
     $errors = [];
     if (empty($name)) $errors[] = "Name is required.";
 
-    // 5: push it to the database or give me an error
+    // 5: code to insert the input to the database or show the errors
     if (!empty($errors)) {
         // Display all error messages
         foreach ($errors as $error) {
-            echo "<p>" . htmlspecialchars($error) . "</p>";
+            echo "<p>".htmlspecialchars($error)."</p>";
         }
         echo "<p><strong>Please go back and fix the errors.</strong></p>";
     } else {
@@ -79,9 +75,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // 6: do the above query and output the results
         if (mysqli_query($conn, $sql)) {
-            echo "<h2>YOUR EXPRESSION OF INTEREST TABLE:</h2>";
-            echo "<p><strong>Job Reference:</strong> " . htmlspecialchars($job_ref) . "</p>";
-
+            echo "<h2>YOUR EXPRESSION OF INTEREST APPLICATION:</h2>";
+            // The Application Form EOI record
+            echo "<p><strong>Your Expression of Interest Form Receipt is:</strong> ".htmlspecialchars($)."</p>";
+            // Job Reference Number
+            echo "<p><strong>Job Reference:</strong> ".htmlspecialchars($job_reference)."</p>";
+            // Personal Details
+            echo "<p><strong>First Name:</strong> ".htmlspecialchars($first_name)."</p>";
+            echo "<p><strong>Last Name:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Date of Birth:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Gender:</strong> ".htmlspecialchars($)."</p>";
+            // Address
+            echo "<p><strong>Street Address:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Suburb/Town:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>State:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Postcode:</strong> ".htmlspecialchars($)."</p>";
+            // Contact
+            echo "<p><strong>Email Address:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Phone Number:</strong> ".htmlspecialchars($)."</p>";
+            // Required Skills
+            echo "<p><strong>Your Selected Skillset:</strong> ".htmlspecialchars($)."</p>";
+            // Other Skills
+            echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Further Information Provided:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($)."</p>";
         } else {
             echo "<p>Error: ".mysqli_error($conn)."</p>";
         }
