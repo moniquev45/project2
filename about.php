@@ -282,7 +282,6 @@
                             <dd>Bachelor of Computer Science</dd>
                     </dl>
             </div>
-
         </main>
          <!-- Including footer file -->
         <?php include 'footer.inc'; ?>
