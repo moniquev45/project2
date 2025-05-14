@@ -7,14 +7,4 @@
                 </figure>
                 <h1 class="Company_Name">The Best Big Brain Group </h1>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.php">  Home  </a></li>
-                    <li><a href="jobs.php">  Jobs Listings  </a></li>
-                    <li><a href="apply.php">  Job Application  </a></li>
-                    <li><a href="contact.php"> Contact </a></li>
-                    <li><a href="about.php"> About Us </a></li>
-                </ul>
-            </nav>
-            <hr>
 </header>
