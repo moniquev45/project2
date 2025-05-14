@@ -19,6 +19,9 @@
         
     </head>
     <body>
+        <!-- Including the navigation links (nav.inc) file -->
+        <?php include 'nav.inc'; ?>
+
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
 
@@ -179,13 +182,15 @@
             </div>
             <br><br><br>
             <!-- This button allows the users to apply for the job. -->
-            <a href="apply.html" target="_blank" title="Application of Jobs" class="Apply_Here">Apply Here</a>
+            <a href="apply.php" target="_blank" title="Application of Jobs" class="Apply_Here">Apply Here</a>
             <!-- This button sends the user back to the job listings page. -->
-            <a href="jobs.html" title="Job Page" class="Back_Button_Job_Page">Back</a>
+            <a href="jobs.php" title="Job Page" class="Back_Button_Job_Page">Back</a>
             <br><br>
 
         </main>
-        
+        <!-- Including nav_footer.inc file -->
+        <?php include 'nav_footer.inc'; ?>
+
         <!-- Including footer file -->
         <?php include 'footer.inc'; ?>
         

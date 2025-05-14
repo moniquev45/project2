@@ -19,6 +19,9 @@
         
     </head>
     <body>
+        <!-- Including the navigation links (nav.inc) file -->
+        <?php include 'nav.inc'; ?>
+
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
 
@@ -212,6 +215,8 @@
                 </p> 
             </form>
         </main>
+        <!-- Including nav_footer.inc file -->
+        <?php include 'nav_footer.inc'; ?>
 
         <!--Footer: from the include file-->
         <?php include 'footer.inc'; ?>

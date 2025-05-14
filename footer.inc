@@ -1,13 +1,4 @@
 <footer>
-            <!--Horizontal Line that separtes the information above with the information below.-->
-            <hr>
-            <ul>
-                <li><a href="index.php">  Home  </a></li>
-                <li><a href="jobs.php">  Jobs Listings  </a></li>
-                <li><a href="apply.php">  Job Application  </a></li>
-                <li><a href="contact.php"> Contact </a></li>
-                <li><a href="about.php">  About Us  </a></li>
-            </ul>
             <!--Div, devides the paragraph so i can put the information on the same line but aligning it to either the left or the right.-->
             <br>
             <!--A Hyperlink to an external website.-->
