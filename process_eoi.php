@@ -19,45 +19,86 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
     // job reference
-    $job_reference = sanitise_input($_POST["job_reference"]);
+        $job_reference = sanitise_input($_POST["job_reference"]);
 
     // personal details
         // name
-    $first_name = sanitise_input($_POST["first_name"]);
-    $family_name = sanitise_input($_POST["family_name"]);
+        $first_name = sanitise_input($_POST["first_name"]);
+        $family_name = sanitise_input($_POST["family_name"]);
         // dob
-    $dob = sanitise_input($_POST["dob"]);
+        $dob = sanitise_input($_POST["dob"]);
         // gender
-    $gender = sanitise_input($_POST["gender"]);
+        $gender = sanitise_input($_POST["gender"]);
         // address
-    $street_address = sanitise_input($_POST["street_address"]);
-    $suburb = sanitise_input($_POST["suburb"]);
-    $state = sanitise_input($_POST["state"]);
-    $postcode = sanitise_input($_POST["postcode"]);
+        $street_address = sanitise_input($_POST["street_address"]);
+        $suburb = sanitise_input($_POST["suburb"]);
+        $state = sanitise_input($_POST["state"]);
+        $postcode = sanitise_input($_POST["postcode"]);
         // contact
-    $email_apply = sanitise_input($_POST["email_apply"]);
-    $mobile = sanitise_input($_POST["mobile"]);
+        $email_apply = sanitise_input($_POST["email_apply"]);
+        $mobile = sanitise_input($_POST["mobile"]);
 
     // skills field
         //required technical is a checkbox, handled in its own section
         // other skills / textboxes
-    $skills_other = sanitise_input($_POST["skills_other"]);
-    $requirements = sanitise_input($_POST["requirements"]);
+        $skills_other = sanitise_input($_POST["skills_other"]);
+        $requirements = sanitise_input($_POST["requirements"]);
 
     // job expectations
         // salary
-    $salary_scale = sanitise_input($_POST["salary_scale"]);
+        $salary_scale = sanitise_input($_POST["salary_scale"]);
         // working hours
-    $hours_start = sanitise_input($_POST["hours_start"]);
-    $hours_end = sanitise_input($_POST["hours_end"]);
+        $hours_start = sanitise_input($_POST["hours_start"]);
+        $hours_end = sanitise_input($_POST["hours_end"]);
 
     // 3: Checkboxes (arrays need to be converted)
     $ = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
-    // 4: form validation
-    $errors = [];
-    if (empty($first_name)) $errors[] = "Name is required.";
+    // 4: form validation - errors for if required inputs aren't there and if patterns aren't adhered to
+        $errors = [];
+        if (empty($)) $errors[] = " is required.";
+        if (!preg_match("//", $)) $errors[] = ".";
 
+        // job reference
+        if (empty($job_reference)) $errors[] = "Job Reference is required.";
+
+        // personal details
+            // name
+        if (empty($first_name)) $errors[] = "First name is required.";
+        if (!preg_match("/[A-Za-z]+/", $first_name)) $errors[] = "First name can only be written in letters.";
+
+        if (empty($family_name)) $errors[] = "Family name is required.";
+        if (!preg_match("/[A-Za-z]+/", $family_name)) $errors[] = ".";
+            // dob
+        if (empty($dob)) $errors[] = "Date of birth is required.";
+        // gender
+        if (empty($gender)) $errors[] = "Gender is required.";
+
+        // address
+        if (empty($street_address)) $errors[] = "Street address is required.";
+        if (!preg_match("/^\d+\s[A-Za-z\s\.]+$/", $street_address)) $errors[] = ".";
+
+        if (empty($suburb)) $errors[] = "Suburb is required.";
+        if (!preg_match("/[A-Za-z\s]+/", $suburb)) $errors[] = ".";
+
+        if (empty($state)) $errors[] = "State is required.";
+        
+        if (empty($postcode)) $errors[] = "Postcode is required.";
+        if (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) $errors[] = ".";
+
+        // contact
+        if (empty($email_apply)) $errors[] = "Email address is required.";
+        if (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_apply)) $errors[] = ".";
+
+        if (empty($mobile)) $errors[] = "Phone number is required.";
+        if (!preg_match("/[0-9\s]+/", $mobile)) $errors[] = ".";
+
+    // skills field
+        //required technical skills
+        if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
+
+    // rest of form inputs aren't required or pattern based
+    
     // 5: code to insert the input to the database or show the errors
     if (!empty($errors)) {
         // Display all error messages
@@ -68,10 +109,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // the inserting code into the database
         $sql = "INSERT INTO eoi 
-                    (eoi_receipt, job_reference, first_name, family_name, gender, street_address, suburb, state, email_apply, mobile, 
+                    (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, email_apply, mobile, 
                     skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
                 VALUES (
-                    NULL, '$job_reference', '$first_name', '$family_name', '$gender', '$street_address', 
+                    NULL, '$job_reference', '$first_name', '$family_name', $dob, '$gender', '$street_address', 
                     '$suburb', '$state', '$email_apply', '$mobile', '$skills', '$skills_other', 
                     '$requirements', '$salary_scale', '$hours_start', '$hours_end'
                 );
