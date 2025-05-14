@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
 
     // rest of form inputs aren't required or pattern based
-    
+
     // 5: code to insert the input to the database or show the errors
     if (!empty($errors)) {
         // Display all error messages
@@ -109,11 +109,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // the inserting code into the database
         $sql = "INSERT INTO eoi 
-                    (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, email_apply, mobile, 
+                    (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
                     skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
                 VALUES (
                     NULL, '$job_reference', '$first_name', '$family_name', $dob, '$gender', '$street_address', 
-                    '$suburb', '$state', '$email_apply', '$mobile', '$skills', '$skills_other', 
+                    '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other', 
                     '$requirements', '$salary_scale', '$hours_start', '$hours_end'
                 );
 
