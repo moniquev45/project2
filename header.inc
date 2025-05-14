@@ -7,4 +7,5 @@
                 </figure>
                 <h1 class="Company_Name">The Best Big Brain Group </h1>
             </div>
+            <?php include 'nav.inc'; ?>
 </header>

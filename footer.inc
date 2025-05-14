@@ -2,6 +2,7 @@
             <!--Div, devides the paragraph so i can put the information on the same line but aligning it to either the left or the right.-->
             <br>
             <!--A Hyperlink to an external website.-->
+            <?php include 'nav.inc'; ?>
             <div class="Jira_Link_Footer">
                 <a class="Footer_Links" href= "https://thebestbigbraingroup.atlassian.net/jira/software/projects/SCRUM/summary"
                 target="_blank"
