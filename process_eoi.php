@@ -82,25 +82,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p><strong>Job Reference:</strong> ".htmlspecialchars($job_reference)."</p>";
             // Personal Details
             echo "<p><strong>First Name:</strong> ".htmlspecialchars($first_name)."</p>";
-            echo "<p><strong>Last Name:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Date of Birth:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Gender:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Last Name:</strong> ".htmlspecialchars($family_name)."</p>";
+            echo "<p><strong>Date of Birth:</strong> ".htmlspecialchars($dob)."</p>";
+            echo "<p><strong>Gender:</strong> ".htmlspecialchars($gender)."</p>";
             // Address
-            echo "<p><strong>Street Address:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Suburb/Town:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>State:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Postcode:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Street Address:</strong> ".htmlspecialchars($street_address)."</p>";
+            echo "<p><strong>Suburb/Town:</strong> ".htmlspecialchars($suburb)."</p>";
+            echo "<p><strong>State:</strong> ".htmlspecialchars($state)."</p>";
+            echo "<p><strong>Postcode:</strong> ".htmlspecialchars($postcode)."</p>";
             // Contact
-            echo "<p><strong>Email Address:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Phone Number:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Email Address:</strong> ".htmlspecialchars($email_apply)."</p>";
+            echo "<p><strong>Phone Number:</strong> ".htmlspecialchars($mobile)."</p>";
             // Required Skills
-            echo "<p><strong>Your Selected Skillset:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Your Selected Skillset:</strong> ".htmlspecialchars($skills)."</p>";
             // Other Skills
-            echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Further Information Provided:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($)."</p>";
-            echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($skills_other)."</p>";
+            echo "<p><strong>Further Information Provided:</strong> ".htmlspecialchars($requirements)."</p>";
+            echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($salary_scale)."</p>";
+            echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($hours_start)."</p>";
+            echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($hours_end)."</p>";
         } else {
             echo "<p>Error: ".mysqli_error($conn)."</p>";
         }
