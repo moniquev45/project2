@@ -1,19 +1,10 @@
 <footer>
     <!--Horizontal Line that separtes the information above with the information below.-->
     <hr>
-    <nav>
-        <ul>
-            <li><a href="index.php">  Home  </a></li>
-            <li><a href="jobs.php">  Jobs Listings  </a></li>
-            <li><a href="apply.php">  Job Application  </a></li>
-            <li><a href="contact.php"> Contact </a></li>
-            <li><a href="about.php">  About Us  </a></li>
-        </ul>
-    </nav>
+        <?php include 'nav.inc'; ?>
                 <!--Div, devides the paragraph so i can put the information on the same line but aligning it to either the left or the right.-->
             <br>
             <!--A Hyperlink to an external website.-->
-            <?php include 'nav.inc'; ?>
             <div class="Jira_Link_Footer">
                 <a class="Footer_Links" href= "https://thebestbigbraingroup.atlassian.net/jira/software/projects/SCRUM/summary"
                 target="_blank"
