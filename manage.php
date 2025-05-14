@@ -24,7 +24,6 @@
 
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
-
         <main>
 
         </main>
@@ -33,3 +32,11 @@
         
     </body>
 </html>
+
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    require_once("settings.php");
+    session_start();
+    
+?>
