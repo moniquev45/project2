@@ -20,28 +20,9 @@
 
     </head>
     <body>
-        <header>
-            <div class="Job_Position_And_Logo">
-                <figure>
-                <!--Change to company Logo-->  
-                <a href="index.html"><img src="images/Pear_Company_Logo.png" alt="Pear Company Logo" class="Company_Logo"></a>
-                <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
-                </figure>
-                <h1 class="Company_Name">The Best Big Brain Group</h1>
-            </div>
-            <!-- This is the navigation bar and sends users to different pages when they press it. -->
-            <nav>
-                <ul>
-                    <li><a href="index.html">  Home  </a></li>
-                    <li><a href="jobs.html">  Jobs Listings  </a></li>
-                    <li><a href="apply.html">  Job Application  </a></li>
-                    <li><a href="contact.html"> Contact </a></li>
-                    <li><a href="about.html"> About Us </a></li>
-                </ul>
-            </nav>
-            <hr>
-        </header>
-
+        <!-- Inserting the Header -->
+        <?php include 'header.inc'; ?>
+        
         <main>
             <p class="Number_Of_Job_Listings">2 jobs avaliable</p>
             <!-- This table contains all of the job listings and a shorten version of their information. A table is used here
