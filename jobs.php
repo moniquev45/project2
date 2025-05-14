@@ -72,7 +72,7 @@
                             <br>
                             <!-- This is the See More Button where you can press and it uses a hyperlink to send you to a whole big page
                              with all the job listing info. -->
-                            <a href="data_analyst_job_page.html" target="_blank"
+                            <a href="data_analyst_job_page.php" target="_blank"
                                 title="Data Analyst Job Description" class="See_More">see more</a>
                             </div>
                             <br><br><br>
@@ -93,7 +93,7 @@
                                 <li>Excellent communication skills to translate data insights into business value.</li>
                             </ol>
                             <!-- This sends the user to the apply page where they can fill out a job application. -->
-                            <a href="apply.html" target="_blank"
+                            <a href="apply.php" target="_blank"
                             title="Go to Apply For Job Page" class="Apply_Here">Apply Here</a>
                         </aside>
                     </td>
@@ -139,7 +139,7 @@
                             <br>
                             <!-- This is the See More Button where you can press and it uses a hyperlink to send you to a whole big page
                              with all the job listing info. -->
-                            <a href="junior_software_developer_job_page.html" target="_blank"
+                            <a href="junior_software_developer_job_page.php" target="_blank"
                                 title="Data Analyst Job Description" class="See_More">see more
                             </a>
                             <br><br><br>
@@ -163,7 +163,7 @@
                             <!--The information on what a junior software developer does comes from Chatgpt, with these prompts:
                             Can you give me a job description key responsibility for a junior software developer, only 6 dot points, make it fancy,
                             Link: https://chatgpt.com/ -->
-                            <a href="apply.html" target="_blank"
+                            <a href="apply.php" target="_blank"
                             title="Go to Apply For Job Page" class="Apply_Here">Apply Here</a>
                         </aside>
                     </td>
