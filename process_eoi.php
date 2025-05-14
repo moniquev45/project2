@@ -20,7 +20,39 @@ if (!$conn) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
-    $ = sanitise_input($_POST[" "]);
+    // job reference
+    $job_reference = sanitise_input($_POST["job_reference"]);
+
+    // personal details
+        // name
+    $first_name = sanitise_input($_POST["first_name"]);
+    $family_name = sanitise_input($_POST["family_name"]);
+        // dob
+    $ = sanitise_input($_POST[""]);
+        // gender
+    $ = sanitise_input($_POST[""]);
+        // address
+    $ = sanitise_input($_POST[""]);
+    $ = sanitise_input($_POST[""]);
+    $ = sanitise_input($_POST[""]);
+    $ = sanitise_input($_POST[""]);
+    $ = sanitise_input($_POST[""]);
+        // contact
+    $ = sanitise_input($_POST[""]);
+    $ = sanitise_input($_POST[""]);
+
+    // skills field
+        //required technical
+    $ = sanitise_input($_POST[""]);
+        // other skills / textboxes
+    $ = sanitise_input($_POST[""]);
+    $ = sanitise_input($_POST[""]);
+
+    // job expectations
+        // salary
+    $ = sanitise_input($_POST[""]);
+        // working hours
+    $ = sanitise_input($_POST[""]);
 
 
     // 3: Checkboxes (arrays need to be converted)
