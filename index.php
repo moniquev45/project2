@@ -92,13 +92,8 @@
                     are structured, functional and intuitive.
                 </p>
             </div>
-
-
-
-
-            
         </main>
-        <footer>
+        
          <!-- Including footer file -->
         <?php include 'footer.inc'; ?>
     </body>
