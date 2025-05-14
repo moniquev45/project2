@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 4: form validation
     $errors = [];
-    if (empty($name)) $errors[] = "Name is required.";
+    if (empty($first_name)) $errors[] = "Name is required.";
 
     // 5: code to insert the input to the database or show the errors
     if (!empty($errors)) {
@@ -68,13 +68,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // the inserting code into the database
         $sql = "INSERT INTO eoi 
-                () 
+                    (eoi_receipt, job_reference, first_name, family_name, gender, street_address, suburb, state, email_apply, mobile, 
+                    skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
                 VALUES (
-                    '$', 
-                )";
+                    NULL, '$job_reference', '$first_name', '$family_name', '$gender', '$street_address', 
+                    '$suburb', '$state', '$email_apply', '$mobile', '$skills', '$skills_other', 
+                    '$requirements', '$salary_scale', '$hours_start', '$hours_end'
+                );
 
         // 6: do the above query and output the results
-        if (mysqli_query($conn, $sql)) {
+        if (mysqli_query($dbconn, $sql)) {
             echo "<h2>YOUR EXPRESSION OF INTEREST APPLICATION:</h2>";
             // The Application Form EOI record
             echo "<p><strong>Your Expression of Interest Form Receipt is:</strong> ".htmlspecialchars($)."</p>";
@@ -102,12 +105,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($hours_start)."</p>";
             echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($hours_end)."</p>";
         } else {
-            echo "<p>Error: ".mysqli_error($conn)."</p>";
+            echo "<p>Error: ".mysqli_error($dbconn)."</p>";
         }
     }
 
     // closing database connection
-    mysqli_close($conn);
+    mysqli_close($dbconn);
 }
 
 // Clean up the input data
