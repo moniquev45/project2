@@ -33,7 +33,7 @@
             </div>
 
             <!--Form Section. Requirements for all: 1. Inputs need labels 2. All form values (excepting'other skills' text area) are required or default value)-->
-            <form id="apply_form" action="https://mercury.swin.edu.au/it000000/formtest.php" method="POST" novalidate="novalidate">
+            <form id="apply_form" action="process_eoi.php" method="POST" novalidate="novalidate">
 
                 <!--Fieldset 1: Job Reference Number - Drop Down-->
                 <fieldset id="fieldset_reference"> 
