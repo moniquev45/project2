@@ -52,13 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hours_end = sanitise_input($_POST["hours_end"]);
 
     // 3: Checkboxes (arrays need to be converted)
-    $ = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
+    $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
     // 4: form validation - errors for if required inputs aren't there and if patterns aren't adhered to
         $errors = [];
-        if (empty($)) $errors[] = " is required.";
-        if (!preg_match("//", $)) $errors[] = ".";
-
         // job reference
         if (empty($job_reference)) $errors[] = "Job Reference is required.";
 
@@ -161,7 +158,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "<p>Error: ".mysqli_error($dbconn)."</p>";
         }
-    }
 
     // closing database connection
     mysqli_close($dbconn);
