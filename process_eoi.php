@@ -100,28 +100,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // rest of form inputs aren't required or pattern based
 
     // 5: code to insert the input to the database or show the errors
-    if (!empty($errors)) {
-        // Display all error messages
-        foreach ($errors as $error) {
-            echo "<p>".htmlspecialchars($error)."</p>";
-        }
-        echo "<p><strong>Please go back and fix the errors.</strong></p>";
-    } else {
-        // the inserting code into the database
-        $sql = "INSERT INTO eoi 
-                    (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
-                    skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
-                VALUES (
-                    NULL, '$job_reference', '$first_name', '$family_name', $dob, '$gender', '$street_address', 
-                    '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other', 
-                    '$requirements', '$salary_scale', '$hours_start', '$hours_end'
-                );
+        if (!empty($errors)) {
+            // Display all error messages
+            foreach ($errors as $error) {
+                echo "<p>".htmlspecialchars($error)."</p>";
+            }
+            echo "<p><strong>Please go back and fix the errors.</strong></p>";
+        } else {
+            // the inserting code into the database
+            $sql = "INSERT INTO eoi 
+                        (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
+                        skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
+                    VALUES (
+                        NULL, '$job_reference', '$first_name', '$family_name', $dob, '$gender', '$street_address', 
+                        '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other', 
+                        '$requirements', '$salary_scale', '$hours_start', '$hours_end'
+                    )";
+                }
 
-        // 6: do the above query and output the results
+    // 6: getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
+        $last_id = mysqli_insert_id($dbconn);
+
+        // getting the eoi_number and timestamp data from table
+        $query = "SELECT eoi_number, submission_time FROM eoi WHERE id = $last_id";
+        $result = mysqli_query($dbconn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+    // 7: do the above query and output the results
+
         if (mysqli_query($dbconn, $sql)) {
             echo "<h2>YOUR EXPRESSION OF INTEREST APPLICATION:</h2>";
             // The Application Form EOI record
-            echo "<p><strong>Your Expression of Interest Form Receipt is:</strong> ".htmlspecialchars($)."</p>";
+            echo "<p><strong>Your Expression of Interest Form Receipt is:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
+            // The Timestamp
+            echo "<p><strong>The time submitted is:</strong> ".htmlspecialchars($row['submission_time'])."</p>";
+            echo "<p><strong>Please find the confirmation of details entered below.</p>";
             // Job Reference Number
             echo "<p><strong>Job Reference:</strong> ".htmlspecialchars($job_reference)."</p>";
             // Personal Details
