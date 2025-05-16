@@ -163,15 +163,18 @@
                     $result_table = mysqli_query($dbconn, $query);
                     $row = mysqli_fetch_assoc($result_table);
 
-            // 7: echo all the data just inserted into the sql table
-                    echo "<h2>YOUR EXPRESSION OF INTEREST APPLICATION:</h2>";
+            // 7: echoing all the data proivided in the form in a confirmation notice
+                    echo "<h1> THANK YOU FOR YOUR SUBMISSION </h1>";
+
+                    // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
+                    echo "<p> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
                     // The Application Form EOI record
-                    echo "<p><strong>Your Expression of Interest Form Receipt is:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
+                    echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
                     // The Timestamp
-                    echo "<p><strong>The time submitted is:</strong> ".htmlspecialchars($row['submission_time'])."</p>";
-                    echo "<p><strong>Please find the confirmation of details entered below.</p>";
-                    // Job Reference Number
-                    echo "<p><strong>Job Reference:</strong> ".htmlspecialchars($job_reference)."</p>";
+                    echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($row['submission_time'])."</p>";
+                    
+                    // The form answers:
+                    echo "<p><em>Please find the confirmation of details entered below.</em></p>";
                     // Personal Details
                     echo "<p><strong>First Name:</strong> ".htmlspecialchars($first_name)."</p>";
                     echo "<p><strong>Last Name:</strong> ".htmlspecialchars($family_name)."</p>";

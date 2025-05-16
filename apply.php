@@ -42,8 +42,8 @@
                         <label for="job_reference"><strong> JOB REFERENCE NUMBER:</strong></label>
                         <select name="job_reference" id="job_reference" required="required">
                             <option value="" selected="selected" disabled="disabled">Please Select</option>
-                            <option value="job_reference1">#00001</option>
-                            <option value="job_reference2">#00002</option>
+                            <option value="#00001">#00001</option>
+                            <option value="#00002">#00002</option>
                         </select>
                     </p>
                 </fieldset> 
