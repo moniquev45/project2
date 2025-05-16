@@ -67,11 +67,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (empty($family_name)) $errors[] = "Family name is required.";
         if (!preg_match("/[A-Za-z]+/", $family_name)) 
-            $errors[] = "Familyname can only be written in letters..";
+            $errors[] = "Familyname can only be written in letters.";
     
             // dob
         if (empty($dob)) $errors[] = "Date of birth is required.";
-        if (!preg_match("/\d{4}-\d{2}-\d{2}/", $dob)) 
+        if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/", $dob)) 
             $errors[] = "Date of birth must be in DD-MM-YYYY format.";
         // gender
         if (empty($gender)) $errors[] = "Gender is required.";
@@ -117,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // the inserting code into the database
             $sql_insert = "INSERT INTO eoi 
                         (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
-                        skills, skills_other_textbox, requirements, salary_scale, hours_start, hours_end) 
+                        skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
                     VALUES (
                         NULL, '$job_reference', '$first_name', '$family_name', '$dob', '$gender', '$street_address', 
                         '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
@@ -130,16 +130,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // getting the eoi_number and timestamp data from table
                 $query = "SELECT eoi_number, submission_time FROM eoi WHERE id = $last_id";
-                $result = mysqli_query($dbconn, $sql);
-                $row = mysqli_fetch_assoc($result);
+                $result_table = mysqli_query($dbconn, $query);
+                $row = mysqli_fetch_assoc($result_table);
             } else {
                 echo "<p>Error: ".mysqli_error($dbconn)."</p>";
             }
         }
 
-    // 7: do the above query and output the results
-
-        if (mysqli_query($dbconn, $sql)) {
+    // 7: echo all the data just inserted into the sql table
             echo "<h2>YOUR EXPRESSION OF INTEREST APPLICATION:</h2>";
             // The Application Form EOI record
             echo "<p><strong>Your Expression of Interest Form Receipt is:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
