@@ -1,7 +1,7 @@
 <?php
 // debugging error reporting turned on
 error_reporting(E_ALL);
-ini_set('display_error', 1);
+ini_set('display_errors', 1);
 ?>
 
 <?php
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // skills field
         //required technical is a checkbox, handled in its own section
         // other skills / textboxes
-        $skills_other = sanitise_input($_POST["skills_other"]);
+        $skills_other_textbox = sanitise_input($_POST["skills_other_textbox"]);
         $requirements = sanitise_input($_POST["requirements"]);
 
     // job expectations
@@ -62,33 +62,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // personal details
             // name
         if (empty($first_name)) $errors[] = "First name is required.";
-        if (!preg_match("/[A-Za-z]+/", $first_name)) $errors[] = "First name can only be written in letters.";
+        if (!preg_match("/[A-Za-z]+/", $first_name)) 
+            $errors[] = "First name can only be written in letters.";
 
         if (empty($family_name)) $errors[] = "Family name is required.";
-        if (!preg_match("/[A-Za-z]+/", $family_name)) $errors[] = ".";
+        if (!preg_match("/[A-Za-z]+/", $family_name)) 
+            $errors[] = "Familyname can only be written in letters..";
+    
             // dob
         if (empty($dob)) $errors[] = "Date of birth is required.";
+        if (!preg_match("/\d{4}-\d{2}-\d{2}/", $dob)) 
+            $errors[] = "Date of birth must be in DD-MM-YYYY format.";
         // gender
         if (empty($gender)) $errors[] = "Gender is required.";
 
         // address
         if (empty($street_address)) $errors[] = "Street address is required.";
-        if (!preg_match("/^\d+\s[A-Za-z\s\.]+$/", $street_address)) $errors[] = ".";
+        if (!preg_match("/^\d+\s[A-Za-z\s\.]+$/", $street_address)) 
+            $errors[] = "Street address has a max 40 characters; allows numbers, spaces and letters only.";
 
         if (empty($suburb)) $errors[] = "Suburb is required.";
-        if (!preg_match("/[A-Za-z\s]+/", $suburb)) $errors[] = ".";
+        if (!preg_match("/[A-Za-z\s]+/", $suburb)) 
+            $errors[] = "Street address has a max 40 characters; allows letters and spaces only.";
 
         if (empty($state)) $errors[] = "State is required.";
         
         if (empty($postcode)) $errors[] = "Postcode is required.";
-        if (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) $errors[] = ".";
+        if (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) 
+            $errors[] = "Must be an Australia postcode; in the range of from 0200 to 9944.";
 
         // contact
         if (empty($email_apply)) $errors[] = "Email address is required.";
-        if (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_apply)) $errors[] = ".";
+        if (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_apply)) 
+            $errors[] = "Email must be properly formulated, i.e example@emailaddress.com.";
 
         if (empty($mobile)) $errors[] = "Phone number is required.";
-        if (!preg_match("/[0-9\s]+/", $mobile)) $errors[] = ".";
+        if (!preg_match("/[0-9\s]+/", $mobile)) 
+            $errors[] = "You are only allowed numbers and spaces in your phone number.";
 
     // skills field
         //required technical skills
@@ -105,23 +115,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p><strong>Please go back and fix the errors.</strong></p>";
         } else {
             // the inserting code into the database
-            $sql = "INSERT INTO eoi 
+            $sql_insert = "INSERT INTO eoi 
                         (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
-                        skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
+                        skills, skills_other_textbox, requirements, salary_scale, hours_start, hours_end) 
                     VALUES (
-                        NULL, '$job_reference', '$first_name', '$family_name', $dob, '$gender', '$street_address', 
-                        '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other', 
+                        NULL, '$job_reference', '$first_name', '$family_name', '$dob', '$gender', '$street_address', 
+                        '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
                         '$requirements', '$salary_scale', '$hours_start', '$hours_end'
                     )";
-                }
 
     // 6: getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
-        $last_id = mysqli_insert_id($dbconn);
+            if (mysqli_query($dbconn, $sql_insert)) {
+                $last_id = mysqli_insert_id($dbconn);
 
-        // getting the eoi_number and timestamp data from table
-        $query = "SELECT eoi_number, submission_time FROM eoi WHERE id = $last_id";
-        $result = mysqli_query($dbconn, $sql);
-        $row = mysqli_fetch_assoc($result);
+                // getting the eoi_number and timestamp data from table
+                $query = "SELECT eoi_number, submission_time FROM eoi WHERE id = $last_id";
+                $result = mysqli_query($dbconn, $sql);
+                $row = mysqli_fetch_assoc($result);
+            } else {
+                echo "<p>Error: ".mysqli_error($dbconn)."</p>";
+            }
+        }
 
     // 7: do the above query and output the results
 
@@ -150,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Required Skills
             echo "<p><strong>Your Selected Skillset:</strong> ".htmlspecialchars($skills)."</p>";
             // Other Skills
-            echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($skills_other)."</p>";
+            echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($skills_other_textbox)."</p>";
             echo "<p><strong>Further Information Provided:</strong> ".htmlspecialchars($requirements)."</p>";
             echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($salary_scale)."</p>";
             echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($hours_start)."</p>";

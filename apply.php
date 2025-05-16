@@ -69,7 +69,7 @@
 
                             <li class="personal_listing">
                                 <!-- Date of Birth ; Format: dd/mm/yyyy-->
-                                <p><label for="dob"> Date of Birth: <input type="date" id="dob" name="dob" required="required"></label></p>
+                                <p><label for="dob"> Date of Birth: <input type="text" placeholder= "DD-MM-YYYY" pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$" id="dob" name="dob" required="required"></label></p>
                             </li>
                         </ul>
 
