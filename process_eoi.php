@@ -154,12 +154,12 @@
                                 '$requirements', '$salary_scale', '$hours_start', '$hours_end'
                             )";
 
-            // 6: getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
+                    // 6: getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
                 if (mysqli_query($dbconn, $sql_insert)) {
                     $last_id = mysqli_insert_id($dbconn);
 
                     // getting the eoi_number and timestamp data from table
-                    $query = "SELECT eoi_number, submission_time FROM eoi WHERE id = $last_id";
+                    $query = "SELECT eoi_number, submission_time FROM eoi WHERE eoi_number = $last_id";
                     $result_table = mysqli_query($dbconn, $query);
                     $row = mysqli_fetch_assoc($result_table);
 
