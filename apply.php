@@ -33,7 +33,7 @@
             </div>
 
             <!--Form Section. Requirements for all: 1. Inputs need labels 2. All form values (excepting'other skills' text area) are required or default value)-->
-            <form id="apply_form" action="https://mercury.swin.edu.au/it000000/formtest.php" method="POST">
+            <form id="apply_form" action="https://mercury.swin.edu.au/it000000/formtest.php" method="POST" novalidate="novalidate">
 
                 <!--Fieldset 1: Job Reference Number - Drop Down-->
                 <fieldset id="fieldset_reference"> 
@@ -208,12 +208,14 @@
                 </fieldset>
                 <!--Buttons: Input 'Apply' & 'Reset Form'-->
                 <p id="buttons">
-                    <input type="submit" value="Apply" title="Click to Apply Now">
+                    <!--Sending Applicant to process_eoi page after clicking apply to see the results they have submitted-->
+                    <a href="process_eoi.php">
+                        <input type="submit" value="Apply" title="Click to Apply Now">
+                    </a>
                     <input type="reset" value="Reset form" title="Click to Reset Form">
                 </p> 
             </form>
         </main>
-
         <!--Footer: from the include file-->
         <?php include 'footer.inc'; ?>
     </body>
