@@ -1045,3 +1045,80 @@ right, right next to the employment details, and it allows the data to take up 5
     /* Sets the text color of the paragraph to black for accessability purposes*/
     color: #000000;
 }
+/* END OF HOME PAGE STYLING*/
+
+/* PROCESS_EOI PAGE STYLING*/
+
+ /* Responsive Design - Ensuring everything is still readable when on a smaller screen*/
+ @media (max-width: 768px) {
+    # {padding: 10px;}
+ }
+
+    
+
+ /* Output will need to be aligned*/
+  # {text-align: center;}
+ 
+ /* Element: Labels are all uniform in colour and size to the universal <p> colouring*/
+  {color: #011e0a;;}
+ 
+ /* Class: Making all headings (excluding h1) in Apply Page consistent in size and formatting */
+ .{
+    text-transform: uppercase; /* Makes the label all caps */
+    border-bottom: 2px solid #000; /* Adds a subtle underline */
+    display: flex;
+    text-align: center;
+    box-sizing: border-box;
+    max-width: 100%; 
+    overflow-wrap: break-word;
+    font-size: clamp(1rem, 1vw, 1rem); /* Font size will adjust based on viewport width */  
+   }
+ 
+ /* Element: Fieldset Padding, Colour & Border*/
+  {
+    border: 1px double #065321;
+    border-radius: 8px;
+    color: #011e0a;
+    background-color:#f4fff4;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    padding: 8px;
+ }
+
+
+ /* BUTTONS | ID Selector: Button Position & Size Adjustments*/
+ # {
+    justify-content: start; /* Align with form’s column start */
+    border: none;
+    background-color: #cffdd1;
+    font-size: 25px;   
+    width: 100%;
+    cursor: pointer;    /* Change cursor to pointer */
+    padding: 10px 0;    /* Top and bottom padding only */
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    max-height: 500px;
+ }
+
+ /* BUTTONS Will need to style the back and apply now buttons - Styling & Shadow */
+ #don't have an id yet - input[type="submit"] {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #065321;
+    border-radius: 6px;
+    background-color: #065321;
+    color: #cffdd1;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Add shadow */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ /* BUTTONS | Hover Effect - Submit and Reset */
+ #don't have an id yet -  input[type="submit"]:hover, {
+    background-color: #cffdd1;
+    color: #065321;
+ }
+
+ 
+/* END OF PROCESS_EOI PAGE STYLING*/
