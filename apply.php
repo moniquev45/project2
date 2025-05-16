@@ -19,7 +19,6 @@
         
     </head>
     <body>
-        <!-- Including the navigation links (nav.inc) file -->
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
 
