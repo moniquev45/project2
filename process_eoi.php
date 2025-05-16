@@ -196,6 +196,13 @@
                     echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($salary_scale)."</p>";
                     echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($hours_start)."</p>";
                     echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($hours_end)."</p>";
+
+
+                    // Button to go back to apply.php and apply again.
+                    echo "<form action='apply.php' method='get'>
+                            <p> If you would like to apply for another job listing, please click the button below: </p>
+                            <input type='submit' value='Apply Again' title='Click here to go back to the job application form.'>
+                        </form>";
                 } else {
                     echo "<p>Error: ".mysqli_error($dbconn)."</p>";
                 }
