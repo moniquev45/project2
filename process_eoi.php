@@ -53,11 +53,11 @@
                     // dob
                     $dob = sanitise_input($_POST["dob"]);
                     // gender
-                    $gender = sanitise_input($_POST["gender"]);
+                    $gender = isset($_POST["gender"]) ? sanitise_input($_POST["gender"]) : '';
                     // address
                     $street_address = sanitise_input($_POST["street_address"]);
                     $suburb = sanitise_input($_POST["suburb"]);
-                    $state = sanitise_input($_POST["state"]);
+                    $state = isset($_POST["state"]) ? sanitise_input($_POST["state"]) : '';
                     $postcode = sanitise_input($_POST["postcode"]);
                     // contact
                     $email_apply = sanitise_input($_POST["email_apply"]);
@@ -71,13 +71,20 @@
 
                 // job expectations
                     // salary
-                    $salary_scale = sanitise_input($_POST["salary_scale"]);
+                    $salary_scale = isset($_POST["salary_scale"]) ? sanitise_input($_POST["salary_scale"]) : 0;
                     // working hours
                     $hours_start = sanitise_input($_POST["hours_start"]);
                     $hours_end = sanitise_input($_POST["hours_end"]);
 
-                // 3: Checkboxes (arrays need to be converted)
-                $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
+                // 3: Checkbox - sanitising and reformatting data
+                // raw data from the form being put into an array and sanatised
+                $raw_data_skills = isset($_POST["skills"]) ? array_map('sanitise_input', $_POST["skills"]) : [];
+                // formatting each skill in the array to have capitals, remove the underscore and put in a space instead
+                $formatting_skills = array_map(function($skill) { 
+                    return ucwords(str_replace('_',' ',$skill));
+                }, $raw_data_skills);
+                // joins all the formatted skills together into a single string
+                $skills = implode(", ", $formatting_skills);
 
                 // 4: form validation - errors for if required inputs aren't there and if patterns aren't adhered to
                     $errors = [];
@@ -135,7 +142,7 @@
                     if (!empty($errors)) {
                         // Display all error messages
                         foreach ($errors as $error) {
-                            echo "<p>".htmlspecialchars($error)."</p>";
+                            echo "<p id='red_text'>".htmlspecialchars($error)."</p>";
                         }
                         echo "<p><strong>Please ensure all errors are resolved before submitting.</strong></p>";
 
@@ -171,7 +178,7 @@
                             echo "<h1 id='submission_title'> THANK YOU FOR YOUR SUBMISSION </h1>";
 
                             // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
-                            echo "<p id='tester'> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
+                            echo "<p id='red_text'> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
                             // The Application Form EOI record
                             echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
                             // The Timestamp
@@ -179,27 +186,30 @@
                             
                             // The form answers:
                             echo "<p><em>Please find the confirmation of details entered below.</em></p>";
-                            // Personal Details
-                            echo "<p><strong>First Name:</strong> ".htmlspecialchars($first_name)."</p>";
-                            echo "<p><strong>Last Name:</strong> ".htmlspecialchars($family_name)."</p>";
-                            echo "<p><strong>Date of Birth:</strong> ".htmlspecialchars($dob)."</p>";
-                            echo "<p><strong>Gender:</strong> ".htmlspecialchars($gender)."</p>";
-                            // Address
-                            echo "<p><strong>Street Address:</strong> ".htmlspecialchars($street_address)."</p>";
-                            echo "<p><strong>Suburb/Town:</strong> ".htmlspecialchars($suburb)."</p>";
-                            echo "<p><strong>State:</strong> ".htmlspecialchars($state)."</p>";
-                            echo "<p><strong>Postcode:</strong> ".htmlspecialchars($postcode)."</p>";
-                            // Contact
-                            echo "<p><strong>Email Address:</strong> ".htmlspecialchars($email_apply)."</p>";
-                            echo "<p><strong>Phone Number:</strong> ".htmlspecialchars($mobile)."</p>";
-                            // Required Skills
-                            echo "<p><strong>Your Selected Skillset:</strong> ".htmlspecialchars($skills)."</p>";
-                            // Other Skills
-                            echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($skills_other_textbox)."</p>";
-                            echo "<p><strong>Further Information Provided:</strong> ".htmlspecialchars($requirements)."</p>";
-                            echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($salary_scale)."</p>";
-                            echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($hours_start)."</p>";
-                            echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($hours_end)."</p>";
+                            // making the data into a table
+                            echo "<table id='receipt_table'>";
+                                // Personal Details
+                                echo "<tr><td><strong>First Name:</strong></td> <td>".htmlspecialchars($first_name)."</td></tr>";
+                                echo "<tr><td><strong>Last Name:</strong></td> <td>".htmlspecialchars($family_name)."</td></tr>";
+                                echo "<tr><td><strong>Date of Birth:</strong></td> <td>".htmlspecialchars($dob)."</td></tr>";
+                                echo "<tr><td><strong>Gender:</strong></td> <td>".htmlspecialchars($gender)."</td></tr>";
+                                // Address
+                                echo "<tr><td><strong>Street Address:</strong></td> <td>".htmlspecialchars($street_address)."</td></tr>";
+                                echo "<tr><td><strong>Suburb/Town:</strong></td> <td>".htmlspecialchars($suburb)."</td></tr>";
+                                echo "<tr><td><strong>State:</strong></td> <td>".htmlspecialchars($state)."</td></tr>";
+                                echo "<tr><td><strong>Postcode:</strong></td> <td>".htmlspecialchars($postcode)."</td></tr>";
+                                // Contact
+                                echo "<tr><td><strong>Email Address:</strong></td> <td>".htmlspecialchars($email_apply)."</td></tr>";
+                                echo "<tr><td><strong>Phone Number:</strong></td> <td>".htmlspecialchars($mobile)."</td></tr>";
+                                // Required Skills
+                                echo "<tr><td><strong>Your Selected Skillset:</strong></td> <td>".htmlspecialchars($skills)."</td></tr>";
+                                // Other Skills
+                                echo "<tr><td><strong>Your Self Described Skillset:</strong></td> <td>".htmlspecialchars($skills_other_textbox)."</td></tr>";
+                                echo "<tr><td><strong>Further Information Provided:</strong></td> <td>".htmlspecialchars($requirements)."</td></tr>";
+                                echo "<tr><td><strong>Salary Expectations:</strong></td> <td>".htmlspecialchars($salary_scale)."</td></tr>";
+                                echo "<tr><td><strong>Preferred Starting Time:</strong></td> <td>".htmlspecialchars($hours_start)."</td></tr>";
+                                echo "<tr><td><strong>Preferred Finish Time:</strong></td> <td>".htmlspecialchars($hours_end)."</td></tr>";
+                            echo "</table>";
                         echo "</div>";
 
                         // Button to go back to apply.php and apply again.
@@ -208,7 +218,7 @@
                                 <input class='eoi_button' type='submit' value='Apply Again' title='Click here to go back to the job application form.'>
                             </form>";
                     } else {
-                        echo "<p>Error: ".mysqli_error($dbconn)."</p>";
+                        echo "<p id='red_text'>Error: ".mysqli_error($dbconn)."</p>";
                     }
 
                 // closing database connection
