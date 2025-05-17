@@ -1051,7 +1051,7 @@ right, right next to the employment details, and it allows the data to take up 5
 
  /* Responsive Design - Ensuring everything is still readable when on a smaller screen*/
  @media (max-width: 768px) {
-    # {padding: 10px;}
+    #submission_receipt {padding: 10px;}
  }
 
     
@@ -1059,11 +1059,11 @@ right, right next to the employment details, and it allows the data to take up 5
  /* Output will need to be aligned*/
   # {text-align: center;}
  
- /* Element: Labels are all uniform in colour and size to the universal <p> colouring*/
-  {color: #011e0a;;}
+ /* */
+ {color: #011e0a;;}
  
- /* Class: Making all headings (excluding h1) in Apply Page consistent in size and formatting */
- .{
+ /* Making the submission title heading, consistent with the Apply Page */
+ #submission_title {
     text-transform: uppercase; /* Makes the label all caps */
     border-bottom: 2px solid #000; /* Adds a subtle underline */
     display: flex;
@@ -1074,8 +1074,8 @@ right, right next to the employment details, and it allows the data to take up 5
     font-size: clamp(1rem, 1vw, 1rem); /* Font size will adjust based on viewport width */  
    }
  
- /* Element: Fieldset Padding, Colour & Border*/
-  {
+ /* The submission receipt box conistent with form page padding, colour & border*/
+  #submission_receipt {
     border: 1px double #065321;
     border-radius: 8px;
     color: #011e0a;
@@ -1087,7 +1087,7 @@ right, right next to the employment details, and it allows the data to take up 5
 
 
  /* BUTTONS | ID Selector: Button Position & Size Adjustments*/
- # {
+ #eoi_button {
     justify-content: start; /* Align with form’s column start */
     border: none;
     background-color: #cffdd1;

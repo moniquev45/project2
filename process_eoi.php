@@ -43,8 +43,8 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
-            // job reference
-                $job_reference = sanitise_input($_POST["job_reference"]);
+            // job reference - drop down box required isset
+                $job_reference = isset($_POST['job_reference']) ? sanitise_input($_POST['job_reference']) : '';
 
             // personal details
                 // name
@@ -140,7 +140,7 @@
                     echo "<p><strong>Please ensure all errors are resolved before submitting.</strong></p>";
 
                     // Back button to get to apply.php
-                    echo "<form action='apply.php' method='get'>
+                    echo "<form class='eoi_button' action='apply.php' method='get'>
                             <input type='submit' value='Back' title='Click to go back to form.'>
                         </form>";
                 } else {
@@ -164,42 +164,46 @@
                     $row = mysqli_fetch_assoc($result_table);
 
             // 7: echoing all the data proivided in the form in a confirmation notice
-                    echo "<h1> THANK YOU FOR YOUR SUBMISSION </h1>";
+                    // Submission Receipt division
+                    echo "<div id='submission_receipt'>";
 
-                    // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
-                    echo "<p> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
-                    // The Application Form EOI record
-                    echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
-                    // The Timestamp
-                    echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($row['submission_time'])."</p>";
-                    
-                    // The form answers:
-                    echo "<p><em>Please find the confirmation of details entered below.</em></p>";
-                    // Personal Details
-                    echo "<p><strong>First Name:</strong> ".htmlspecialchars($first_name)."</p>";
-                    echo "<p><strong>Last Name:</strong> ".htmlspecialchars($family_name)."</p>";
-                    echo "<p><strong>Date of Birth:</strong> ".htmlspecialchars($dob)."</p>";
-                    echo "<p><strong>Gender:</strong> ".htmlspecialchars($gender)."</p>";
-                    // Address
-                    echo "<p><strong>Street Address:</strong> ".htmlspecialchars($street_address)."</p>";
-                    echo "<p><strong>Suburb/Town:</strong> ".htmlspecialchars($suburb)."</p>";
-                    echo "<p><strong>State:</strong> ".htmlspecialchars($state)."</p>";
-                    echo "<p><strong>Postcode:</strong> ".htmlspecialchars($postcode)."</p>";
-                    // Contact
-                    echo "<p><strong>Email Address:</strong> ".htmlspecialchars($email_apply)."</p>";
-                    echo "<p><strong>Phone Number:</strong> ".htmlspecialchars($mobile)."</p>";
-                    // Required Skills
-                    echo "<p><strong>Your Selected Skillset:</strong> ".htmlspecialchars($skills)."</p>";
-                    // Other Skills
-                    echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($skills_other_textbox)."</p>";
-                    echo "<p><strong>Further Information Provided:</strong> ".htmlspecialchars($requirements)."</p>";
-                    echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($salary_scale)."</p>";
-                    echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($hours_start)."</p>";
-                    echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($hours_end)."</p>";
+                        // Start of Receipt
+                        echo "<h1 id='submission_title'> THANK YOU FOR YOUR SUBMISSION </h1>";
 
+                        // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
+                        echo "<p> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
+                        // The Application Form EOI record
+                        echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
+                        // The Timestamp
+                        echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($row['submission_time'])."</p>";
+                        
+                        // The form answers:
+                        echo "<p><em>Please find the confirmation of details entered below.</em></p>";
+                        // Personal Details
+                        echo "<p><strong>First Name:</strong> ".htmlspecialchars($first_name)."</p>";
+                        echo "<p><strong>Last Name:</strong> ".htmlspecialchars($family_name)."</p>";
+                        echo "<p><strong>Date of Birth:</strong> ".htmlspecialchars($dob)."</p>";
+                        echo "<p><strong>Gender:</strong> ".htmlspecialchars($gender)."</p>";
+                        // Address
+                        echo "<p><strong>Street Address:</strong> ".htmlspecialchars($street_address)."</p>";
+                        echo "<p><strong>Suburb/Town:</strong> ".htmlspecialchars($suburb)."</p>";
+                        echo "<p><strong>State:</strong> ".htmlspecialchars($state)."</p>";
+                        echo "<p><strong>Postcode:</strong> ".htmlspecialchars($postcode)."</p>";
+                        // Contact
+                        echo "<p><strong>Email Address:</strong> ".htmlspecialchars($email_apply)."</p>";
+                        echo "<p><strong>Phone Number:</strong> ".htmlspecialchars($mobile)."</p>";
+                        // Required Skills
+                        echo "<p><strong>Your Selected Skillset:</strong> ".htmlspecialchars($skills)."</p>";
+                        // Other Skills
+                        echo "<p><strong>Your Self Described Skillset:</strong> ".htmlspecialchars($skills_other_textbox)."</p>";
+                        echo "<p><strong>Further Information Provided:</strong> ".htmlspecialchars($requirements)."</p>";
+                        echo "<p><strong>Salary Expectations:</strong> ".htmlspecialchars($salary_scale)."</p>";
+                        echo "<p><strong>Preferred Starting Time:</strong> ".htmlspecialchars($hours_start)."</p>";
+                        echo "<p><strong>Preferred Finish Time:</strong> ".htmlspecialchars($hours_end)."</p>";
+                    echo "</div>";
 
                     // Button to go back to apply.php and apply again.
-                    echo "<form action='apply.php' method='get'>
+                    echo "<form class='eoi_button' action='apply.php' method='get'>
                             <p> If you would like to apply for another job listing, please click the button below: </p>
                             <input type='submit' value='Apply Again' title='Click here to go back to the job application form.'>
                         </form>";
