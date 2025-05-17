@@ -1053,15 +1053,11 @@ right, right next to the employment details, and it allows the data to take up 5
  @media (max-width: 768px) {
     #submission_receipt {padding: 10px;}
  } 
- /* */
- {color: #011e0a;;}
  
  /* Making the submission title heading, consistent with the Apply Page */
  #submission_title {
     text-transform: uppercase; /* Makes the label all caps */
     border-bottom: 2px solid #000; /* Adds a subtle underline */
-    display: flex;
-    text-align: center;
     max-width: 100%; 
     overflow-wrap: break-word;
     font-size: clamp(1rem, 1vw, 1rem); /* Font size will adjust based on viewport width */  
@@ -1069,7 +1065,6 @@ right, right next to the employment details, and it allows the data to take up 5
  
  /* The submission receipt box conistent with form page padding, colour & border*/
   #submission_receipt {
-
     border: 1px double #065321;
     border-radius: 8px;
     color: #011e0a;
@@ -1077,9 +1072,10 @@ right, right next to the employment details, and it allows the data to take up 5
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden; 
     padding: 8px;
+    max-width: fit-content;
  }
-
-  #tester {color: #ff0000;}
+ /* change the text to red (used for errors) */
+  .red_text {color: #ff0000;}
 
  /* BUTTONS Position & Size Adjustments*/
  #eoi_button {

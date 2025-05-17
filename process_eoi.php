@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (!empty($errors)) {
                         // Display all error messages
                         foreach ($errors as $error) {
-                            echo "<p id='red_text'>".htmlspecialchars($error)."</p>";
+                            echo "<p class='red_text'>".htmlspecialchars($error)."</p>";
                         }
                         echo "<p><strong>Please ensure all errors are resolved before submitting.</strong></p>";
 
@@ -186,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                             echo "<h1 id='submission_title'> THANK YOU FOR YOUR SUBMISSION </h1>";
 
                             // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
-                            echo "<p id='red_text'> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
+                            echo "<p> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
                             // The Application Form EOI record
                             echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
                             // The Timestamp
@@ -226,7 +226,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                                 <input class='eoi_button' type='submit' value='Apply Again' title='Click here to go back to the job application form.'>
                             </form>";
                     } else {
-                        echo "<p id='red_text'>Error: ".mysqli_error($dbconn)."</p>";
+                        echo "<p class='red_text'>Error: ".mysqli_error($dbconn)."</p>";
                     }
 
                 // closing database connection
