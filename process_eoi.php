@@ -1,3 +1,11 @@
+<?php
+// the redirection code for is the page was accessed by any method (i.e url) other than submitting a job application form
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header('Location: apply.php'); // if the form has not been submitted, page is redirected to apply page
+    exit(); // no more code is run after the redirection
+}
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
     <head>
