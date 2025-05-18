@@ -6,6 +6,29 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 ?>
 
+            // creating table if eoi table doesn't exist in database - figure out where to input
+            $sql = "CREATE TABLE IF NOT EXISTS eoi (
+                            eoi_number INT AUTO_INCREMENT PRIMARY KEY,
+                            job_reference VARCHAR(10),
+                            first_name VARCHAR(50),
+                            family_name VARCHAR(50),
+                            dob DATE,
+                            gender VARCHAR(50),
+                            street_address VARCHAR(50),
+                            suburb VARCHAR(50),
+                            state VARCHAR(3),
+                            postcode INT,
+                            email_apply VARCHAR(50), 
+                            mobile VARCHAR (10),
+                            skills TEXT,
+                            skills_other TEXT,
+                            requirements TEXT,
+                            salary_scale TINYINT,
+                            hours_start TIME,
+                            hours_end TIME,
+                             submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                        );"
+
 <!DOCTYPE html>
 <html lang = "en">
     <head>
@@ -107,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                     if (empty($family_name)) $errors[] = "Family name is required.";
                     if (!preg_match("/[A-Za-z]+/", $family_name)) 
-                        $errors[] = "Familyname can only be written in letters.";
+                        $errors[] = "Family name can only be written in letters.";
                 
                         // dob
                     if (empty($dob)) $errors[] = "Date of birth is required.";
@@ -159,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                                 <input class='eoi_button' type='submit' value='Back' title='Click to go back to form.'>
                             </form>";
                     } else {
-                        // the inserting code into the database
+                        // inserting code into the eoi table in database
                         $sql_insert = "INSERT INTO eoi 
                                     (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
                                     skills, skills_other, requirements, salary_scale, hours_start, hours_end) 

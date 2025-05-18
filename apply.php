@@ -101,14 +101,14 @@
                                 <p><label for="state">State: </label>
                                     <select name="state" id="state" required="required">
                                         <option value="" selected="selected" disabled="disabled">Please Select</option>
-                                        <option value="VIC">VIC</option>
+                                        <option value="ACT">ACT</option>
                                         <option value="NSW">NSW</option>
-                                        <option value="QLD">QLD</option>
                                         <option value="NT">NT</option>
-                                        <option value="WA">WA</option>
+                                        <option value="QLD">QLD</option>
                                         <option value="SA">SA</option>
                                         <option value="TAS">TAS</option>
-                                        <option value="ACT">ACT</option>
+                                        <option value="VIC">VIC</option>
+                                        <option value="WA">WA</option>
                                     </select>
                                 </p>
                             </li>
