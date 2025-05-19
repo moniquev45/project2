@@ -6,29 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 ?>
 
-            // creating table if eoi table doesn't exist in database - figure out where to input
-            $sql = "CREATE TABLE IF NOT EXISTS eoi (
-                            eoi_number INT AUTO_INCREMENT PRIMARY KEY,
-                            job_reference VARCHAR(10),
-                            first_name VARCHAR(50),
-                            family_name VARCHAR(50),
-                            dob DATE,
-                            gender VARCHAR(50),
-                            street_address VARCHAR(50),
-                            suburb VARCHAR(50),
-                            state VARCHAR(3),
-                            postcode INT,
-                            email_apply VARCHAR(50), 
-                            mobile VARCHAR (10),
-                            skills TEXT,
-                            skills_other TEXT,
-                            requirements TEXT,
-                            salary_scale TINYINT,
-                            hours_start TIME,
-                            hours_end TIME,
-                             submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                        );"
-
 <!DOCTYPE html>
 <html lang = "en">
     <head>
@@ -67,8 +44,34 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // connection to database
             $dbconn = mysqli_connect($host, $user, $pwd, $db);
             if (!$dbconn) {
-                die("Connection failed: ".mysqli_connect_error());
+                error_log(Connection failed: ".mysqli_connect_error());
+                die("Sorry, there has been an error, please be patient with us.");
             }
+
+            // checking database and creating eoi table if it doesn't exist in database
+            if (!$dbconn) {
+            $sql = "CREATE TABLE IF NOT EXISTS eoi (
+                            eoi_number INT AUTO_INCREMENT PRIMARY KEY,
+                            job_reference VARCHAR(10),
+                            first_name VARCHAR(50),
+                            family_name VARCHAR(50),
+                            dob DATE,
+                            gender VARCHAR(50),
+                            street_address VARCHAR(50),
+                            suburb VARCHAR(50),
+                            state VARCHAR(3),
+                            postcode INT,
+                            email_apply VARCHAR(50), 
+                            mobile VARCHAR (10),
+                            skills TEXT,
+                            skills_other TEXT,
+                            requirements TEXT,
+                            salary_scale TINYINT,
+                            hours_start TIME,
+                            hours_end TIME,
+                             submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                        );"
+                    }
 
             // 1: make sure form was submitted with POST
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
