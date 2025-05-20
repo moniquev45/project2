@@ -51,25 +51,25 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // checking database and creating eoi table if it doesn't exist there
                         $sql_create_eoi = "CREATE TABLE IF NOT EXISTS eoi (
                                 eoi_number INT AUTO_INCREMENT PRIMARY KEY,
-                                status VARCHAR(10),
-                                job_reference VARCHAR(10),
-                                first_name VARCHAR(50),
-                                family_name VARCHAR(50),
-                                dob DATE,
-                                gender VARCHAR(50),
-                                street_address VARCHAR(50),
-                                suburb VARCHAR(50),
-                                state VARCHAR(3),
-                                postcode CHAR(4),
-                                email_apply VARCHAR(50), 
-                                mobile VARCHAR(10),
-                                skills TEXT,
-                                skills_other TEXT,
-                                requirements TEXT,
-                                salary_scale TINYINT,
-                                hours_start TIME,
-                                hours_end TIME,
-                                submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                                status VARCHAR(10) NOT NULL,
+                                job_reference VARCHAR(10) NOT NULL,
+                                first_name VARCHAR(50) NOT NULL,
+                                family_name VARCHAR(50) NOT NULL,
+                                dob DATE NOT NULL,
+                                gender VARCHAR(50) NOT NULL,
+                                street_address VARCHAR(50) NOT NULL,
+                                suburb VARCHAR(50) NOT NULL,
+                                state VARCHAR(3) NOT NULL,
+                                postcode CHAR(4) NOT NULL,
+                                email_apply VARCHAR(50) NOT NULL, 
+                                mobile VARCHAR(10) NOT NULL,
+                                skills TEXT NOT NULL,
+                                skills_other TEXT NULL,
+                                requirements TEXT NULL,
+                                salary_scale TINYINT NULL,
+                                hours_start TIME NULL,
+                                hours_end TIME NULL,
+                                submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
                             );";
 
             //line to run the above table creating code
@@ -81,37 +81,37 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     $status = "New";
                 // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
                 // job reference - drop down box required isset
-                    $job_reference = sanitise_input($_POST['job_reference']);
+                    $job_reference = isset($_POST['job_reference']) ? sanitise($_POST['job_reference']) : "";
 
                 // personal details
                     // name
-                    $first_name = sanitise_input($_POST["first_name"]);
-                    $family_name = sanitise_input($_POST["family_name"]);
+                    $first_name = isset($_POST['first_name']) ? sanitise($_POST['first_name']) : "";
+                    $family_name = isset($_POST['family_name']) ? sanitise($_POST['family_name']) : "";
                     // dob
-                    $dob = sanitise_input($_POST["dob"]);
+                    $dob = isset($_POST['dob']) ? sanitise($_POST['dob']) : "";
                     // gender
-                    $gender = sanitise_input($_POST["gender"]);
+                    $gender = isset($_POST['gender']) ? sanitise($_POST['gender']) : "";
                     // address
-                    $street_address = sanitise_input($_POST["street_address"]);
-                    $suburb = sanitise_input($_POST["suburb"]);
-                    $state = sanitise_input($_POST["state"]);
-                    $postcode = sanitise_input($_POST["postcode"]);
+                    $street_address = isset($_POST['street_address']) ? sanitise($_POST['street_address']) : "";
+                    $suburb = isset($_POST['suburb']) ? sanitise($_POST['suburb']) : "";
+                    $state = isset($_POST['state']) ? sanitise($_POST['state']) : "";
+                    $postcode = isset($_POST['postcode']) ? sanitise($_POST['postcode']) : "";
                     // contact
-                    $email_apply = sanitise_input($_POST["email_apply"]);
-                    $mobile = sanitise_input($_POST["mobile"]);
+                    $email_apply = isset($_POST['email_apply']) ? sanitise($_POST['email_apply']) : "";
+                    $mobile = isset($_POST['mobile']) ? sanitise($_POST['mobile']) : "";
 
                 // skills field
                     //required technical is a checkbox, handled in its own section
                     // other skills / textboxes
-                    $skills_other_textbox = sanitise_input($_POST["skills_other_textbox"]);
-                    $requirements = sanitise_input($_POST["requirements"]);
+                    $skills_other_textbox = isset($_POST['skills_other_textbox']) ? sanitise_input($_POST["skills_other_textbox"]): "";
+                    $requirements = isset($_POST['requirements']) ? sanitise_input($_POST["requirements"]): "";
 
                 // job expectations
                     // salary
                     $salary_scale = isset($_POST["salary_scale"]) ? sanitise_input($_POST["salary_scale"]) : 0;
                     // working hours
-                    $hours_start = sanitise_input($_POST["hours_start"]);
-                    $hours_end = sanitise_input($_POST["hours_end"]);
+                    $hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST["hours_start"]): "";
+                    $hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST["hours_end"]): "";
 
                 // 3: Checkbox - sanitising and reformatting data
                 // raw data from the form being put into an array and sanatised
