@@ -44,41 +44,44 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // connection to database
             $dbconn = mysqli_connect($host, $user, $pwd, $db);
             if (!$dbconn) {
-                error_log(Connection failed: ".mysqli_connect_error());
+                error_log("Connection failed: ".mysqli_connect_error());
                 die("Sorry, there has been an error, please be patient with us.");
             }
 
-            // checking database and creating eoi table if it doesn't exist in database
-            if (!$dbconn) {
-            $sql = "CREATE TABLE IF NOT EXISTS eoi (
-                            eoi_number INT AUTO_INCREMENT PRIMARY KEY,
-                            job_reference VARCHAR(10),
-                            first_name VARCHAR(50),
-                            family_name VARCHAR(50),
-                            dob DATE,
-                            gender VARCHAR(50),
-                            street_address VARCHAR(50),
-                            suburb VARCHAR(50),
-                            state VARCHAR(3),
-                            postcode INT,
-                            email_apply VARCHAR(50), 
-                            mobile VARCHAR (10),
-                            skills TEXT,
-                            skills_other TEXT,
-                            requirements TEXT,
-                            salary_scale TINYINT,
-                            hours_start TIME,
-                            hours_end TIME,
-                             submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                        );"
-                    }
+            // checking database and creating eoi table if it doesn't exist there
+                        $sql_create_eoi = "CREATE TABLE IF NOT EXISTS eoi (
+                                eoi_number INT AUTO_INCREMENT PRIMARY KEY,
+                                status VARCHAR(10),
+                                job_reference VARCHAR(10),
+                                first_name VARCHAR(50),
+                                family_name VARCHAR(50),
+                                dob DATE,
+                                gender VARCHAR(50),
+                                street_address VARCHAR(50),
+                                suburb VARCHAR(50),
+                                state VARCHAR(3),
+                                postcode CHAR(4),
+                                email_apply VARCHAR(50), 
+                                mobile VARCHAR(10),
+                                skills TEXT,
+                                skills_other TEXT,
+                                requirements TEXT,
+                                salary_scale TINYINT,
+                                hours_start TIME,
+                                hours_end TIME,
+                                submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                            );";
+
+            //line to run the above table creating code
+            mysqli_query($dbconn,$sql_create_eoi);
 
             // 1: make sure form was submitted with POST
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+                // make sure the status for a new form is 'new'
+                    $status = "New";
                 // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
                 // job reference - drop down box required isset
-                    $job_reference = isset($_POST['job_reference']) ? sanitise_input($_POST['job_reference']) : '';
+                    $job_reference = sanitise_input($_POST['job_reference']);
 
                 // personal details
                     // name
@@ -87,11 +90,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     // dob
                     $dob = sanitise_input($_POST["dob"]);
                     // gender
-                    $gender = isset($_POST["gender"]) ? sanitise_input($_POST["gender"]) : '';
+                    $gender = sanitise_input($_POST["gender"]);
                     // address
                     $street_address = sanitise_input($_POST["street_address"]);
                     $suburb = sanitise_input($_POST["suburb"]);
-                    $state = isset($_POST["state"]) ? sanitise_input($_POST["state"]) : '';
+                    $state = sanitise_input($_POST["state"]);
                     $postcode = sanitise_input($_POST["postcode"]);
                     // contact
                     $email_apply = sanitise_input($_POST["email_apply"]);
@@ -184,13 +187,13 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         echo "<form action='apply.php' method='get'>
                                 <input class='eoi_button' type='submit' value='Back' title='Click to go back to form.'>
                             </form>";
-                    } else {
+                    } else {                        
                         // inserting code into the eoi table in database
                         $sql_insert = "INSERT INTO eoi 
-                                    (eoi_number, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
+                                    (eoi_number, status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
                                     skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
-                                VALUES (
-                                    NULL, '$job_reference', '$first_name', '$family_name', '$dob', '$gender', '$street_address', 
+                                 VALUES (
+                                    NULL, '$status', '$job_reference', '$first_name', '$family_name', '$dob', '$gender', '$street_address', 
                                     '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
                                     '$requirements', '$salary_scale', '$hours_start', '$hours_end'
                                 )";
