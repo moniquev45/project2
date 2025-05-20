@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                                 salary_scale TINYINT NULL,
                                 hours_start TIME NULL,
                                 hours_end TIME NULL,
-                                submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                                submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
                             );";
 
             //line to run the above table creating code
@@ -81,24 +81,24 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     $status = "New";
                 // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
                 // job reference - drop down box required isset
-                    $job_reference = isset($_POST['job_reference']) ? sanitise($_POST['job_reference']) : "";
+                    $job_reference = isset($_POST['job_reference']) ? sanitise_input($_POST['job_reference']) : "";
 
                 // personal details
                     // name
-                    $first_name = isset($_POST['first_name']) ? sanitise($_POST['first_name']) : "";
-                    $family_name = isset($_POST['family_name']) ? sanitise($_POST['family_name']) : "";
+                    $first_name = isset($_POST['first_name']) ? sanitise_input($_POST['first_name']) : "";
+                    $family_name = isset($_POST['family_name']) ? sanitise_input($_POST['family_name']) : "";
                     // dob
-                    $dob = isset($_POST['dob']) ? sanitise($_POST['dob']) : "";
+                    $dob = isset($_POST['dob']) ? sanitise_input($_POST['dob']) : "";
                     // gender
-                    $gender = isset($_POST['gender']) ? sanitise($_POST['gender']) : "";
+                    $gender = isset($_POST['gender']) ? sanitise_input($_POST['gender']) : "";
                     // address
-                    $street_address = isset($_POST['street_address']) ? sanitise($_POST['street_address']) : "";
-                    $suburb = isset($_POST['suburb']) ? sanitise($_POST['suburb']) : "";
-                    $state = isset($_POST['state']) ? sanitise($_POST['state']) : "";
-                    $postcode = isset($_POST['postcode']) ? sanitise($_POST['postcode']) : "";
+                    $street_address = isset($_POST['street_address']) ? sanitise_input($_POST['street_address']) : "";
+                    $suburb = isset($_POST['suburb']) ? sanitise_input($_POST['suburb']) : "";
+                    $state = isset($_POST['state']) ? sanitise_input($_POST['state']) : "";
+                    $postcode = isset($_POST['postcode']) ? sanitise_input($_POST['postcode']) : "";
                     // contact
-                    $email_apply = isset($_POST['email_apply']) ? sanitise($_POST['email_apply']) : "";
-                    $mobile = isset($_POST['mobile']) ? sanitise($_POST['mobile']) : "";
+                    $email_apply = isset($_POST['email_apply']) ? sanitise_input($_POST['email_apply']) : "";
+                    $mobile = isset($_POST['mobile']) ? sanitise_input($_POST['mobile']) : "";
 
                 // skills field
                     //required technical is a checkbox, handled in its own section
@@ -265,9 +265,9 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
             // Clean up the input data
             function sanitise_input($data) {
-                $data = trim($data);                 // Removing whitespace
-                $data = stripslashes($data);         // Removing backslashes
-                $data = htmlspecialchars($data);     // Converting special characters to HTML
+                $data = htmlspecialchars($data);     // special characters become HTML
+                $data = trim($data);                 // no more whitespace
+                $data = stripslashes($data);         // no more backslashes
                 return $data;
             }
             ?>
