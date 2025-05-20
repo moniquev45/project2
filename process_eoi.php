@@ -173,6 +173,14 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     //required technical skills
                     if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
 
+                    //if checkbox for 'yes other skills' is checked, the other skills needs to be filled in
+                    if (isset($_POST["yes_other_skills"])) {
+                        // if other skills textbox is empty an error will show
+                        if (empty($skills_other_textbox)) $errors[] = "You selected 'Yes' to possessing other skills. Please ensure to write them in the textbox.";
+                    } else {
+                        // checkbox has not been checked - use unset?
+                    }
+
                 // rest of form inputs aren't required or pattern based
 
                 // 5: code to insert the input to the database or show the errors
@@ -277,3 +285,5 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         <?php include 'footer.inc'; ?>
     </body>
 </html>
+
+<!--TO DO: drop downs have to echo job ref from Monique's table. Salary Scale has to reflect $$. Skills needs a 'Other Skills' tick box -->

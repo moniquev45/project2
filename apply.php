@@ -162,6 +162,9 @@
                                 <label for="problem_solving"><input type="checkbox" id="problem_solving" name="skills[]" value="problem_solving">
                                     Detail orientated and problem-solving skills
                                 </label>
+                                <label for="yes_other_skills"><input type="checkbox" id="yes_other_skills" name="skills[]" value="yes_other_skills">
+                                    Do you have other skills?
+                                </label>
                             </div>
                     </div>
 
