@@ -162,6 +162,9 @@
                                 <label for="problem_solving"><input type="checkbox" id="problem_solving" name="skills[]" value="problem_solving">
                                     Detail orientated and problem-solving skills
                                 </label>
+                                <label for="yes_other_skills"><input type="checkbox" id="yes_other_skills" name="skills[]" value="yes_other_skills">
+                                    Do you have other skills?
+                                </label>
                             </div>
                     </div>
 
@@ -205,11 +208,9 @@
                         <input type="time" id="hours_end" name="hours_end">
                     </div>
                 </fieldset>
-            </form>
             
-            <!--Buttons: Input 'Apply' & 'Reset Form'-->
-            <form action="process_eoi.php" method="POST" id="apply_form_buttons">
-                <!--Sending Applicant to process_eoi page after clicking Apply to see the results they have submitted-->
+                <!--Buttons: Input 'Apply' & 'Reset Form'-->
+                <!--Applicant is sent to process_eoi page after clicking Apply to see the results they have submitted-->
                 <p id="form_buttons">
                     <input type="submit" value="Apply" title="Click to Apply Now">
                     <input type="reset" value="Reset form" title="Click to Reset Form">

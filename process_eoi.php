@@ -51,25 +51,25 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // checking database and creating eoi table if it doesn't exist there
                         $sql_create_eoi = "CREATE TABLE IF NOT EXISTS eoi (
                                 eoi_number INT AUTO_INCREMENT PRIMARY KEY,
-                                status VARCHAR(10),
-                                job_reference VARCHAR(10),
-                                first_name VARCHAR(50),
-                                family_name VARCHAR(50),
-                                dob DATE,
-                                gender VARCHAR(50),
-                                street_address VARCHAR(50),
-                                suburb VARCHAR(50),
-                                state VARCHAR(3),
-                                postcode CHAR(4),
-                                email_apply VARCHAR(50), 
-                                mobile VARCHAR(10),
-                                skills TEXT,
-                                skills_other TEXT,
-                                requirements TEXT,
-                                salary_scale TINYINT,
-                                hours_start TIME,
-                                hours_end TIME,
-                                submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                                status VARCHAR(10) NOT NULL,
+                                job_reference VARCHAR(10) NOT NULL,
+                                first_name VARCHAR(50) NOT NULL,
+                                family_name VARCHAR(50) NOT NULL,
+                                dob DATE NOT NULL,
+                                gender VARCHAR(50) NOT NULL,
+                                street_address VARCHAR(50) NOT NULL,
+                                suburb VARCHAR(50) NOT NULL,
+                                state VARCHAR(3) NOT NULL,
+                                postcode CHAR(4) NOT NULL,
+                                email_apply VARCHAR(50) NOT NULL, 
+                                mobile VARCHAR(10) NOT NULL,
+                                skills TEXT NOT NULL,
+                                skills_other TEXT NULL,
+                                requirements TEXT NULL,
+                                salary_scale TINYINT NULL,
+                                hours_start TIME NULL,
+                                hours_end TIME NULL,
+                                submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
                             );";
 
             //line to run the above table creating code
@@ -81,37 +81,37 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     $status = "New";
                 // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
                 // job reference - drop down box required isset
-                    $job_reference = sanitise_input($_POST['job_reference']);
+                    $job_reference = isset($_POST['job_reference']) ? sanitise_input($_POST['job_reference']) : "";
 
                 // personal details
                     // name
-                    $first_name = sanitise_input($_POST["first_name"]);
-                    $family_name = sanitise_input($_POST["family_name"]);
+                    $first_name = isset($_POST['first_name']) ? sanitise_input($_POST['first_name']) : "";
+                    $family_name = isset($_POST['family_name']) ? sanitise_input($_POST['family_name']) : "";
                     // dob
-                    $dob = sanitise_input($_POST["dob"]);
+                    $dob = isset($_POST['dob']) ? sanitise_input($_POST['dob']) : "";
                     // gender
-                    $gender = sanitise_input($_POST["gender"]);
+                    $gender = isset($_POST['gender']) ? sanitise_input($_POST['gender']) : "";
                     // address
-                    $street_address = sanitise_input($_POST["street_address"]);
-                    $suburb = sanitise_input($_POST["suburb"]);
-                    $state = sanitise_input($_POST["state"]);
-                    $postcode = sanitise_input($_POST["postcode"]);
+                    $street_address = isset($_POST['street_address']) ? sanitise_input($_POST['street_address']) : "";
+                    $suburb = isset($_POST['suburb']) ? sanitise_input($_POST['suburb']) : "";
+                    $state = isset($_POST['state']) ? sanitise_input($_POST['state']) : "";
+                    $postcode = isset($_POST['postcode']) ? sanitise_input($_POST['postcode']) : "";
                     // contact
-                    $email_apply = sanitise_input($_POST["email_apply"]);
-                    $mobile = sanitise_input($_POST["mobile"]);
+                    $email_apply = isset($_POST['email_apply']) ? sanitise_input($_POST['email_apply']) : "";
+                    $mobile = isset($_POST['mobile']) ? sanitise_input($_POST['mobile']) : "";
 
                 // skills field
                     //required technical is a checkbox, handled in its own section
                     // other skills / textboxes
-                    $skills_other_textbox = sanitise_input($_POST["skills_other_textbox"]);
-                    $requirements = sanitise_input($_POST["requirements"]);
+                    $skills_other_textbox = isset($_POST['skills_other_textbox']) ? sanitise_input($_POST["skills_other_textbox"]): "";
+                    $requirements = isset($_POST['requirements']) ? sanitise_input($_POST["requirements"]): "";
 
                 // job expectations
                     // salary
                     $salary_scale = isset($_POST["salary_scale"]) ? sanitise_input($_POST["salary_scale"]) : 0;
                     // working hours
-                    $hours_start = sanitise_input($_POST["hours_start"]);
-                    $hours_end = sanitise_input($_POST["hours_end"]);
+                    $hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST["hours_start"]): "";
+                    $hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST["hours_end"]): "";
 
                 // 3: Checkbox - sanitising and reformatting data
                 // raw data from the form being put into an array and sanatised
@@ -172,6 +172,14 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                 // skills field
                     //required technical skills
                     if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
+
+                    //if checkbox for 'yes other skills' is checked, the other skills needs to be filled in
+                    if (isset($_POST["yes_other_skills"])) {
+                        // if other skills textbox is empty an error will show
+                        if (empty($skills_other_textbox)) $errors[] = "You selected 'Yes' to possessing other skills. Please ensure to write them in the textbox.";
+                    } else {
+                        // checkbox has not been checked - use unset?
+                    }
 
                 // rest of form inputs aren't required or pattern based
 
@@ -265,9 +273,9 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
             // Clean up the input data
             function sanitise_input($data) {
-                $data = trim($data);                 // Removing whitespace
-                $data = stripslashes($data);         // Removing backslashes
-                $data = htmlspecialchars($data);     // Converting special characters to HTML
+                $data = htmlspecialchars($data);     // special characters become HTML
+                $data = trim($data);                 // no more whitespace
+                $data = stripslashes($data);         // no more backslashes
                 return $data;
             }
             ?>
@@ -277,3 +285,5 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         <?php include 'footer.inc'; ?>
     </body>
 </html>
+
+<!--TO DO: drop downs have to echo job ref from Monique's table. Salary Scale has to reflect $$. Skills needs a 'Other Skills' tick box -->
