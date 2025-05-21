@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'my_database'; //Eventually, this should become the merged database
+$db = 'project_two'; //Eventually, this should become the merged database
 $user = 'root';
 $pwd = '';
 
