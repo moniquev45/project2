@@ -286,4 +286,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     </body>
 </html>
 
-<!--TO DO: drop downs have to echo job ref from Monique's table. Salary Scale has to reflect $$. Skills needs a 'Other Skills' tick box -->
+<!--TO DO: 
+drop downs have to echo job ref from Monique's table. 
+skills to have its own seperate table? currently a string data
+Salary Scale has to reflect $$. 
+Resume Sections?-->
