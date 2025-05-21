@@ -53,8 +53,12 @@
                                         <dd>Making colours accessable to read.</dd>
                                     <dt>Programming</dt>
                                         <dd>Made the Job page and associated Job Lisiting Pages and CSS.</dd>
+                                        <dd>Updated navigation of pages</dd>
                                     <dt>Jira</dt>
                                         <dd>Assisted with some of the jira epics.</dd>
+                                    <dt>Github</dt>
+                                        <dd>Transformed all previous documents into .php files</dd>
+                                    <dt?>Organisation</dt>
                                 </dl>
                             </td> <!--Contribution-->
                             <td>
@@ -168,11 +172,12 @@
                                 <dl>
                                     <dt>Jira</dt>
                                         <dd>Created epics</dd>
-                                </dl>
-                                <dl>
                                     <dt>Coding</dt>
                                         <dd>Created the Apply and Contact pages. Styled the css for them.</dd>
+                                    <dt>Organisation</dt>
+                                        <dd>Outlined tasks needed to be performed to approprioately assign jobs. Created initial plan</dd>
                                 </dl>
+                                    
                             </td> <!--Contribution-->
                             <td>
                                 <ul>
