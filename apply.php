@@ -193,7 +193,7 @@
                         <!-- The minimum salary value label -->
                         <span class="salary_min_max" id="value_min"><strong>$50,000</strong></span>
                         <!-- The input for the salary scale -->
-                        <input type="range" id="salary_scale" name="salary_scale" min="1" max="20" step="0.5" value="1" title="slide to provide an approx. salary expectation">
+                        <input type="range" id="salary_scale" name="salary_scale" min="0" max="15" step="1" value="1" title="slide to provide an approx. salary expectation">
                         <!-- The maximum salary value label -->
                         <span class="salary_min_max" id="value_max"><strong>$200,000</strong></span>
                     </div>
