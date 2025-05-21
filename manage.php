@@ -38,5 +38,25 @@
     ini_set('display_errors', 1);
     require_once("settings.php");
     session_start();
-    
+    if ($dbconn) {
+        $query = "SELECT * FROM EOI";
+        $result = mysqli_query($dbconn, $query);
+        if ($result) {
+            echo "<table>";
+            echo "<tr><th>????</th><th>????</th><th>????</th></tr>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row['eoi_id'] . "</td>";
+                echo "<td>" . $row['eoi_name'] . "</td>";
+                echo "<td>" . $row['eoi_description'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "Query failed: " . mysqli_error($dbconn);
+        }
+        mysqli_close($dbconn);
+    } else {
+        echo "Connection failed";
+    }
 ?>
