@@ -25,9 +25,71 @@
         <?php
             require_once("settings.php");
             session_start();
+
+            // Fetch all unique job references for the dropdown
+            $jobRefOptions = [];
             if ($dbconn) {
-                $query = "SELECT * FROM eoi";
-                $result = mysqli_query($dbconn, $query);
+                $jobRefQuery = "SELECT DISTINCT job_reference FROM eoi";
+                $jobRefResult = mysqli_query($dbconn, $jobRefQuery);
+                if ($jobRefResult) {
+                    while ($row = mysqli_fetch_assoc($jobRefResult)) {
+                        $jobRefOptions[] = $row['job_reference'];
+                    }
+                }
+            }
+
+            // Handle filter
+            $selectedJobRef = isset($_GET['job_reference']) ? $_GET['job_reference'] : '';
+            $firstName = isset($_GET['first_name']) ? trim($_GET['first_name']) : '';
+            $familyName = isset($_GET['family_name']) ? trim($_GET['family_name']) : '';
+
+            $whereParts = [];
+            if (!empty($selectedJobRef)) {
+                $safeJobRef = mysqli_real_escape_string($dbconn, $selectedJobRef);
+                $whereParts[] = "job_reference = '$safeJobRef'";
+            }
+            if (!empty($firstName)) {
+                $safeFirstName = mysqli_real_escape_string($dbconn, $firstName);
+                $whereParts[] = "first_name LIKE '%$safeFirstName%'";
+            }
+            if (!empty($familyName)) {
+                $safeFamilyName = mysqli_real_escape_string($dbconn, $familyName);
+                $whereParts[] = "family_name LIKE '%$safeFamilyName%'";
+            }
+
+            $where = '';
+            if (count($whereParts) > 0) {
+                $where = "WHERE " . implode(' AND ', $whereParts);
+            }
+
+            // Main query
+            $query = "SELECT * FROM eoi $where";
+            $result = mysqli_query($dbconn, $query);
+        ?>
+
+        <!-- Filter form -->
+        <form method="get" style="margin-bottom:20px;">
+            <label for="job_reference">Filter by Job Reference:</label>
+            <select id="job_reference" name="job_reference">
+                <option value="">-- Show All --</option>
+                <?php foreach ($jobRefOptions as $jobRef): ?>
+                    <option value="<?php echo htmlspecialchars($jobRef); ?>" <?php if ($selectedJobRef == $jobRef) echo 'selected'; ?>>
+                        <?php echo htmlspecialchars($jobRef); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <label for="first_name" style="margin-left:20px;">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="<?php echo isset($_GET['first_name']) ? htmlspecialchars($_GET['first_name']) : ''; ?>">
+            <label for="family_name" style="margin-left:10px;">Last Name:</label>
+            <input type="text" id="family_name" name="family_name" value="<?php echo isset($_GET['family_name']) ? htmlspecialchars($_GET['family_name']) : ''; ?>">
+            <button type="submit" style="margin-left:10px;">Filter</button>
+            <?php if (!empty($selectedJobRef) || !empty($_GET['first_name']) || !empty($_GET['family_name'])): ?>
+                <a href="manage.php" style="margin-left:10px;">Reset</a>
+            <?php endif; ?>
+        </form>
+
+        <?php
+            if ($dbconn) {
                 if ($result) {
                     echo "<div class='table-responsive'>";
                     echo "<table class='table-eoi'>";
