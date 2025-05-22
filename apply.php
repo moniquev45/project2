@@ -1,3 +1,28 @@
+ <!-- The error and database connection php code-->
+<?php
+    // debugging error reporting turned on
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    // including database settings
+    require_once("settings.php");
+
+    // connection to database
+    $dbconn = mysqli_connect($host, $user, $pwd, $db);
+    if (!$dbconn) {
+    error_log("Connection failed: ".mysqli_connect_error());
+    die("Sorry, there has been an error, please be patient with us.");
+    }
+
+    // SELECT query to get job reference numbers from database. Preparation for the drop down input.
+    $sql = "SELECT reference FROM job_test";
+    $result = $dbconn->query($sql);
+
+    // SELECT query to get required technical skills from database. Preparation for the checkbox input.
+    $sql_skills = "SELECT skills FROM job_test WHERE reference = $job_reference";
+    $result_skills = $dbconn->query($sql_skills);
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
     <head>
@@ -41,9 +66,22 @@
                     <p>
                         <label for="job_reference"><strong> JOB REFERENCE NUMBER:</strong></label>
                         <select name="job_reference" id="job_reference" required="required">
-                            <option value="" selected="selected" disabled="disabled">Please Select</option>
-                            <option value="#00001">#00001</option>
-                            <option value="#00002">#00002</option>
+
+                        <!--The first placeholder drop down-->
+                        <option value="" selected="selected" disabled="disabled">Please Select</option>
+
+                        <!--Dynamically connected to SQL database. Drop down references ids are pulled directly from jobs table-->
+                            <?php
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $job_reference = htmlspecialchars($row['reference']);
+                                        echo "<option value=\"$job_reference\">$job_reference</option>";
+                                    }
+                                } else {
+                                echo "<option disabled>No categories available</option>";
+                                };
+                            ?>
+
                         </select>
                     </p>
                 </fieldset> 

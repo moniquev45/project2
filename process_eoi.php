@@ -142,6 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($dob)) $errors[] = "Date of birth is required.";
                     if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/", $dob)) 
                         $errors[] = "Date of birth must be in DD-MM-YYYY format.";
+                    
                     // gender
                     if (empty($gender)) $errors[] = "Gender is required.";
 
