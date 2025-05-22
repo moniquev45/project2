@@ -109,6 +109,10 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                 // job expectations
                     // salary
                     $salary_scale = isset($_POST["salary_scale"]) ? sanitise_input($_POST["salary_scale"]) : 0;
+                    // calculating the output of salary estimate based on step selected
+                    //lowest salary is $50,000 every notch is $10,000 higher.
+                    $pay = number_format(($salary_scale * 10000) + 50000);
+
                     // working hours
                     $hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST["hours_start"]): "";
                     $hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST["hours_end"]): "";
@@ -142,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($dob)) $errors[] = "Date of birth is required.";
                     if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/", $dob)) 
                         $errors[] = "Date of birth must be in DD-MM-YYYY format.";
-                    
+
                     // gender
                     if (empty($gender)) $errors[] = "Gender is required.";
 
@@ -204,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                                  VALUES (
                                     NULL, '$status', '$job_reference', '$first_name', '$family_name', '$dob', '$gender', '$street_address', 
                                     '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
-                                    '$requirements', '$salary_scale', '$hours_start', '$hours_end'
+                                    '$requirements', '$pay', '$hours_start', '$hours_end'
                                 )";
 
                         // 6: getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
@@ -252,7 +256,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                                 // Other Skills
                                 echo "<tr><td><strong>Your Self Described Skillset:</strong></td> <td>".htmlspecialchars($skills_other_textbox)."</td></tr>";
                                 echo "<tr><td><strong>Further Information Provided:</strong></td> <td>".htmlspecialchars($requirements)."</td></tr>";
-                                echo "<tr><td><strong>Salary Expectations:</strong></td> <td>".htmlspecialchars($salary_scale)."</td></tr>";
+                                echo "<tr><td><strong>Salary Expectations:</strong></td> <td> $".htmlspecialchars($pay)."</td></tr>";
                                 echo "<tr><td><strong>Preferred Starting Time:</strong></td> <td>".htmlspecialchars($hours_start)."</td></tr>";
                                 echo "<tr><td><strong>Preferred Finish Time:</strong></td> <td>".htmlspecialchars($hours_end)."</td></tr>";
                             echo "</table>";

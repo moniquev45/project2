@@ -17,10 +17,6 @@
     // SELECT query to get job reference numbers from database. Preparation for the drop down input.
     $sql = "SELECT reference FROM job_test";
     $result = $dbconn->query($sql);
-
-    // SELECT query to get required technical skills from database. Preparation for the checkbox input.
-    $sql_skills = "SELECT skills FROM job_test WHERE reference = $job_reference";
-    $result_skills = $dbconn->query($sql_skills);
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +74,7 @@
                                         echo "<option value=\"$job_reference\">$job_reference</option>";
                                     }
                                 } else {
-                                echo "<option disabled>No categories available</option>";
+                                echo "<option disabled>No jobs available to apply for.</option>";
                                 };
                             ?>
 
