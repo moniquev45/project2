@@ -47,11 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             //line to run the above table creating code
             mysqli_query($dbconn,$sql_create_contact);
 
-            // 1: make sure form was submitted with POST
+            // make sure form was submitted with POST
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // make sure the status for a new form is 'new'
                     $status = "New";
-                // 2: get the form inputs and sanitise
+                    
+                // get the form inputs and sanitise
                 // job reference - drop down box required isset
                     $reason = isset($_POST['reason']) ? sanitise_input($_POST['reason']) : "";
 
@@ -64,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                 // enquiry textbox
                     $enquiry_box = isset($_POST['enquiry_box']) ? sanitise_input($_POST['enquiry_box']): "";
 
-                // 4: form validation - errors for if required inputs aren't there and if patterns aren't adhered to
+                // form validation - errors for if required inputs aren't there and if patterns aren't adhered to
 
                 $errors = [];
                 // job reference
@@ -96,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                                 NULL, '$status', '$reason', '$contact_name','$email_contact', '$enquiry_box'
                             )";
 
-                        // 6: getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
+                        // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
                      if (mysqli_query($dbconn, $sql_insert_contact)) {
                         $last_id = mysqli_insert_id($dbconn);
 

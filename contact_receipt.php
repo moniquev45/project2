@@ -48,11 +48,10 @@ session_start();
                 echo "<h1 id='submission_title'> THANK YOU FOR YOUR ENQUIRY</h1>";
 
             // The Timestamp
-                echo "<p id='contact_submission_time'>".htmlspecialchars($receipt['submission_time'])."</p>";
+                echo "<p id='contact_submission_time'> Submitted: ".htmlspecialchars($receipt['submission_time'])."</p>";
 
             // Confirmation of enquiry submitted and enquiry/reference number
                 echo "<p> We will provide a reply in 3-5 business days.</p>";
-            // The Application Form EOI record
                 echo "<p><strong>Enquiry Reference ID:</strong> #ENQ".htmlspecialchars($receipt['enquiry_number'])."</p>";
 
                 echo "</div>";

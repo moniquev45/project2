@@ -6,12 +6,12 @@ session_start();
             //session_destroy();   // completely kills the session
 
 // the redirection code for is the page was accessed by any method (i.e url) other than going from submitting your form on contact page ---> to being processed --> to here
- if (!isset ($_SESSION["eoi_receipt"])) {
+ if (!isset ($_SESSION["receipt_eoi"])) {
     header('Location: apply.php'); // if the form has not been submitted, page is redirected to apply page
     exit(); // no more code is run after the redirection
  }
 
- $receipt = $_SESSION["eoi_receipt"]
+ $receipt = $_SESSION["receipt_eoi"]
 ?>
 
 <!DOCTYPE html>
@@ -37,48 +37,48 @@ session_start();
     <body id='the_receipt'>
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
-        <main id='contact_receipt'>
+        <main id='eoi_receipt'>
 
         <?php
 
-        // Receipt to confirm contact submission.
+        // Receipt to confirm eoi submission and entered details.
         echo "<div id='submission_receipt'>";
 
              // Start of Receipt
             echo "<h1 id='submission_title'> THANK YOU FOR YOUR SUBMISSION </h1>";
 
             // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
-            echo "<p> Your Expression of Interest Form for Job Reference #".htmlspecialchars($job_reference)." has been received. </p>";
+            echo "<p> Your Expression of Interest Form for Job Reference #".htmlspecialchars($receipt['job_reference'])." has been received. </p>";
             // The Application Form EOI record
-            echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
+            echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($receipt['eoi_number'])."</p>";
             // The Timestamp
-            echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($formatted_time)."</p>";
+            echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($receipt['formatted_time'])."</p>";
                             
             // The form answers:
             echo "<p><em>Please find the confirmation of details entered below.</em></p>";
                 // making the data into a table
                 echo "<table id='receipt_table'>";
                 // Personal Details
-                    echo "<tr><td><strong>First Name:</strong></td> <td>".htmlspecialchars($first_name)."</td></tr>";
-                    echo "<tr><td><strong>Last Name:</strong></td> <td>".htmlspecialchars($family_name)."</td></tr>";
-                    echo "<tr><td><strong>Date of Birth:</strong></td> <td>".htmlspecialchars($dob)."</td></tr>";
-                    echo "<tr><td><strong>Gender:</strong></td> <td>".htmlspecialchars($gender)."</td></tr>";
+                    echo "<tr><td><strong>First Name:</strong></td> <td>".htmlspecialchars($receipt['first_name'])."</td></tr>";
+                    echo "<tr><td><strong>Last Name:</strong></td> <td>".htmlspecialchars($receipt['family_name'])."</td></tr>";
+                    echo "<tr><td><strong>Date of Birth:</strong></td> <td>".htmlspecialchars($receipt['dob'])."</td></tr>";
+                    echo "<tr><td><strong>Gender:</strong></td> <td>".htmlspecialchars($receipt['gender'])."</td></tr>";
                 // Address
-                    echo "<tr><td><strong>Street Address:</strong></td> <td>".htmlspecialchars($street_address)."</td></tr>";
-                    echo "<tr><td><strong>Suburb/Town:</strong></td> <td>".htmlspecialchars($suburb)."</td></tr>";
-                    echo "<tr><td><strong>State:</strong></td> <td>".htmlspecialchars($state)."</td></tr>";
-                    echo "<tr><td><strong>Postcode:</strong></td> <td>".htmlspecialchars($postcode)."</td></tr>";
+                    echo "<tr><td><strong>Street Address:</strong></td> <td>".htmlspecialchars($receipt['street_address'])."</td></tr>";
+                    echo "<tr><td><strong>Suburb/Town:</strong></td> <td>".htmlspecialchars($receipt['suburb'])."</td></tr>";
+                    echo "<tr><td><strong>State:</strong></td> <td>".htmlspecialchars($receipt['state'])."</td></tr>";
+                    echo "<tr><td><strong>Postcode:</strong></td> <td>".htmlspecialchars($receipt['postcode'])."</td></tr>";
                 // Contact
-                    echo "<tr><td><strong>Email Address:</strong></td> <td>".htmlspecialchars($email_apply)."</td></tr>";
-                    echo "<tr><td><strong>Phone Number:</strong></td> <td>".htmlspecialchars($mobile)."</td></tr>";
+                    echo "<tr><td><strong>Email Address:</strong></td> <td>".htmlspecialchars($receipt['email_apply'])."</td></tr>";
+                    echo "<tr><td><strong>Phone Number:</strong></td> <td>".htmlspecialchars($receipt['mobile'])."</td></tr>";
                 // Required Skills
-                    echo "<tr><td><strong>Your Selected Skillset:</strong></td> <td>".htmlspecialchars($skills)."</td></tr>";
+                    echo "<tr><td><strong>Your Selected Skillset:</strong></td> <td>".htmlspecialchars($receipt['skills'])."</td></tr>";
                 // Other Skills
-                    echo "<tr><td><strong>Your Self Described Skillset:</strong></td> <td>".htmlspecialchars($skills_other_textbox)."</td></tr>";
-                    echo "<tr><td><strong>Further Information Provided:</strong></td> <td>".htmlspecialchars($requirements)."</td></tr>";
-                    echo "<tr><td><strong>Salary Expectations:</strong></td> <td> $".htmlspecialchars($pay)."</td></tr>";
-                    echo "<tr><td><strong>Preferred Starting Time:</strong></td> <td>".htmlspecialchars($hours_start)."</td></tr>";
-                    echo "<tr><td><strong>Preferred Finish Time:</strong></td> <td>".htmlspecialchars($hours_end)."</td></tr>";
+                    echo "<tr><td><strong>Your Self Described Skillset:</strong></td> <td>".htmlspecialchars($receipt['skills_other_textbox'])."</td></tr>";
+                    echo "<tr><td><strong>Further Information Provided:</strong></td> <td>".htmlspecialchars($receipt['requirements'])."</td></tr>";
+                    echo "<tr><td><strong>Salary Expectations:</strong></td> <td> $".htmlspecialchars($receipt['pay'])."</td></tr>";
+                    echo "<tr><td><strong>Preferred Starting Time:</strong></td> <td>".htmlspecialchars($receipt['hours_start'])."</td></tr>";
+                    echo "<tr><td><strong>Preferred Finish Time:</strong></td> <td>".htmlspecialchars($receipt['hours_end'])."</td></tr>";
                 echo "</table>";
             echo "</div>";
 
