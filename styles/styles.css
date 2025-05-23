@@ -1046,7 +1046,7 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 /* END OF HOME PAGE STYLING*/
 
-/* PROCESS_EOI PAGE STYLING*/
+/*START OF STYLING FOR PROCESSING & RECEIPT PAGES: FORM AND CONTACT*/
 
  /* Responsive Design - Ensuring everything is still readable when on a smaller screen*/
  @media (max-width: 768px) {
@@ -1060,6 +1060,14 @@ right, right next to the employment details, and it allows the data to take up 5
     max-width: 100%; 
     overflow-wrap: break-word;
     font-size: clamp(1rem, 1vw, 1rem); /* Font size will adjust based on viewport width */  
+   }
+
+/* The body of the pages with this id are flexible*/
+   #the_receipt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
    }
  
  /* The submission receipt box conistent with form page padding, colour & border*/
@@ -1109,7 +1117,7 @@ right, right next to the employment details, and it allows the data to take up 5
     color: #065321;
  }
 
-/* END OF PROCESS_EOI PAGE STYLING*/
+/*END STYLING FOR PROCESSING & RECEIPT PAGES: FORM AND CONTACT*/
 
 /* Management Page Styling */
 .table-responsive {

@@ -34,7 +34,7 @@ session_start();
         <link rel="stylesheet" href="styles/styles.css">
         
     </head>
-    <body>
+    <body id='the_receipt'>
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
         <main id='contact_receipt'>
@@ -53,15 +53,9 @@ session_start();
             // Confirmation of enquiry submitted and enquiry/reference number
                 echo "<p> We will provide a reply in 3-5 business days.</p>";
             // The Application Form EOI record
-                echo "<p><strong>Your enquiry reference number is #</strong> ".htmlspecialchars($receipt['enquiry_number'])."</p>";
+                echo "<p><strong>Enquiry Reference ID:</strong> #ENQ".htmlspecialchars($receipt['enquiry_number'])."</p>";
 
                 echo "</div>";
-
-            // Button to go back to apply.php and apply again.
-                echo "<form action='contact.php' method='get'>
-                            <p> If you would like to make another enquiry, please click the button below: </p>
-                                <input class='process_contact_button' type='submit' value='Enquire Again' title='Click here to go back to the contact form.'>
-                        </form>";
             ?>
         </main>
 
