@@ -196,17 +196,18 @@
                                 <label for="problem_solving"><input type="checkbox" id="problem_solving" name="skills[]" value="problem_solving">
                                     Detail orientated and problem-solving skills
                                 </label>
-                                <label for="other_skills"><input type="checkbox" id="other_skills" name="skills[]" value="other_skills">
-                                    Other skills? Please specify below.
-                                </label>
                             </div>
-                    </div>
+                         <!-- Other Skills Checkbox (needs to be out of skills div to ensure visibility toggle works) -->
+                            <input type="checkbox" id="other_skills" name="skills[]" value="other_skills">
+                            <label for="other_skills"> Other skills? </label>
 
-                        <!--Other Skills - Textbox-->
-                    <div id="skills_other" class="apply_textarea">
-                        <label for="skills_other_textbox"> Other Skills </label>
-                        <textarea id="skills_other_textbox" name="skills_other_textbox" rows="4" cols="60" placeholder="Please provide any other skills here..."></textarea>
-                    </div> 
+                         <!--Other Skills - Textbox-->
+                         <div id="skills_other" class="apply_textarea">
+                            <label for="skills_other_textbox" class="visually_hidden"> Other Skills </label>
+                            <!-- Seperating the label and input to ensure the visibility css works-->
+                            <textarea id="skills_other_textbox" name="skills_other_textbox" rows="4" cols="60" placeholder="Please provide any other skills here..."></textarea>
+                         </div> 
+                    </div>
 
                     <!--Other Job Requirements: Comments (Textarea)-->
                     <div id="personal_requirements" class="apply_textarea">

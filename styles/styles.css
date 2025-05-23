@@ -627,29 +627,10 @@ right, right next to the employment details, and it allows the data to take up 5
  #required_skills label {
     width: 100%;
     margin-bottom: 10px; 
-    }
+    }    
+    other_skills
 
- /* SKILLS FIELD | the other skills textarea label margin and display*/
- #skills_other label {
-    display: block; /* Makes the label a block-level element */
-    margin-bottom: 10px; /* Adds space between label and textarea */
-    margin-top: 35px ; /* Adds space between label and last checkbox input */
-    }
-
- /* SKILLS FIELD | Text Area Placement */
- .apply_textarea {
-    text-align: center;
-    margin-bottom: 20px; /* Adds spacing between form fields */
-    }
-
-    /* SKILLS FIELD | Text Area Label, Positioning and Style */
- .apply_textarea label {
-    display: block; /* Makes the label a block element to stack it above the textarea */
-    margin-bottom: 5px; /* Adds some space between the label and the textarea */
-    font-weight: bold;
-    }
-
-    /* SKILLS FIELD | Text Area - Box border formatting */
+ /* SKILLS FIELD | Text Area - Box border formatting */
  .apply_textarea textarea {
     width: 100%; 
     padding: 10px; 
@@ -658,6 +639,22 @@ right, right next to the employment details, and it allows the data to take up 5
     border-radius: 4px; /* textarea corners slightly rounded */
     box-sizing: border-box; /* Ensures padding doesn't affect the element's width */
     }
+    
+ /* SKILLS FIELD | Text Area Placement  */
+ .apply_textarea {
+    text-align: center;
+    margin-bottom: 20px; /* Adds spacing between form fields */
+    }
+
+ /* Hiding the skills other text area until the other skills checkbox is selected.*/
+ #skills_other {
+    display: none;
+ }
+
+ /* other skills checkbox selected will make the textbox appear.*/
+ #other_skills:checked ~ #skills_other {
+    display: block !important;
+ }
 
  /* JOB EXPECTATIONS | ID Selector: Job Expectations; Grid Positioning*/
  #job_expectations {
