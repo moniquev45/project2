@@ -26,6 +26,18 @@
             require_once("settings.php");
             session_start();
 
+            // Handle deletion
+            if (isset($_POST['delete_eoi']) && !empty($_POST['delete_job_reference'])) {
+                $deleteJobRef = mysqli_real_escape_string($dbconn, $_POST['delete_job_reference']);
+                $deleteQuery = "DELETE FROM eoi WHERE job_reference = '$deleteJobRef'";
+                $deleteResult = mysqli_query($dbconn, $deleteQuery);
+                if ($deleteResult) {
+                    echo "<p style='color:green;'>All EOIs for job reference <strong>" . htmlspecialchars($deleteJobRef) . "</strong> have been deleted.</p>";
+                } else {
+                    echo "<p style='color:red;'>Failed to delete EOIs: " . mysqli_error($dbconn) . "</p>";
+                }
+            }
+
             // Fetch all unique job references for the dropdown
             $jobRefOptions = [];
             if ($dbconn) {
@@ -86,6 +98,20 @@
             <?php if (!empty($selectedJobRef) || !empty($_GET['first_name']) || !empty($_GET['family_name'])): ?>
                 <a href="manage.php" style="margin-left:10px;">Reset</a>
             <?php endif; ?>
+        </form>
+
+        <!-- Delete form -->
+        <form method="post" style="margin-bottom:20px;">
+            <label for="delete_job_reference">Delete all EOIs for Job Reference:</label>
+            <select id="delete_job_reference" name="delete_job_reference" required>
+                <option value="">-- Select Job Reference --</option>
+                <?php foreach ($jobRefOptions as $jobRef): ?>
+                    <option value="<?php echo htmlspecialchars($jobRef); ?>">
+                        <?php echo htmlspecialchars($jobRef); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" name="delete_eoi" style="margin-left:10px;" onclick="return confirm('Are you sure you want to delete all EOIs for this job reference?');">Delete</button>
         </form>
 
         <?php
