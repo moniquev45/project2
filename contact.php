@@ -29,7 +29,7 @@
             <p> Connect with the Best Big Brain Group.</p>
 
             <!--Form Section for Contact-->
-            <form id="contact_form" action="https://mercury.swin.edu.au/it000000/formtest.php" method="POST">
+            <form id="contact_form" action="process_contact.php" method="POST">
                 <!--Drop Down Reason Box-->
                 <div>
                     <label for="reason">Contact Reason: </label>
@@ -44,9 +44,9 @@
                 </div><br>
 
                 <!-- Contact details for replying-->
-                <div>  <!-- Contact Name -->
+                <div>  <!-- Contact Name - Not going to set a pattern as this isn't a formal situation -->
                     <label for="contact_name">Name: <br>
-                        <input type="text" id="contact_name" name="contact_name" pattern="[A-Za-z]+" maxlength="60" title="Please provide the contact name." required="required">
+                        <input type="text" id="contact_name" name="contact_name" maxlength="60" title="Please provide the contact name." required="required">
                     </label>   
 
                     <!-- Email Address - Input type "email" automatically validates email and gives pattern, as in apply page. Text input used here to show how to use patterns to accomplish -->

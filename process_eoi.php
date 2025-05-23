@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         <!--Author Information-->
         <meta name="author" content="Stacey Millers" >
 
-        <title>Expression of Interest Form</title>
+        <title>Expression of Interest Form Submitted</title>
         <!--Icon for the browser-->
         <link rel="icon" href="images/Pear_Logo_Backgroundless.png" type="image/png">
         <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // make sure the status for a new form is 'new'
                     $status = "New";
-                // 2: get the form inputs and sanitise (FILL IN FOR EACH INPUT)
+                // 2: get the form inputs and sanitise
                 // job reference - drop down box required isset
                     $job_reference = isset($_POST['job_reference']) ? sanitise_input($_POST['job_reference']) : "";
 
@@ -292,7 +292,9 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 </html>
 
 <!--TO DO: 
-drop downs have to echo job ref from Monique's table. 
+beed monique's table data to echo.
 skills to have its own seperate table? currently a string data
-Salary Scale has to reflect $$. 
+Time to show properly on output
+print receipt/email?
+contact as php
 Resume Sections?-->
