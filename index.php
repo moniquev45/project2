@@ -27,33 +27,34 @@
             <h1 id="Home_Title">The Best Big Brain Group</h1>
             <p id="TitlePgraph">Delivering Software since 1988</p>
             <div id="Home_Sections">
-                            <!--A paragraph that describes the company-->
-            <div id="Who_we_are">
-                <h2>Who we are:</h2>
-                <p id="Light_Background_Text">
-                    We are a dynamic organization dedicated to bridging the gap between talented individuals and 
-                    job opportunities in the data analytics industry. We aim to empower job seekers to enhance their expertise 
-                    and connect with leading companies in the tech world. Whether you're a fresh graduate looking to break into 
-                    the industry or an experienced professional seeking your next challenge, the Best Big Brain Group provides 
-                    the resources and support needed to succeed in the ever-evolving field of computer science.
-                </p>
-            </div>
-            <!--The company graphic-->
-            <figure id="Company_Graphic">
-                <img src="images/Company_Graphic.png" alt="Company Graphic">
-                <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
-            </figure>
+                <!--A paragraph that describes the company-->
+                <div id="Who_we_are">
+                    <h2>Who we are:</h2>
+                    <p id="Light_Background_Text">
+                        We are a dynamic organization dedicated to bridging the gap between talented individuals and 
+                        job opportunities in the data analytics industry. We aim to empower job seekers to enhance their expertise 
+                        and connect with leading companies in the tech world. Whether you're a fresh graduate looking to break into 
+                        the industry or an experienced professional seeking your next challenge, the Best Big Brain Group provides 
+                        the resources and support needed to succeed in the ever-evolving field of computer science.
+                    </p>
+                </div>
+                
+                <!--The company graphic-->
+                <figure id="Company_Graphic">
+                    <img src="images/Company_Graphic.png" alt="Company Graphic">
+                    <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
+                </figure>
 
-            <!--A paragraph that introduces the company-->
-            <div id="What_we_do">
-                <h2>What we do:</h2>
-                <p>
-                    We specialize in data analysis and job placement services. Our team of experts works tirelessly to 
-                    identify the best job opportunities for our clients, ensuring that they are matched with positions that 
-                    align with their skills and career goals. We also provide training and resources to help job seekers 
-                    enhance their expertise and stay competitive in the fast-paced world of data analytics.
-                </p>
-            </div>
+                <!--A paragraph that introduces the company-->
+                <div id="What_we_do">
+                    <h2>What we do:</h2>
+                    <p>
+                        We specialize in data analysis and job placement services. Our team of experts works tirelessly to 
+                        identify the best job opportunities for our clients, ensuring that they are matched with positions that 
+                        align with their skills and career goals. We also provide training and resources to help job seekers 
+                        enhance their expertise and stay competitive in the fast-paced world of data analytics.
+                    </p>
+                </div>
             </div>
             <!--A paragraph that describes the company mission-->
             <div id="Our_Mission">
