@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         if ($converted_dob !== false) {
                             $sql_dob = date("Y-m-d", strtotime($dob));
                         } else {
-                            $errors[] = "Date of birth is invalid.";
+                            $errors[] = "Date of birth must be submitted in DD/MM/YYYY format.";
                         }
 
                     // gender
@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         // dob
                     if (empty($dob)) $errors[] = "Date of birth is required.";
                     if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/", $dob)) 
-                        $errors[] = "Date of birth must be in DD/MM/YYYY format.";
+                        $errors[] = "Date of birth must be submitted in DD/MM/YYYY format.";
 
                     // gender
                     if (empty($gender)) $errors[] = "Gender is required.";
@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     
                     if (empty($postcode)) $errors[] = "Postcode is required.";
                     if (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) 
-                        $errors[] = "Must be an Australia postcode; in the range of from 0200 to 9944.";
+                        $errors[] = "Must be an Australia postcode; in the range of 0200 to 9944.";
 
                     // contact
                     if (empty($email_apply)) $errors[] = "Email address is required.";
@@ -331,9 +331,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 </html>
 
 <!--TO DO: 
-beed monique's table data to echo.
+need monique's table data to echo.
 skills to have its own seperate table? currently a string data
-Time to show properly on output
 print receipt/email?
-contact as php
 Resume Sections?-->
