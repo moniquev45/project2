@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         $result_table = mysqli_query($dbconn, $query);
                         $row = mysqli_fetch_assoc($result_table);
                         $submission_time = $row['submission_time'];
-                        $formatted_time = date("d-m-Y H:i:s", strtotime($submission_time));
+                        $formatted_time = date("h:i a d-m-Y", strtotime($submission_time));
 
 
                 // Storing this data into a session receipt to then access on receipt page. Stops the data being resubmitted on refreshing the page.
