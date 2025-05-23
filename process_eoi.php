@@ -1,4 +1,5 @@
 <?php
+session_start();
 // the redirection code for is the page was accessed by any method (i.e url) other than submitting a job application form
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header('Location: apply.php'); // if the form has not been submitted, page is redirected to apply page
@@ -219,6 +220,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         $query = "SELECT eoi_number, submission_time FROM eoi WHERE eoi_number = $last_id";
                         $result_table = mysqli_query($dbconn, $query);
                         $row = mysqli_fetch_assoc($result_table);
+                        $submission_time = $row['submission_time'];
+                        $formatted_time = date("h:i a d-m-Y", strtotime($submission_time));
 
                 // 7: echoing all the data proivided in the form in a confirmation notice
                         // Submission Receipt division
@@ -232,7 +235,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                             // The Application Form EOI record
                             echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
                             // The Timestamp
-                            echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($row['submission_time'])."</p>";
+                            echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($formatted_time)."</p>";
                             
                             // The form answers:
                             echo "<p><em>Please find the confirmation of details entered below.</em></p>";
