@@ -22,10 +22,19 @@
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
         <main>
+        <!-- After opening <main> or before the table, show the message if status was updated -->
+        <?php if (isset($_GET['status_updated']) && $_GET['status_updated'] == 1): ?>
+            <p style='color:green;'>Status updated successfully.</p>
+        <?php endif; ?>
         <?php
             require_once("settings.php");
             session_start();
-
+            // Check if the user is logged in
+            if (!isset($_SESSION['manager_logged_in']) || $_SESSION['manager_logged_in'] !== true) {
+                header("Location: manager_login.php");
+                exit();
+            }
+            
             // Handle deletion
             if (isset($_POST['delete_eoi']) && !empty($_POST['delete_job_reference'])) {
                 $deleteJobRef = mysqli_real_escape_string($dbconn, $_POST['delete_job_reference']);
@@ -77,6 +86,22 @@
             // Main query
             $query = "SELECT * FROM eoi $where";
             $result = mysqli_query($dbconn, $query);
+
+            // Change status handling
+            $statusUpdateSuccess = false;
+            if (isset($_POST['change_status'], $_POST['eoi_number'], $_POST['new_status'])) {
+                $eoiNumber = mysqli_real_escape_string($dbconn, $_POST['eoi_number']);
+                $newStatus = mysqli_real_escape_string($dbconn, $_POST['new_status']);
+                $updateQuery = "UPDATE eoi SET status = '$newStatus' WHERE eoi_number = '$eoiNumber'";
+                $updateResult = mysqli_query($dbconn, $updateQuery);
+                if ($updateResult) {
+                    // Redirect to the same page with only status_updated=1 (removes other query params)
+                    header("Location: manage.php?status_updated=1");
+                    exit();
+                } else {
+                    echo "<p style='color:red;'>Failed to update status: " . mysqli_error($dbconn) . "</p>";
+                }
+            }
         ?>
 
         <!-- Filter form -->
@@ -167,7 +192,18 @@
                         // Using htmlspecialchars to prevent XSS attacks
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($row['eoi_number']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                        // Replace the status column with the change status form:
+                        echo "<td>
+                            <form method='post' style='display:inline;'>
+                                <input type='hidden' name='eoi_number' value='" . htmlspecialchars($row['eoi_number']) . "'>
+                                <select name='new_status'>
+                                    <option value='New'" . ($row['status'] == 'New' ? ' selected' : '') . ">New</option>
+                                    <option value='Current'" . ($row['status'] == 'Current' ? ' selected' : '') . ">Current</option>
+                                    <option value='Final'" . ($row['status'] == 'Final' ? ' selected' : '') . ">Final</option>
+                                </select>
+                                <button type='submit' name='change_status'>Change</button>
+                            </form>
+                        </td>";
                         echo "<td>" . htmlspecialchars($row['job_reference']) . "</td>";
                         echo "<td>" . htmlspecialchars($fullName) . "</td>";
                         echo "<td>" . htmlspecialchars($row['dob']) . "</td>";
