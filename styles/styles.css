@@ -78,6 +78,28 @@ header{
     color: #f2fff2;
 }
 
+.manager-auth-block {
+    float: right;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.managerlogin,
+.managerwelcome {
+    float: right;
+    margin-left: auto;
+    display: block;
+    color:#011e0a;
+}
+
+/* The manager login button styling. */
+.managerlogin:not(.nohover):hover {
+    text-decoration: underline;
+}
+
+
 /* The main contents of the page styling. */
 main{
     border-radius: 8px;
@@ -271,7 +293,6 @@ can't fit on the same line. */
 .Job_Position_And_Logo{
     /* Makes things aligned horizontaly. */
     display: flex;
-    /**/
     flex-wrap: wrap;
 }
 
