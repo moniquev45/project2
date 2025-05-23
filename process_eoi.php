@@ -24,6 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             error_log("Connection failed: ".mysqli_connect_error());
             die("Sorry, there has been an error, please be patient with us.");
         }    
+
+ // intialising errors array to collect the errors to be echoed later in the html
+    $errors = [];
         
  // How the data from the form will be cleaned up
     function sanitise_input($data) {
@@ -77,7 +80,15 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     // date of birth
                     $dob = isset($_POST['dob']) ? sanitise_input($_POST['dob']) : "";
                         //SQL only accepts YYYY-MM-DD; formatting the data to insert in a way that can be received by SQL
-                        $sql_dob = date("Y-m-d", strtotime($dob));
+                        // need to convert slashes into dashes
+                        $converted_dob = strtotime(str_replace('/', '-', $dob));
+
+                        // if string to time fails to recognise valid date it will put error in array
+                        if ($converted_dob !== false) {
+                            $sql_dob = date("Y-m-d", strtotime($dob));
+                        } else {
+                            $errors[] = "Date of birth is invalid.";
+                        }
 
                     // gender
                     $gender = isset($_POST['gender']) ? sanitise_input($_POST['gender']) : "";
@@ -118,8 +129,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                 $skills = implode("\n", $formatting_skills);
 
                 //form validation - errors for if required inputs aren't there and if patterns aren't adhered to
-                $errors = [];
-
                     // job reference
                     if (empty($job_reference)) $errors[] = "Job Reference is required.";
 
@@ -135,8 +144,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                 
                         // dob
                     if (empty($dob)) $errors[] = "Date of birth is required.";
-                    if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/", $dob)) 
-                        $errors[] = "Date of birth must be in DD-MM-YYYY format.";
+                    if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}$/", $dob)) 
+                        $errors[] = "Date of birth must be in DD/MM/YYYY format.";
 
                     // gender
                     if (empty($gender)) $errors[] = "Gender is required.";
@@ -207,6 +216,9 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                             $submission_time = $row['submission_time'];
                                 // converting the time into hours:minutes am/pm DD-MM-YYYY
                                 $formatted_time = date("h:i a d-m-Y", strtotime($submission_time)); 
+                    
+                    // concatenating the address in preparation for display in receipt page
+                    $formatted_address = $street_address . "\n" . $suburb . ", " . $state . ", " . $postcode;
 
                     // Storing this data into a session receipt to then access on the process receipt page. Stops the data being resubmitted when refreshing the page.
 
@@ -218,10 +230,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         'family_name' => $family_name,
                         'dob' => $dob,
                         'gender' => $gender,
-                        'street_address' => $street_address,
-                        'suburb' => $suburb,
-                        'state' => $state,
-                        'postcode' => $postcode,
+                        'formatted_address' => $formatted_address,
                         'email_apply' => $email_apply,
                         'mobile' => $mobile,
                         'skills' => $skills,

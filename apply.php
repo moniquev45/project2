@@ -91,18 +91,18 @@
                             <li class="personal_listing">
                                 <!-- Name - Input Text; Format: Max 20 Alpha Characters-->
                                 <label for="first_name">First Name: 
-                                    <input type="text" id="first_name" name="first_name" pattern="[A-Za-z]+" maxlength="20" title="max 20 characters" required="required">
+                                    <input type="text" id="first_name" name="first_name" placeholder= "e.g John" pattern="[A-Za-z]+" maxlength="20" title="max 20 characters" required="required">
                                 </label><br>
                             </li>
                             <li class="personal_listing">
                                 <label for="family_name">Family Name: 
-                                    <input type="text" id="family_name" name="family_name" pattern="[A-Za-z]+" maxlength="20" title="max 20 characters" required="required">
+                                    <input type="text" id="family_name" name="family_name" placeholder= "e.g Smith" pattern="[A-Za-z]+" maxlength="20" title="max 20 characters" required="required">
                                 </label> 
                             </li>
 
                             <li class="personal_listing">
                                 <!-- Date of Birth ; Format: dd/mm/yyyy-->
-                                <p><label for="dob"> Date of Birth: <input type="text" placeholder= "DD-MM-YYYY" pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$" id="dob" name="dob" required="required"></label></p>
+                                <p><label for="dob"> Date of Birth: <input type="text" placeholder= "DD/MM/YYYY" pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}$" id="dob" name="dob" required="required"></label></p>
                             </li>
                         </ul>
 
@@ -121,13 +121,13 @@
                             <li class="personal_listing">
                                 <!-- Street Address- Input Text; Format: Max 20 Alpha Characters-->
                                 <label for="street_address">Street Address: 
-                                    <input type="text" id="street_address" name="street_address" pattern="^\d+\s[A-Za-z\s\.]+$" maxlength="40" title="i.e 123 Main St (max 40 characters)" required="required">
+                                    <input type="text" id="street_address" name="street_address" placeholder= "e.g 12 Main St" pattern="^\d+\s[A-Za-z\s\.]+$" maxlength="40" title="i.e 123 Main St (max 40 characters)" required="required">
                                 </label>
                             </li>
                             <li class="personal_listing">
                                 <!-- Suburb- Input Text; Format: Max 20 Alpha Characters-->
                                 <label for="suburb">Suburb/Town: 
-                                    <input type="text" id="suburb" name="suburb" pattern="[A-Za-z\s]+" maxlength="40" title="max 40 characters" required="required">
+                                    <input type="text" id="suburb" name="suburb" placeholder= "e.g Croydon" pattern="[A-Za-z\s]+" maxlength="40" title="max 40 characters" required="required">
                                 </label> 
                             </li>
                             <li class="personal_listing">
@@ -148,7 +148,7 @@
                             </li>
                             <li class="personal_listing">
                                 <!-- Postcode - Text Input: Four Digits Only; Australia postcodes range from 0200 to 9944 -->
-                                <label for="postcode">Postcode: <input type="text" id="postcode" name="postcode" minlength="4" maxlength="4" pattern="(0[289][0-9]{2})|([123456789][0-9]{3})" title="4 digits only" required="required"></label>
+                                <label for="postcode">Postcode: <input type="text" placeholder= "Australian Postcodes Only" id="postcode" name="postcode" minlength="4" maxlength="4" pattern="(0[289][0-9]{2})|([123456789][0-9]{3})" title="4 digits only" required="required"></label>
                             </li>
                         </ul>
                     </div>
@@ -158,13 +158,13 @@
                                 <li class="personal_listing">
                                     <!-- Email Address - Input type "email" automatically validates email and gives pattern. See contact page for how to do it as a text input with pattern -->
                                     <label for="email_apply"> Email Address: 
-                                        <input type="email" id="email_apply" name="email_apply" title="example@emailaddress.com.au" required="required">
+                                        <input type="email" id="email_apply" name="email_apply" placeholder= "e.g example@emailaddress.com.au" title="example@emailaddress.com.au" required="required">
                                     </label>
                                 </li>
                                 <li class="personal_listing">
                                     <!-- Phone Numbers - Input Text: 8-12 digits or spaces -->
                                     <label for="mobile"> Phone Number: 
-                                        <input type="text" id="mobile" name="mobile" minlength="8" maxlength="12" pattern="[0-9\s]+" title="8-12 digits &amp; spaces only" required="required">
+                                        <input type="text" id="mobile" name="mobile" placeholder= "e.g 0400 000 000" minlength="8" maxlength="12" pattern="[0-9\s]+" title="8-12 digits &amp; spaces only" required="required">
                                     </label>
                                 </li>
                             </ul>

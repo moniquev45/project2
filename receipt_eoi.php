@@ -20,13 +20,13 @@ session_start();
         <!--Charset Declaration-->
         <meta charset="utf-8">
         <!--Page Description for File-->
-        <meta name="description" content="This is the receipt of contact enquiry being submitted.">
+        <meta name="description" content="This is the receipt of expression of interest job application being submitted.">
         <!--Key Words for File-->
         <meta name="keywords" content="enquiry, contact, email, complaints, feedback">
         <!--Author Information-->
         <meta name="author" content="Stacey Millers" >
 
-        <title>Contact Enquiry Submitted</title>
+        <title>Expression of Interest Form Submitted</title>
         <!--Icon for the browser-->
         <link rel="icon" href="images/Pear_Logo_Backgroundless.png" type="image/png">
         <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
@@ -52,7 +52,7 @@ session_start();
             // The Application Form EOI record
             echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($receipt['eoi_number'])."</p>";
             // The Timestamp
-            echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($receipt['formatted_time'])."</p>";
+            echo "<p><strong>Time submitted:</strong> ".htmlspecialchars($receipt['formatted_time'])."</p>";
                             
             // The form answers:
             echo "<p><em>Please find the confirmation of details entered below.</em></p>";
@@ -64,10 +64,7 @@ session_start();
                     echo "<tr><td><strong>Date of Birth:</strong></td> <td>".htmlspecialchars($receipt['dob'])."</td></tr>";
                     echo "<tr><td><strong>Gender:</strong></td> <td>".htmlspecialchars($receipt['gender'])."</td></tr>";
                 // Address
-                    echo "<tr><td><strong>Street Address:</strong></td> <td>".htmlspecialchars($receipt['street_address'])."</td></tr>";
-                    echo "<tr><td><strong>Suburb/Town:</strong></td> <td>".htmlspecialchars($receipt['suburb'])."</td></tr>";
-                    echo "<tr><td><strong>State:</strong></td> <td>".htmlspecialchars($receipt['state'])."</td></tr>";
-                    echo "<tr><td><strong>Postcode:</strong></td> <td>".htmlspecialchars($receipt['postcode'])."</td></tr>";
+                    echo "<tr><td><strong>Your Selected Skillset:</strong></td> <td>".nl2br(htmlspecialchars($receipt['formatted_address']))."</td></tr>";
                 // Contact
                     echo "<tr><td><strong>Email Address:</strong></td> <td>".htmlspecialchars($receipt['email_apply'])."</td></tr>";
                     echo "<tr><td><strong>Phone Number:</strong></td> <td>".htmlspecialchars($receipt['mobile'])."</td></tr>";

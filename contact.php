@@ -57,7 +57,7 @@
 
                 <!--Enquiry Box-->
                 <div>
-                    <label for="enquiry_box" class="visually_hidden"> Enquiry Box </label>
+                    <br> <label for="enquiry_box" class="visually_hidden"> Enquiry Box </label>
                     <!--Text box to type in enquiry-->
                     <textarea id="enquiry_box" name="enquiry_box" rows="10" cols="150" placeholder="Please provide details of your enquiry here..."></textarea>
                 </div> 
