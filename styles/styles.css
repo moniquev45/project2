@@ -998,36 +998,30 @@ right, right next to the employment details, and it allows the data to take up 5
     color: #000000; /* Sets the text color to black for accessability purposes*/
 }
 
-#Who_we_are{
-    float: left; /* Aligns the division to the left */
-    width: 30%; /* Sets the width of the division to 30% */
+/*Properly aligns the sections of the home page*/
+
+#Home_Sections {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    gap: 2%;
 }
 
-#Who_we_are p{
-    /* Sets the text color of the paragraph to black for accessability purposes*/
-    color: #000000;
+#Who_we_are,
+#What_we_do,
+#Company_Graphic {
+    float: none;
+    width: 30%;
 }
 
-#What_we_do{
-    float: right; /* Aligns the division to the right */
-    width: 30%; /* Sets the width of the division to 30% */
-}
-#What_we_do p{
-    /* Sets the text color of the paragraph to black for accessability purposes*/
-    color: #000000;
-}
-
-#Company_Graphic{
-    display: inline-block; /* Allows the image to be inline with the text */
-    text-align: center; /* Aligns the image to the center */
-    padding: 0.5%;
-    width: 30%; /* Sets the width of the division itself to 30% */
-}
-
-#Company_Graphic img{
-    width: 50%; /* Sets the width of the image to 50% of the division */
+#Company_Graphic img {
+    width: 50%;
     height: auto;
     border-radius: 8px;
+    display: block;
+    margin: 0 auto;
 }
 
 #Our_Mission{

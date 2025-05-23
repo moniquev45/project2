@@ -26,8 +26,8 @@
             <!--Main body of the page-->
             <h1 id="Home_Title">The Best Big Brain Group</h1>
             <p id="TitlePgraph">Delivering Software since 1988</p>
-
-            <!--A paragraph that describes the company-->
+            <div id="Home_Sections">
+                            <!--A paragraph that describes the company-->
             <div id="Who_we_are">
                 <h2>Who we are:</h2>
                 <p id="Light_Background_Text">
@@ -54,7 +54,7 @@
                     enhance their expertise and stay competitive in the fast-paced world of data analytics.
                 </p>
             </div>
-            <br><br><br><br>
+            </div>
             <!--A paragraph that describes the company mission-->
             <div id="Our_Mission">
                 <h2>Our Mission:</h2>
