@@ -115,18 +115,40 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     $pay = number_format(($salary_scale * 10000) + 50000);
 
                     // working hours
-                    $hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST['hours_start']): "";
-                    $hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST['hours_end']): "";
+                    $raw_hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST['hours_start']): "";
+                        // formatting time so it comes out with a pm or am 
+                        if (!empty($raw_hours_start)) {
+                            $time_string = strtotime($raw_hours_start);
+                                if ($time_string !== false) {
+                                    $hours_start = date("g:i A", $time_string); // g is for hour, i is for minutes, A is for AM or PM
+                                } else {
+                                    $errors[] = "Invalid start time format.";
+                                }
+                            }else {
+                            $hours_start = " "; //data not provided
+                        }
+
+                    $raw_hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST['hours_end']): "";
+                        if (!empty($raw_hours_end)) {
+                            $time_string_end = strtotime($raw_hours_end);
+                                if ($time_string_end !== false) {
+                                    $hours_end = date("g:i A", $time_string_end);
+                                } else {
+                                    $errors[] = "Invalid end time format.";
+                                }
+                            } else {
+                            $hours_end = " "; //data not provided
+                        }
 
                 //Checkbox - sanitising and reformatting data
                 // raw data from the form being put into an array and sanatised
                 $raw_data_skills = isset($_POST["skills"]) ? array_map('sanitise_input', $_POST["skills"]) : [];
-                // formatting each skill in the array to have capitals, remove the underscore and put in a space instead
-                $formatting_skills = array_map(function($skill) { 
-                    return ucwords(str_replace('_',' ',$skill));
-                }, $raw_data_skills);
-                // joins all the formatted skills together, and adds a break between
-                $skills = implode("\n", $formatting_skills);
+                    // formatting each skill in the array to have capitals, remove the underscore and put in a space instead
+                    $formatting_skills = array_map(function($skill) { 
+                        return ucwords(str_replace('_',' ',$skill));
+                    }, $raw_data_skills);
+                    // joins all the formatted skills together, and adds a break between
+                    $skills = implode(",\n", $formatting_skills);
 
                 //form validation - errors for if required inputs aren't there and if patterns aren't adhered to
                     // job reference
