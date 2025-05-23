@@ -31,7 +31,7 @@
             <!--Form Section for Contact-->
             <form id="contact_form" action="https://mercury.swin.edu.au/it000000/formtest.php" method="POST">
                 <!--Drop Down Reason Box-->
-                <p>
+                <div>
                     <label for="reason">Contact Reason: </label>
                     <select name="reason" id="reason" required="required">
                         <option value="" selected="selected" disabled="disabled">Please Select</option>
@@ -41,25 +41,31 @@
                         <option value="partnership">Partnership Enquiry</option>
                         <option value="other">Other</option>
                     </select>
-                </p>
+                </div><br>
 
-                <!-- Email Address for return reply-->
-                <p> <!-- Email Address - Input type "email" automatically validates email and gives pattern, as in apply page. Text input used here to show how to use patterns to accomplish -->
-                    <label for="email_contact">Email Address:</label>
-                    <input type="text" id="email_contact" name="email_contact" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="example@emailaddress.com.au" required="required">
-                </p>
+                <!-- Contact details for replying-->
+                <div>  <!-- Contact Name -->
+                    <label for="contact_name">Name: <br>
+                        <input type="text" id="contact_name" name="contact_name" pattern="[A-Za-z]+" maxlength="60" title="Please provide the contact name." required="required">
+                    </label>   
+
+                    <!-- Email Address - Input type "email" automatically validates email and gives pattern, as in apply page. Text input used here to show how to use patterns to accomplish -->
+                    <label for="email_contact">Email Address: <br>
+                        <input type="text" id="email_contact" name="email_contact" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="example@emailaddress.com.au" required="required">
+                    </label>
+                </div>
 
                 <!--Enquiry Box-->
-                <p>
+                <div>
                     <label for="enquiry_box" class="visually_hidden"> Enquiry Box </label>
                     <!--Text box to type in enquiry-->
                     <textarea id="enquiry_box" name="enquiry_box" rows="10" cols="150" placeholder="Please provide details of your enquiry here..."></textarea>
-                </p> 
+                </div> 
 
                 <!--Buttons: Input 'Submit' & 'Reset Form'-->
-                <p id="contact_buttons">
+                <div id="contact_buttons">
                     <input type="submit" value="SUBMIT" title="Click to Submit Enquiry">
-                </p> 
+                </div> 
 
             </form>
         </main>

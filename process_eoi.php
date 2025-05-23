@@ -228,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                             echo "<h1 id='submission_title'> THANK YOU FOR YOUR SUBMISSION </h1>";
 
                             // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
-                            echo "<p> Your Expression of Interest Form for Job Reference ".htmlspecialchars($job_reference)." has been received. </p>";
+                            echo "<p> Your Expression of Interest Form for Job Reference #".htmlspecialchars($job_reference)." has been received. </p>";
                             // The Application Form EOI record
                             echo "<p><strong>Application Receipt:</strong> ".htmlspecialchars($row['eoi_number'])."</p>";
                             // The Timestamp

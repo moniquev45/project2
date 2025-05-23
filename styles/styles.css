@@ -763,17 +763,16 @@ right, right next to the employment details, and it allows the data to take up 5
 /* END OF APPLY PAGE STYLING*/
 
 /* START OF CONTACT PAGE STYLING */
-    #contact_form p,
-    #contact_form label,
-    email_contact label {
-        display: block; /* Changed from flex to block to fix alignment issue */
+    #contact_form p{
         margin-bottom: 10px;
         max-width: 600px;
     }
 
     /* Ensure consistent width for fields */
     #reason,
-    #enquiry_box {
+    #enquiry_box,
+    #contact_name,
+    #email_contact {
         width: 100%; 
         padding: 10px;
         border: 1px solid #ccc;
