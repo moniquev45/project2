@@ -639,9 +639,10 @@ right, right next to the employment details, and it allows the data to take up 5
     border-radius: 4px; /* textarea corners slightly rounded */
     box-sizing: border-box; /* Ensures padding doesn't affect the element's width */
     }
-    
+
  /* SKILLS FIELD | Text Area Placement  */
  .apply_textarea {
+    margin-top: 20px;
     text-align: center;
     margin-bottom: 20px; /* Adds spacing between form fields */
     }
