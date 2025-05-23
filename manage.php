@@ -142,85 +142,90 @@
         <?php
             if ($dbconn) {
                 if ($result) {
-                    echo "<div class='table-responsive'>";
-                    echo "<table class='table-eoi'>";
-                    // Table header
-                    // Using 'nohover' class to prevent hover effect on header
-                    echo "<thead><tr class='nohover'>
-                        <th>EOI Number</th>
-                        <th>Status</th>
-                        <th>Job Reference</th>
-                        <th>Name</th>
-                        <th>Date of Birth</th>
-                        <th>Gender</th>
-                        <th>Address</th>
-                        <th>Email</th>
-                        <th>Mobile</th>
-                        <th>Skills</th>
-                        <th>Other Skills</th>
-                        <th>Requirements</th>
-                        <th>Salary</th>
-                        <th>Hours</th>
-                        <th>Submission Time</th>
-                    </tr></thead><tbody>";
-                    // Fetching and displaying data
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        // Concatenate name safely
-                        $fullName = trim($row['first_name'] . ' ' . $row['family_name']);
+                    // Check if there are results
+                    if (mysqli_num_rows($result) > 0) {
+                        echo "<div class='table-responsive'>";
+                        echo "<table class='table-eoi'>";
+                        // Table header using class 'nohover' to prevent hover effect
+                        echo "<thead><tr class='nohover'>
+                            <th>EOI Number</th>
+                            <th>Status</th>
+                            <th>Job Reference</th>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Skills</th>
+                            <th>Other Skills</th>
+                            <th>Requirements</th>
+                            <th>Salary</th>
+                            <th>Hours</th>
+                            <th>Submission Time</th>
+                        </tr></thead><tbody>";
+                        // Fetching and displaying data
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            // Concatenate name safely
+                            $fullName = trim($row['first_name'] . ' ' . $row['family_name']);
 
-                        // Concatenate address safely, skipping empty parts
-                        $addressParts = array_filter([
-                            $row['street_address'],
-                            $row['suburb'],
-                            $row['state'],
-                            $row['postcode']
-                        ]);
-                        $address = implode(', ', $addressParts);
+                            // Concatenate address safely, skipping empty parts
+                            $addressParts = array_filter([
+                                $row['street_address'],
+                                $row['suburb'],
+                                $row['state'],
+                                $row['postcode']
+                            ]);
+                            $address = implode(', ', $addressParts);
 
-                        // Format the hours
-                        // Concatenates the start and end times, removing seconds and trailing zeros
-                        $hours = '';
-                        if (!empty($row['hours_start']) && !empty($row['hours_end'])) {
-                            // Adjusting the regex to remove seconds and trailing zeros
-                            $start = preg_replace('/(:00|\.00)$/', '', $row['hours_start']);
-                            $end = preg_replace('/(:00|\.00)$/', '', $row['hours_end']);
-                            $hours = $start . ' - ' . $end;
-                        } 
-                        // Format the submission time
-                        $submissionTime = date("Y-m-d H:i:s", strtotime($row['submission_time']));
-                        // Displaying each row of data
-                        // Using htmlspecialchars to prevent XSS attacks
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row['eoi_number']) . "</td>";
-                        // Replace the status column with the change status form:
-                        echo "<td>
-                            <form method='post' style='display:inline;'>
-                                <input type='hidden' name='eoi_number' value='" . htmlspecialchars($row['eoi_number']) . "'>
-                                <select name='new_status'>
-                                    <option value='New'" . ($row['status'] == 'New' ? ' selected' : '') . ">New</option>
-                                    <option value='Current'" . ($row['status'] == 'Current' ? ' selected' : '') . ">Current</option>
-                                    <option value='Final'" . ($row['status'] == 'Final' ? ' selected' : '') . ">Final</option>
-                                </select>
-                                <button type='submit' name='change_status'>Change</button>
-                            </form>
-                        </td>";
-                        echo "<td>" . htmlspecialchars($row['job_reference']) . "</td>";
-                        echo "<td>" . htmlspecialchars($fullName) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['dob']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
-                        echo "<td>" . htmlspecialchars($address) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['email_apply']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['mobile']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['skills']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['skills_other']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['salary_scale']) . "</td>";
-                        echo "<td>" . htmlspecialchars($hours) . "</td>";
-                        echo "<td>" . htmlspecialchars($submissionTime) . "</td>";
-                        echo "</tr>";
+                            // Format the hours
+                            // Concatenates the start and end times, removing seconds and trailing zeros
+                            $hours = '';
+                            if (!empty($row['hours_start']) && !empty($row['hours_end'])) {
+                                // Adjusting the regex to remove seconds and trailing zeros
+                                $start = preg_replace('/(:00|\.00)$/', '', $row['hours_start']);
+                                $end = preg_replace('/(:00|\.00)$/', '', $row['hours_end']);
+                                $hours = $start . ' - ' . $end;
+                            } 
+                            // Format the submission time
+                            $submissionTime = date("Y-m-d H:i:s", strtotime($row['submission_time']));
+                            // Displaying each row of data
+                            // Using htmlspecialchars to prevent XSS attacks
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['eoi_number']) . "</td>";
+                            // Replace the status column with the change status form:
+                            echo "<td>
+                                <form method='post' style='display:inline;'>
+                                    <input type='hidden' name='eoi_number' value='" . htmlspecialchars($row['eoi_number']) . "'>
+                                    <select name='new_status'>
+                                        <option value='New'" . ($row['status'] == 'New' ? ' selected' : '') . ">New</option>
+                                        <option value='Current'" . ($row['status'] == 'Current' ? ' selected' : '') . ">Current</option>
+                                        <option value='Final'" . ($row['status'] == 'Final' ? ' selected' : '') . ">Final</option>
+                                    </select>
+                                    <button type='submit' name='change_status'>Change</button>
+                                </form>
+                            </td>";
+                            echo "<td>" . htmlspecialchars($row['job_reference']) . "</td>";
+                            echo "<td>" . htmlspecialchars($fullName) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['dob']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['gender']) . "</td>";
+                            echo "<td>" . htmlspecialchars($address) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['email_apply']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['mobile']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['skills']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['skills_other']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['requirements']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['salary_scale']) . "</td>";
+                            echo "<td>" . htmlspecialchars($hours) . "</td>";
+                            echo "<td>" . htmlspecialchars($submissionTime) . "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</tbody></table>";
+                        echo "</div>";
+                    } else {
+                        // No results found
+                        echo "<p style='color:red;'>No EOI tables found.</p>";
                     }
-                    echo "</tbody></table>";
-                    echo "</div>";
                 } else {
                     // Errors in the query
                     echo "Query failed: " . mysqli_error($dbconn);
