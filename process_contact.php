@@ -88,10 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         // name
                     if (empty($contact_name)) $errors[] = "Please provide a name.";
 
-                    if (empty($family_name)) $errors[] = "Family name is required.";
-                    if (!preg_match("/[A-Za-z]+/", $family_name)) 
-                        $errors[] = "Family name can only be written in letters.";
-
                     // contact
                     if (empty($email_contact)) $errors[] = "Please provide an email.";
                     if (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_contact)) 
@@ -114,22 +110,15 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                             </form>";
                     } else {                        
                         // inserting code into the eoi table in database
-                        $sql_insert = "INSERT INTO contact (
-                                    enquiry_number,
-                                    status,
-                                    reason,
-                                    name,
-                                    email,
-                                    enquiry,
-                                    submission_time
+                        $sql_insert_contact = "INSERT INTO contact (
+                                    enquiry_number, status, reason, name, email, enquiry
                                 )
                                  VALUES (
-                                    NULL, '$status', '$reason', '$contact_name','$email_contact', '$enquiry_box', '$skills', '$skills_other_textbox', 
-                                    '$requirements', '$pay', '$hours_start', '$hours_end'
+                                    NULL, '$status', '$reason', '$contact_name','$email_contact', '$enquiry_box'
                                 )";
 
                         // 6: getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
-                    if (mysqli_query($dbconn, $sql_insert)) {
+                    if (mysqli_query($dbconn, $sql_insert_contact)) {
                         $last_id = mysqli_insert_id($dbconn);
 
                         // getting the eoi_number and timestamp data from table
@@ -144,12 +133,13 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                             // Start of Receipt
                             echo "<h1 id='submission_title'> THANK YOU FOR YOUR ENQUIRY</h1>";
 
-                            // Confirmation: Job Reference Number, Receipt (eoi_number), and timestamp
-                            echo "<p> We will give you a reply in 3-5 business days.". </p>";
+                            // The Timestamp
+                            echo "<p id="contact_submission_time">".htmlspecialchars($row['submission_time'])."</p>";
+
+                            // Confirmation of enquiry submitted and enquiry/reference number
+                            echo "<p> We will provide a reply in 3-5 business days.</p>";
                             // The Application Form EOI record
                             echo "<p><strong>Your enquiry reference number is #</strong> ".htmlspecialchars($row['enquiry_number'])."</p>";
-                            // The Timestamp
-                            echo "<p><strong>The time submitted was:</strong> ".htmlspecialchars($row['submission_time'])."</p>";
 
                         echo "</div>";
 

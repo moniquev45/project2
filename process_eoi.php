@@ -104,18 +104,18 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     //required technical is a checkbox, handled in its own section
                     // other skills / textboxes
                     $skills_other_textbox = isset($_POST['skills_other_textbox']) ? sanitise_input($_POST["skills_other_textbox"]): "";
-                    $requirements = isset($_POST['requirements']) ? sanitise_input($_POST["requirements"]): "";
+                    $requirements = isset($_POST['requirements']) ? sanitise_input($_POST['requirements']): "";
 
                 // job expectations
                     // salary
-                    $salary_scale = isset($_POST["salary_scale"]) ? sanitise_input($_POST["salary_scale"]) : 0;
+                    $salary_scale = isset($_POST['salary_scale']) ? sanitise_input($_POST['salary_scale']) : 0;
                     // calculating the output of salary estimate based on step selected
                     //lowest salary is $50,000 every notch is $10,000 higher.
                     $pay = number_format(($salary_scale * 10000) + 50000);
 
                     // working hours
-                    $hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST["hours_start"]): "";
-                    $hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST["hours_end"]): "";
+                    $hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST['hours_start']): "";
+                    $hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST['hours_end']): "";
 
                 // 3: Checkbox - sanitising and reformatting data
                 // raw data from the form being put into an array and sanatised
