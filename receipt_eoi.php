@@ -34,7 +34,7 @@ session_start();
         <link rel="stylesheet" href="styles/styles.css">
         
     </head>
-    <body id='the_receipt'>
+    <body>
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
         <main id='eoi_receipt'>
@@ -72,7 +72,7 @@ session_start();
                     echo "<tr><td><strong>Email Address:</strong></td> <td>".htmlspecialchars($receipt['email_apply'])."</td></tr>";
                     echo "<tr><td><strong>Phone Number:</strong></td> <td>".htmlspecialchars($receipt['mobile'])."</td></tr>";
                 // Required Skills
-                    echo "<tr><td><strong>Your Selected Skillset:</strong></td> <td>".htmlspecialchars($receipt['skills'])."</td></tr>";
+                    echo "<tr><td><strong>Your Selected Skillset:</strong></td> <td>".nl2br(htmlspecialchars($receipt['skills']))."</td></tr>";
                 // Other Skills
                     echo "<tr><td><strong>Your Self Described Skillset:</strong></td> <td>".htmlspecialchars($receipt['skills_other_textbox'])."</td></tr>";
                     echo "<tr><td><strong>Further Information Provided:</strong></td> <td>".htmlspecialchars($receipt['requirements'])."</td></tr>";

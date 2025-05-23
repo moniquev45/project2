@@ -1083,13 +1083,13 @@ right, right next to the employment details, and it allows the data to take up 5
     font-size: clamp(1rem, 1vw, 1rem); /* Font size will adjust based on viewport width */  
    }
 
-/* The body of the pages with this id are flexible*/
-   #the_receipt {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-   }
+   /* Placing Grid Lines on the Receipt table */
+    #eoi_receipt table, #eoi_receipt th, #eoi_receipt td {
+        min-width: auto;
+        border: 2px solid #b6b6b6;
+        border-collapse: separate;
+        padding: 4px;
+    }
  
  /* The submission receipt box conistent with form page padding, colour & border*/
   #submission_receipt {

@@ -114,8 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                 $formatting_skills = array_map(function($skill) { 
                     return ucwords(str_replace('_',' ',$skill));
                 }, $raw_data_skills);
-                // joins all the formatted skills together into a single string
-                $skills = implode(", ", $formatting_skills);
+                // joins all the formatted skills together, and adds a break between
+                $skills = implode("\n", $formatting_skills);
 
                 //form validation - errors for if required inputs aren't there and if patterns aren't adhered to
                 $errors = [];
