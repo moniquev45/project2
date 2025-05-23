@@ -70,8 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php include 'header.inc'; ?>
         <main>
             <h2>Manager Login</h2>
+            <!-- Displaying errors if any -->
             <?php if (!empty($errors)): ?>
-                <ul style="color:red;">
+                <ul class="status-error">
                     <?php foreach ($errors as $error): ?>
                         <li><?php echo htmlspecialchars($error); ?></li>
                     <?php endforeach; ?>

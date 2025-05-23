@@ -24,7 +24,7 @@
         <main>
         <!-- After opening <main> or before the table, show the message if status was updated -->
         <?php if (isset($_GET['status_updated']) && $_GET['status_updated'] == 1): ?>
-            <p style='color:green;'>Status updated successfully.</p>
+            <p class="status-success">Status updated successfully.</p>
         <?php endif; ?>
         <?php
             require_once("settings.php");
@@ -41,9 +41,9 @@
                 $deleteQuery = "DELETE FROM eoi WHERE job_reference = '$deleteJobRef'";
                 $deleteResult = mysqli_query($dbconn, $deleteQuery);
                 if ($deleteResult) {
-                    echo "<p style='color:green;'>All EOIs for job reference <strong>" . htmlspecialchars($deleteJobRef) . "</strong> have been deleted.</p>";
+                    echo "<p class='status-success'>All EOIs for job reference <strong>" . htmlspecialchars($deleteJobRef) . "</strong> have been deleted.</p>";
                 } else {
-                    echo "<p style='color:red;'>Failed to delete EOIs: " . mysqli_error($dbconn) . "</p>";
+                    echo "<p class='status-error'>Failed to delete EOIs: " . mysqli_error($dbconn) . "</p>";
                 }
             }
 
@@ -99,13 +99,13 @@
                     header("Location: manage.php?status_updated=1");
                     exit();
                 } else {
-                    echo "<p style='color:red;'>Failed to update status: " . mysqli_error($dbconn) . "</p>";
+                    echo "<p class='status-error'>Failed to update status: " . mysqli_error($dbconn) . "</p>";
                 }
             }
         ?>
 
         <!-- Filter form -->
-        <form method="get" style="margin-bottom:20px;">
+        <form method="get" class="filter-form">
             <label for="job_reference">Filter by Job Reference:</label>
             <select id="job_reference" name="job_reference">
                 <option value="">-- Show All --</option>
@@ -115,18 +115,18 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <label for="first_name" style="margin-left:20px;">First Name:</label>
+            <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" value="<?php echo isset($_GET['first_name']) ? htmlspecialchars($_GET['first_name']) : ''; ?>">
-            <label for="family_name" style="margin-left:10px;">Last Name:</label>
+            <label for="family_name">Last Name:</label>
             <input type="text" id="family_name" name="family_name" value="<?php echo isset($_GET['family_name']) ? htmlspecialchars($_GET['family_name']) : ''; ?>">
-            <button type="submit" style="margin-left:10px;">Filter</button>
+            <button type="submit">Filter</button>
             <?php if (!empty($selectedJobRef) || !empty($_GET['first_name']) || !empty($_GET['family_name'])): ?>
-                <a href="manage.php" style="margin-left:10px;">Reset</a>
+                <a href="manage.php">Reset</a>
             <?php endif; ?>
         </form>
 
         <!-- Delete form -->
-        <form method="post" style="margin-bottom:20px;">
+        <form method="post" class="delete-form">
             <label for="delete_job_reference">Delete all EOIs for Job Reference:</label>
             <select id="delete_job_reference" name="delete_job_reference" required>
                 <option value="">-- Select Job Reference --</option>
@@ -136,7 +136,7 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit" name="delete_eoi" style="margin-left:10px;" onclick="return confirm('Are you sure you want to delete all EOIs for this job reference?');">Delete</button>
+            <button type="submit" name="delete_eoi" onclick="return confirm('Are you sure you want to delete all EOIs for this job reference?');">Delete</button>
         </form>
 
         <?php
@@ -195,14 +195,14 @@
                             echo "<td>" . htmlspecialchars($row['eoi_number']) . "</td>";
                             // Replace the status column with the change status form:
                             echo "<td>
-                                <form method='post' style='display:inline;'>
+                                <form method='post' class='status-form'>
                                     <input type='hidden' name='eoi_number' value='" . htmlspecialchars($row['eoi_number']) . "'>
                                     <select name='new_status'>
                                         <option value='New'" . ($row['status'] == 'New' ? ' selected' : '') . ">New</option>
                                         <option value='Current'" . ($row['status'] == 'Current' ? ' selected' : '') . ">Current</option>
                                         <option value='Final'" . ($row['status'] == 'Final' ? ' selected' : '') . ">Final</option>
                                     </select>
-                                    <button type='submit' name='change_status'>Change</button>
+                                    <button type='submit' name='change_status' class='status-btn'>Change</button>
                                 </form>
                             </td>";
                             echo "<td>" . htmlspecialchars($row['job_reference']) . "</td>";
@@ -224,15 +224,15 @@
                         echo "</div>";
                     } else {
                         // No results found
-                        echo "<p style='color:red;'>No EOI tables found.</p>";
+                        echo "<p class='status-error'>No EOI tables found.</p>";
                     }
                 } else {
                     // Errors in the query
-                    echo "Query failed: " . mysqli_error($dbconn);
+                    echo "<p class='status-error'>Query failed: " . mysqli_error($dbconn) . "</p>";
                 }
                 mysqli_close($dbconn);
             } else {
-                echo "Connection failed";
+                echo "<p class='status-error'>Connection failed</p>";
             } 
         ?>
         </main>

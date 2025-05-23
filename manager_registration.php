@@ -55,8 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_bind_param($stmt, "ss", $username, $passwordHash);
         if (mysqli_stmt_execute($stmt)) {
             $success = true;
-            header("Location: manager_login.php");
-            exit();
         } else {
             $errors[] = "Registration failed. Please try again.";
         }
@@ -91,10 +89,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <main>
         <h2>Manager Registration</h2>
         <?php if ($success): ?>
-            <p style="color:green;">Registration successful! <a href="manager_login.php">Login here</a>.</p>
+            <p class='status-success'>Registration successful! <a href="manager_login.php">Login here</a>.</p>
         <?php else: ?>
             <?php if (!empty($errors)): ?>
-                <ul style="color:red;">
+                <ul class="status-error">
                     <?php foreach ($errors as $error): ?>
                         <li><?php echo htmlspecialchars($error); ?></li>
                     <?php endforeach; ?>
