@@ -18,7 +18,7 @@
             <!--Hyperlink to the website's github-->
             <div class="Github_Link_Footer">
                 Github:
-                <a class="Footer_Links" href="https://github.com/moniquev45/Group_Project" target="_blank">This website's github repository</a>
+                <a class="Footer_Links" href="https://github.com/moniquev45/project2.git" target="_blank">This website's github repository</a>
             </div>
             <!--Forces there to be a line break below to not squish all the the hyperlinks to the border of the page.-->
             <p class="Copyright_in_footer">
