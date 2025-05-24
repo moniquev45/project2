@@ -50,7 +50,13 @@
                                 echo "<a href= 'https://icarly.fandom.com/wiki/Pear_Company' target='_blank'><img src='images/Pear_Logo.png' alt='Pear Company Logo' class='Companies_Logo_Image'/></a>";
                             echo "</figure>";
                             echo "</div>";
-                            
+                            echo "<div class='Random_Company_Names'>". $row['job_company'] ."</div>";
+                            echo "<div class='Company_Location'>". $row['job_location']"</div>";
+                            echo "<br><br>";
+                            echo "<hr>";
+                            echo "</section>";
+                            echo "</td>";
+                            echo "</tr>";
                     }
                     echo "</tbody>";
                     echo "</table>";
