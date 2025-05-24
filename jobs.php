@@ -34,8 +34,26 @@
                     $query = "SELECT * FROM jobs";
                     $result = mysqli_query($dbconn, $query);
                     echo "<p>Test 2</p>";
-
-                    
+                    echo "<table>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < mysqli_num_rows($result); $i++){
+                        $row = mysqli_fetch_assoc($result);
+                        echo "<tr class='Jobs_Table_Row'>";
+                        echo "<td class='Jobs_Table_Data'>";
+                        echo "<section>";
+                            echo "<hr>";
+                            echo "<div class='Job_Position_And_Logo'>";
+                            # Job Info
+                            echo "<h2 class='Job_Title' id='Data_Anaylst_Job_Title'>". $row['job_title'] ."</h2>";
+                            # Logo From https://www.facebook.com/photo.php?fbid=276912169616293&id=276912036282973&set=a.276912066282970&locale=th_TH
+                            echo "<figure>";
+                                echo "<a href= 'https://icarly.fandom.com/wiki/Pear_Company' target='_blank'><img src='images/Pear_Logo.png' alt='Pear Company Logo' class='Companies_Logo_Image'/></a>";
+                            echo "</figure>";
+                            echo "</div>";
+                            
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
 
                 } else echo "<p> Unable to connect to the db.</p>";
 
