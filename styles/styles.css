@@ -254,28 +254,13 @@ from one background colour to another. */
 
 /* This makes the main image on the job specific Data Analyst page to be the certain image, and be 
 reactive if you shrink or expand your screen. */
-#Job_Discription_Image_Data_Analyst{
+#Job_Discription_Image_Background{
     width: fit-content;
     max-width: 1300px;
     height: 300px;
     /* Makes the image resize and fit the container its in. */
     object-fit: cover;
     width: 100%;
-    background-image: url("/styles/images/Office_People.jpg");
-    /* Stretch the background image to fit across the container. */
-    background-size: 100% 100%;
-}
-
-/* This makes the main image on the job specific Junior Software Developer page to be the certain image, 
-and be reactive if you shrink or expand your screen. */
-#Job_Discription_Image_Junior_Software_Developer{
-    width: fit-content;
-    max-width: 1300px;
-    height: 300px;
-    /* Makes the image resize and fit the container its in. */
-    object-fit: cover;
-    width: 100%;
-    background-image: url("/styles/images/Office_People_2.jpg");
     /* Stretch the background image to fit across the container. */
     background-size: 100% 100%;
 }

@@ -28,12 +28,9 @@
             <?php
                 require_once "settings.php";
                 $dbconn = mysqli_connect($host, $user, $pwd, $db);
-                echo "<p>HELPPPPPP</p>";
-                echo "<p>Test 1</p>";
                 if ($dbconn) {
                     $query = "SELECT * FROM jobs";
                     $result = mysqli_query($dbconn, $query);
-                    echo "<p>Test 2</p>";
                     echo "<table>";
                     echo "<tbody>";
                     for ($i = 0; $i < mysqli_num_rows($result); $i++){
@@ -88,7 +85,7 @@
                                     echo "<br>";
                                     # This is the See More Button where you can press and it uses a hyperlink to send you to a whole big page
                                     # with all the job listing info.
-                                    echo "<a href='extended_jobs.php?row=$row' target='_blank'
+                                    echo "<a href='extended_jobs.php?job_id=$job_id' target='_blank'
                                         title='Extended Job Description' class='See_More'>see more
                                     </a>";
                                     echo "<br><br><br>";
