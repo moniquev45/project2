@@ -15,7 +15,7 @@
     }
 
     // SELECT query to get job reference numbers from database. Preparation for the drop down input.
-    $sql = "SELECT reference FROM job_test";
+    $sql = "SELECT reference FROM jobs";
     $result = $dbconn->query($sql);
 ?>
 
