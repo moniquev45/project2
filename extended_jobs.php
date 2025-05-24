@@ -32,14 +32,15 @@
                     $query = "SELECT * FROM jobs";
                     $result = mysqli_query($dbconn, $query);
                     if (isset($_GET['job_id'])){
-                        $main_job_id = $_POST["job_id"];
+                        $main_job_id = $_GET["job_id"];
                         $searched_job = null;
 
                         for ($i = 0; $i < mysqli_num_rows($result); $i++){
                             $row = mysqli_fetch_assoc($result);
 
-                            if $row['job_id'] == $main_job_id {
-                                $row = $searched_job;
+                            if ($row['job_id'] == $main_job_id) {
+                                $searched_job = $row;
+                                break;
                             }
                         }
 
