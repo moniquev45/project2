@@ -56,18 +56,59 @@
                                     echo "<hr>";
                                     echo "<div>";
                                     $job_salary_min = (string)$row['job_salary_min'];
-                                    $formatted_job_salary_min = "$ ". $job_salary_min;
+                                    $formatted_job_salary_min = "$ $job_salary_min";
                                     $job_salary_max = (string)$row['job_salary_max'];
-                                    $formatted_job_salary_max = "$ ". $job_salary_max;
-                                    $formatted_total_salary = "Salary: " . $formatted_job_salary_min . " - " . $formatted_job_salary_max;
-                                    echo "<h4 class='Job_Salary_Job_Page'>" . $formatted_total_salary . "</h4>";
+                                    $formatted_job_salary_max = "$ $job_salary_max";
+                                    $formatted_total_salary = "Salary: $formatted_job_salary_min  -  $formatted_job_salary_max";
+                                    echo "<h4 class='Job_Salary_Job_Page'> $formatted_total_salary </h4>";
                                     $job_id = $row['job_id'];
                                     $formatted_job_id = "Job Reference Number: #" . str_pad($job_id, 5, "0", STR_PAD_LEFT);
-                                    echo "<h4 class='Job_Reference_Number_Job_Page'>" . $formatted_job_id . "</h4>";
+                                    echo "<h4 class='Job_Reference_Number_Job_Page'> $formatted_job_id </h4>";
                                     echo "</div>";
                                     echo "<br><br><br>";
                                     echo "<p>The daily duties and responsibilities include:</p>";
+                                    #Next section chatgpt was used to aid in the understanding of the code. 
+                                    #Prompt used: how to make a block of information in php like In need apples. Pears are good. Potatoes are nice. and have it so that it turns this into a list.
+                                    #Trim removes any white space, explode splits the string, at the asterics.
+                                    #array_filter, removes any null, or empty peices in the array.
+                                    #array_map, applies the trim onto every peice of this new array. 
+                                    $job_info = array_filter(array_map('trim', explode('*', $row['job_information'])));
+                                    echo "<ul>";
+                                    foreach ($job_info as $job_info_line) {
+                                        echo "<li>$job_info_line</li>"; 
+                                    }
+                                    echo "</ul>";
+                                    $manager_email = $row['job_manager_email'];
+                                    $manager = $row['job_manager'];
+                                    echo "<p class='Reporting_To_Job'>If Successful You Will Be Reporting To: ";
+                                    echo "<a class='Footer_Links' href='mailto: $manager_email '> $manager </a>";
+                                    echo "</p>";
+                                    echo "<br>";
+                                    # This is the See More Button where you can press and it uses a hyperlink to send you to a whole big page
+                                    # with all the job listing info.
+                                    echo "<a href='extended_jobs.php' target='_blank'
+                                        title='Extended Job Description' class='See_More'>see more
+                                    </a>";
+                                    echo "<br><br><br>";
+                                    echo "<hr>";
                                 echo "</section>";
+                            echo "</td>";
+                            echo "<td class='Jobs_Table_Data'>";
+                                echo "<aside>";
+                                    #More Info
+                                    echo "<br>";
+                                    echo "<h3>Required Qualifications/Skills:</h3>";
+                                    echo "<p>(In order of importance)</p>";
+                                    $job_qualifications_skills = array_filter(array_map('trim', explode('*', $row['job_qualifications_or_skills'])));
+                                    echo "<ol>";
+                                    foreach ($job_qualifications_skills as $job_singular_qualifications_skills) {
+                                        echo "<li>$job_singular_qualifications_skills</li>"; 
+                                    }
+                                    echo "</ol>";
+                                    #This sends the user to the apply page where they can fill out a job application.
+                                    echo "<a href='apply.php' target='_blank'
+                                    title='Go to Apply For Job Page' class='Apply_Here'>Apply Here</a>"
+                                echo "</aside>";
                             echo "</td>";
                         echo "</tr>";
                     }
