@@ -15,7 +15,7 @@
     }
 
     // SELECT query to get job reference numbers from database. Preparation for the drop down input.
-    $sql = "SELECT reference FROM jobs";
+    $sql = "SELECT  job_id FROM jobs";
     $result = $dbconn->query($sql);
 ?>
 
@@ -70,7 +70,8 @@
                             <?php
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
-                                        $job_reference = htmlspecialchars($row['reference']);
+                                        $raw_job_reference = htmlspecialchars($row['job_id']);  // getting id data from table
+                                        $job_reference = . str_pad($job_id, 5, "0", STR_PAD_LEFT); // Ensuring the job ID is still 5 digits
                                         echo "<option value=\"$job_reference\">$job_reference</option>";
                                     }
                                 } else {
