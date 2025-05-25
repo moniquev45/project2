@@ -881,131 +881,33 @@ right, right next to the employment details, and it allows the data to take up 5
     }
 }
 
-/*Page Styling*/
-#About_Team {
-    display: grid; /*Creates an invisible grid to align everything in columns*/
-    grid-template-areas: 
-    "img team"
-    "info team"; /*Templates the grids*/
-    grid-template-columns: 4fr 1fr; /*What fractions of the pages are used*/
-    gap: 5px; /*Creates a gap between grid blocks*/
-}
-
-/*Grid assign*/
-.Team_Photo {
-    grid-area: img; /*Template areas assigned to the relevant grid template areas*/
-}
-
 .Individual_Profiles {
-    grid-area: info; /*Template areas assigned to the relevant grid template areas*/
-}
-
-.Team_Profile {
-    grid-area: team; /*Template areas assigned to the relevant grid template areas*/
-}
-
-/*Photo styling*/
-.Team_Photo img {
     display: block;
-    width: 100%; /*Grows the image to fill out the column*/
-    border: 7px black solid; 
-    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #b0ffb4;
+    border-radius: 25px;
+    margin: 15px 25px;
+    padding: 15px;
+    transition: background-color 0.3s ease;
 }
 
-/*Individual profile block styling*/
-.Individual_Profiles h2 {
-    padding: 10px; /*Adds space around the profile headings so they dont overflow out of their box*/
+.Individual_Profiles:hover {
+    background-color: #4EB774;
 }
 
 .Individual_Profiles table {
-    padding-left: 15px; /*Pushes the table across from the edge of the block*/
-    
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
 }
 
 .Individual_Profiles td {
-    vertical-align: top; /*Pulls the text up in its block as to not waste space*/
-    text-align: left; /*Aligns text in data table boxes to the left*/
+    padding: 8px;
+    vertical-align: top;
+    text-align: left;
 }
 
-#Monique {
-    background-color: #b0ffb4; /*Adds colour to the div box*/
-    border: none; /*Removes border from the div box*/
-    border-radius: 25px; /*Curves the corners*/
-}
-
-#Monique table {
-    margin-top: 15px; /*Adds a margin push to the top of the table*/
-    margin-left: 25px; /*Adds a margin push to the left of the table*/
-    margin-right: 25px; /*Adds a margin push to the right of the table*/
-}
-
-#Monique:hover {
-    background-color: #4EB774; 
-}
-
-#Riley {
-    background-color: #b0ffb4; /*Adds colour to the div box*/
-    border: none; /*Removes border from the div box*/
-    border-radius: 25px; /*Curves the corners*/
-}
-
-#Riley table {
-    margin-top: 15px; /*Adds a margin push to the top of the table*/
-    margin-left: 25px; /*Adds a margin push to the left of the table*/
-    margin-right: 25px; /*Adds a margin push to the right of the table*/
-}
-
-#Riley:hover {
-    background-color: #4EB774;
-}
-
-#Stacey {
-    background-color: #b0ffb4; /*Adds colour to the div box*/
-    border: none; /*Removes border from the div box*/
-    border-radius: 25px; /*Curves the corners*/
-}
-
-#Stacey table {
-    margin-top: 15px; /*Adds a margin push to the top of the table*/
-    margin-left: 25px; /*Adds a margin push to the left of the table*/
-    margin-right: 25px; /*Adds a margin push to the right of the table*/
-}
-
-#Stacey:hover {
-    background-color: #4EB774;
-}
-
-#Vic {
-    background-color: #b0ffb4; /*Adds colour to the div box*/
-    border: none; /*Removes border from the div box*/
-    border-radius: 25px; /*Curves the corners*/
-}
-
-#Vic table {
-    margin-top: 15px; /*Adds a margin push to the top of the table*/
-    margin-left: 25px; /*Adds a margin push to the left of the table*/
-    margin-right: 25px; /*Adds a margin push to the right of the table*/
-}
-
-#Vic:hover {
-    background-color: #4EB774;
-}
-
-.Team_Profile {
-    background-color: #b0ffb4; /*Creates a background to the Team_Profile div*/
-    border: none; /*Removes the border*/
-    border-radius: 25px; /*Rounds the corners*/
-    padding-right: 25px; /*Adds padding to the right to push content across*/
-    padding-left: 25px; /*Adds padding to the left to keep more centred*/
-    padding-top: 10px; /*Pushes content down*/
-}
-
-
-
-.Individual_Profiles table{
-    width: 95%; /*Reduces the stretch to the table so that it doesnt push against the borders*/
-    align-content: center; /*Centres the content in the tables in the individual profiles*/
-}
 
 /*Homepage styling*/
 

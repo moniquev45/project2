@@ -35,7 +35,7 @@
             <?php
             require_once "settings.php";
 
-          if ($dbconn) {
+            if ($dbconn) {
             $query = "SELECT * FROM about";
             $result = mysqli_query($dbconn, $query);
 
@@ -99,17 +99,15 @@
                     echo "</table>";
                     echo "</section>";
                 }
+                } else {
+                    echo "<p>Error fetching data.</p>";
+                }
+                mysqli_close($dbconn);
             } else {
-                echo "<p>Error fetching data.</p>";
+                echo "<p>Database connection failed.</p>";
             }
-            mysqli_close($dbconn);
-        } else {
-            echo "<p>Database connection failed.</p>";
-        }
 
         ?>
-
-
             </div>
             <!--This is the overall team information-->
             <div class="Team_Profile">
