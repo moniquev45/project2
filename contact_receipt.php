@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-// add time out function that destroys session after inactive too long? 
-           // session_unset();     // deletes all variables
-            //session_destroy();   // completely kills the session
-
 // the redirection code for is the page was accessed by any method (i.e url) other than going from submitting your form on contact page ---> to being processed --> to here
  if (!isset ($_SESSION["contact_receipt"])) {
     header('Location: contact.php'); // if the form has not been submitted, page is redirected to apply page
@@ -62,3 +58,9 @@ session_start();
         <?php include 'footer.inc'; ?>
     </body>
 </html>
+
+<?php
+// session destroyed and unset if user refreshes or clicks away (on refresh your session will no longer be available and you will be taken to the contact page)
+    session_unset();     // deletes all variables
+    session_destroy();   // completely kills the session
+>
