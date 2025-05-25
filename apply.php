@@ -248,8 +248,8 @@
                 <!--Buttons: Input 'Apply' & 'Reset Form'-->
                 <!--Applicant is sent to process_eoi page after clicking Apply to see the results they have submitted-->
                 <p id="form_buttons">
+                    <input type="reset" value="Reset Form" title="Click to Reset Form">
                     <input type="submit" value="Apply" title="Click to Apply Now">
-                    <input type="reset" value="Reset form" title="Click to Reset Form">
                 </p> 
             </form>
         </main>
