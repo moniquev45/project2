@@ -63,4 +63,4 @@ session_start();
 // session destroyed and unset if user refreshes or clicks away (on refresh your session will no longer be available and you will be taken to the contact page)
     session_unset();     // deletes all variables
     session_destroy();   // completely kills the session
->
+?>

@@ -228,10 +228,10 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         if ($stmt === false) {
                             error_log("Error with database, couldn't prepare the insert statement: " . $dbconn->error);
                             $errors[] = "<p class='red_text'> Sorry, an unexpected error has occurred, please try again.</p>";
-                        }
+                        } else {
 
-                        //if the inserting is all fine, it is safe to bind the paradigms
-                        $stmt->bind_param(NULL, '$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', 
+                            //if the inserting is all fine, it is safe to bind the paradigms
+                            $stmt->bind_param(NULL, '$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', 
                                     '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
                                     '$requirements', '$pay', '$hours_start', '$hours_end');
 

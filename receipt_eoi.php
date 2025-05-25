@@ -92,4 +92,4 @@ session_start();
 // session destroyed and unset if user refreshes or clicks away (on refresh will auto be directed back to apply page)
     session_unset();     // deletes all variables
     session_destroy();   // completely kills the session
->
+?>
