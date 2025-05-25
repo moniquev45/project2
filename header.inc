@@ -13,7 +13,9 @@ if (session_status() === PHP_SESSION_NONE) {
                 <h1 class="Company_Name">The Best Big Brain Group </h1>
                 <div class="manager-auth-block">
                     <?php if (empty($_SESSION['manager_logged_in'])): ?>
-                        <a href="manager_login.php" class="managerlogin">Manager Log-in</a>
+                        <div id = "manager_images">
+                            <a href="manager_login.php" class="managerlogin"><img src="images/Manager_Icon.png" alt="Manager Login" class="manager_icon"><p class="manager_icon_text">Manager Login</p></a>
+                        </div>
                     <?php else: ?>
                         <h3 class="managerlogin nohover">
                             Welcome, <?php echo isset($_SESSION['manager_username']) ? htmlspecialchars($_SESSION['manager_username']) : 'Manager'; ?>
