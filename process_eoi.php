@@ -262,8 +262,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                                                 $skills_other_textbox, 
                                                 $requirements, 
                                                 $salary_scale,  // the notch selected will be uploaded - then seen on website as converted $pay
-                                                $hours_start, 
-                                                $hours_end
+                                                $raw_hours_start, 
+                                                $raw_hours_end
                                             );
 
                         // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
