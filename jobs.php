@@ -89,6 +89,7 @@
                                         title='Extended Job Description' class='See_More'>see more
                                     </a>";
                                     echo "<br><br><br>";
+                                    echo "<a href='apply.php' target='_blank' title='Go to Apply For Job Page' class='Apply_Here'>Apply Here</a>";
                                     echo "<hr>";
                                 echo "</section>";
                             echo "</td>";
@@ -105,7 +106,7 @@
                                     }
                                     echo "</ol>";
                                     #This sends the user to the apply page where they can fill out a job application.
-                                    echo "<a href='apply.php' target='_blank' title='Go to Apply For Job Page' class='Apply_Here'>Apply Here</a>";
+                                    
                                 echo "</aside>";
                             echo "</td>";
                         echo "</tr>";

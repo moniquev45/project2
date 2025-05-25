@@ -63,6 +63,36 @@ nav a:hover {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.manager_icon{
+    border-radius: 100%;
+    height: 40px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.manager_icon_text{
+    text-decoration: none;
+    border: 3px solid #cffdd1;
+    background-color: #cffdd1;
+    border-radius: 8px;
+    color: #065321;
+    text-align: center;
+    padding: 2px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#manager_images{
+    text-align: center;
+}
+
+.manager_icon_text:hover {
+    text-decoration: none;
+    color: #cffdd1;
+    background-color: #065321;
+    /* When you hover it transitions the page hyperlinks from the original navigation state to the hover state. */
+    transition: 0.5s;
+}
+
 /* Company name styling */
 .Company_Name{
     color: #011e0a;
@@ -92,11 +122,12 @@ header{
     margin-left: auto;
     display: block;
     color:#011e0a;
+    text-decoration: none;
 }
 
 /* The manager login button styling. */
 .managerlogin:not(.nohover):hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 
