@@ -104,7 +104,56 @@
                                 echo "</tr>";
                             echo "</tbody>";
                         echo "</table>";
-                    echo "<br>";
+                        echo "<br>";
+
+                        echo "<h2 class='Job_Headers_Other_Page'>Required Qualifications:</h2>";
+
+                        $job_qualifications_skills = array_filter(array_map('trim', explode('*', $row['job_full_qualifications_or_skills'])));
+                        $job_essential_or_preferred = array_filter(array_map('trim', explode('*', $row['job_essential_or_preferred'])));
+
+                        echo "<table class='Qualifications_Whole_Table'>";
+                            echo "<tbody>";
+                                echo "<tr class='Qualifications_Table_Row'>";
+                                echo "<th class='Qualifications_Table_Header'>Qualifications</th>";
+                                echo "<th class='Qualifications_Table_Header'>Essential or Preffered</th>";
+                                echo "</tr>";
+
+                                $index = 0;
+                                while ($index < count($job_qualifications_skills)){
+                                    $row_job_qualifications_skills = $job_qualifications_skills[$index];
+                                    $row_job_essential_or_preferred = $job_essential_or_preferred[$index];
+                                    echo "<tr class='Qualifications_Table_Row'>";
+                                        echo "<td class='Qualifications_Table'> ";
+                                            echo "<p>$row_job_qualifications_skills</p>";
+                                        echo "</td>";
+                                        echo "<td class='Qualifications_Table_Essential_Preffered'>";
+                                            echo "<p>$row_job_essential_or_preferred</p>";
+                                        echo "</td>";
+                                    echo "</tr>";
+                                    $index += 1;
+                                }
+                            echo "</tbody>";
+                        echo "</table>";
+
+                        echo "<br>";
+
+                        #This is a list of benifits that I made up if the user was successful in getting the job.
+                        echo "<h2 class='Job_Headers_Other_Page'>Benefits:</h2>";
+                        echo "<div class='Benifits_Of_Job'>";
+                        $job_benifits = array_filter(array_map('trim', explode('*', $row['job_benifits'])));
+                        echo "<ul>";
+                        foreach ($job_benifits as $job_singular_benifits) {
+                            echo "<li>$job_singular_benifits</li>"; 
+                        }
+                        echo "</ul>";
+                        echo "</div>";
+                        echo "<br><br><br>";
+                        #This button allows the users to apply for the job.
+                        echo "<a href='apply.html' target='_blank' title='Application of Jobs' class='Apply_Here'>Apply Here</a>";
+                        #This button sends the user back to the job listings page.
+                        echo "<a href='jobs.html' title='Job Page' class='Back_Button_Job_Page'>Back</a>";
+                        echo "<br><br>";
+                        
                     echo "</main>";
                     } else echo "Information lost.";
                 } else echo "<p> Unable to connect to the db.</p>";
