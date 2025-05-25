@@ -79,16 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                     // date of birth
                     $dob = isset($_POST['dob']) ? sanitise_input($_POST['dob']) : "";
-                        //SQL only accepts YYYY-MM-DD; formatting the data to insert in a way that can be received by SQL
-                        // need to convert slashes into dashes
-                        $converted_dob = strtotime(str_replace('/', '-', $dob));
-
-                        // if string to time fails to recognise valid date it will put error in array
-                        if ($converted_dob !== false) {
-                            $sql_dob = date("Y-m-d", strtotime($dob));
-                        } else {
-                            $errors[] = "Date of birth must be submitted in DD/MM/YYYY format.";
-                        }
 
                     // gender
                     $gender = isset($_POST['gender']) ? sanitise_input($_POST['gender']) : "";
@@ -172,7 +162,18 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($dob)) { $errors[] = "Date of birth is required.";
                     } elseif (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/", $dob)) {
                         $errors[] = "Date of birth must be submitted in DD/MM/YYYY format.";
+                    } else {
+                        //SQL only accepts YYYY-MM-DD; formatting the data to insert in a way that can be received by SQL
+                        // need to convert slashes into dashes
+                        $converted_dob = strtotime(str_replace('/', '-', $dob));
+
+                        // if string to time fails to recognise valid date it will put error in array
+                        if ($converted_dob !== false) {
+                            $sql_dob = date("Y-m-d", strtotime($dob));
+                        } else {
+                            $errors[] = "Error with date of birth conversion.";
                         }
+                    }
 
                     // gender
                     if (empty($gender)) $errors[] = "Gender is required.";
