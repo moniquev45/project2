@@ -156,46 +156,61 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                     // personal details
                         // name
-                    if (empty($first_name)) $errors[] = "First name is required.";
-                    if (!preg_match("/[A-Za-z]+/", $first_name)) 
+                    if (empty($first_name)) {
+                        $errors[] = "First name is required."; 
+                    } elseif (!preg_match("/[A-Za-z]+/", $first_name)) {
                         $errors[] = "First name can only be written in letters.";
+                        }
 
-                    if (empty($family_name)) $errors[] = "Family name is required.";
-                    if (!preg_match("/[A-Za-z]+/", $family_name)) 
+                    if (empty($family_name)) {
+                        $errors[] = "Family name is required.";
+                    } elseif (!preg_match("/[A-Za-z]+/", $family_name)) {
                         $errors[] = "Family name can only be written in letters.";
-                
+                        }
+
                         // dob
-                    if (empty($dob)) $errors[] = "Date of birth is required.";
-                    if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/", $dob)) 
+                    if (empty($dob)) { $errors[] = "Date of birth is required.";
+                    } elseif (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/", $dob)) {
                         $errors[] = "Date of birth must be submitted in DD/MM/YYYY format.";
+                        }
 
                     // gender
                     if (empty($gender)) $errors[] = "Gender is required.";
 
                     // address
-                    if (empty($street_address)) $errors[] = "Street address is required.";
-                    if (!preg_match("/^\d+\s[A-Za-z\s\.]+$/", $street_address)) 
+                    if (empty($street_address)) {
+                         $errors[] = "Street address is required.";
+                    } elseif (!preg_match("/^\d+\s[A-Za-z\s\.]+$/", $street_address)) {
                         $errors[] = "Street address has a max 40 characters; allows numbers, spaces and letters only.";
+                        }
 
-                    if (empty($suburb)) $errors[] = "Suburb is required.";
-                    if (!preg_match("/[A-Za-z\s]+/", $suburb)) 
+                    if (empty($suburb)) {
+                        $errors[] = "Suburb is required.";
+                    } elseif (!preg_match("/[A-Za-z\s]+/", $suburb)) {
                         $errors[] = "Street address has a max 40 characters; allows letters and spaces only.";
+                        }
 
                     if (empty($state)) $errors[] = "State is required.";
                     
-                    if (empty($postcode)) $errors[] = "Postcode is required.";
-                    if (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) 
+                    if (empty($postcode)) {
+                        $errors[] = "Postcode is required."
+                    } elseif (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) {
                         $errors[] = "Must be an Australia postcode; in the range of 0200 to 9944.";
+                        }
 
                     // contact
-                    if (empty($email_apply)) $errors[] = "Email address is required.";
-                    if (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_apply)) 
+                    if (empty($email_apply)) {
+                         $errors[] = "Email address is required.";
+                    } elseif (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_apply)) {
                         $errors[] = "Email must be properly formulated, i.e example@emailaddress.com.";
+                        }
 
-                    if (empty($mobile)) $errors[] = "Phone number is required.";
-                    if (!preg_match("/[0-9\s]+/", $mobile)) 
+                    if (empty($mobile)) {
+                        $errors[] = "Phone number is required.";
+                    } elseif (!preg_match("/[0-9\s]+/", $mobile)) {
                         $errors[] = "You are only allowed numbers and spaces in your phone number.";
-
+                        }
+                        
                 // skills field
                     //required technical skills
                     if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
