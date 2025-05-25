@@ -5,6 +5,21 @@ session_start();
 $username = $password = "";
 $errors = [];
 
+//Creating the login attempts counter per-session
+if (!isset($_SESSION["login_attempts"])) {
+    $_SESSION["login_attempts"] = 0;
+}
+
+if (isset($_SESSION["locked"])) {
+    $locked_time = $SESSION["locked"];
+    if ((time() - $lockedTime) < 30) {
+        $errors[] = "Too many failed attempts, please wait your 30 second wait time and then retry";
+    } else {
+        unset($_SESSION["locked"]);
+        $_SESSION["login_attempts"] = 0; //Resets the counter to zero after wait time recovered
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["username"]);
     $password = $_POST["password"];
