@@ -47,19 +47,47 @@
                     <tbody> <!--Information about team, including contributions and personal information-->
                         <tr>
                             <td>
-                                <dl>
-                                    <dt>Formatting</dt>
-                                        <dd>Structured the entire website header and footer to create templates.</dd>
-                                        <dd>Making colours accessable to read.</dd>
-                                    <dt>Programming</dt>
-                                        <dd>Made the Job page and associated Job Lisiting Pages and CSS.</dd>
-                                        <dd>Updated navigation of pages</dd>
-                                    <dt>Jira</dt>
-                                        <dd>Assisted with some of the jira epics.</dd>
-                                    <dt>Github</dt>
-                                        <dd>Transformed all previous documents into .php files</dd>
-                                    <dt?>Organisation</dt>
-                                </dl>
+                                <ul>
+                                    <dl>
+                                    <dt><li>Part 1</li></dt>
+                                        <input id="Set_Up" type="checkbox" name="Set_Up" />
+                                        <label for="Set_Up">Set Up</label>
+                                        <ul class="submenu1">
+                                            <dd><li><a href="#">Created the GitHub repository</li></dd>
+                                            <dd><li><a href="#">Formatting the header and footer on all pages</li></dd>
+                                                <dd><li><a href="#">Developing the structure of the pages</li></dd>         
+                                                <dd><li><a href="#">Choosing colour and font palettes</li></dd>
+                                                <dd><li><a href="#">Developed the navigation for all pages</li></dd>
+                                        </ul>
+                                        <dd><li>Programming</li></dd>
+                                        <ul>
+                                            <dd><li>Developed the Job page</li></dd>
+                                            <dd><li>Developed the Job listing page</li></dd>
+                                            <dd><li>Styled the relevant CSS for these pages</li></dd>
+                                            <dd><li>Applied the colour palette to the entire website</li></dd>
+                                        </ul>
+                                        <dd><li>Organisation</li></dd>
+                                        <ul>
+                                            <dd><li>Assisted in the creation of Jira epics</li></dd>
+                                            <dd><li>Assisted in delegating tasks to each team member</li></dd>
+                                        </ul>
+                                        <dt><li>Part 2</li></dt>
+                                            <dd><li>Set Up</li></dd>
+                                            <ul>
+                                                <dd><li>Creating the github repository</li></dd>
+                                                <dd><li>Changing html files to php</li></dd>
+                                            </ul>
+                                            <dd><li>Programming</li></dd>
+                                            <ul>
+                                                <dd><li>Updated the job page with</li></dd>
+                                                <dd><li>Updated the job listing page with</li></dd>
+                                            </ul>
+                                            <dd><li>Organisation</li></dd>
+                                            <ul>
+                                                <dd><li></li></dd>
+                                            </ul>
+                                    </dl>
+                                </ul>
                             </td> <!--Contribution-->
                             <td>
                                 <ul>
