@@ -50,12 +50,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: index.php");
                 exit();
             } else {
+                $_SESSION["login_attempts"]++
                 $errors[] = "Incorrect password.";
             }
         } else {
             $errors[] = "Username not found.";
         }
         mysqli_stmt_close($query);
+
+        //Calls the lock function to run from the time of the last attempt
+        if($_SESSION["login_attempts"] > 2) {
+            $_SESSION["locked"] = time();
+        }
     }
 }
 ?>
