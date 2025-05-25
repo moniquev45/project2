@@ -79,16 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                     // date of birth
                     $dob = isset($_POST['dob']) ? sanitise_input($_POST['dob']) : "";
-                        //SQL only accepts YYYY-MM-DD; formatting the data to insert in a way that can be received by SQL
-                        // need to convert slashes into dashes
-                        $converted_dob = strtotime(str_replace('/', '-', $dob));
-
-                        // if string to time fails to recognise valid date it will put error in array
-                        if ($converted_dob !== false) {
-                            $sql_dob = date("Y-m-d", strtotime($dob));
-                        } else {
-                            $errors[] = "Date of birth must be submitted in DD/MM/YYYY format.";
-                        }
 
                     // gender
                     $gender = isset($_POST['gender']) ? sanitise_input($_POST['gender']) : "";
@@ -156,45 +146,71 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                     // personal details
                         // name
-                    if (empty($first_name)) $errors[] = "First name is required.";
-                    if (!preg_match("/[A-Za-z]+/", $first_name)) 
+                    if (empty($first_name)) {
+                        $errors[] = "First name is required."; 
+                    } elseif (!preg_match("/[A-Za-z]+/", $first_name)) {
                         $errors[] = "First name can only be written in letters.";
+                        }
 
-                    if (empty($family_name)) $errors[] = "Family name is required.";
-                    if (!preg_match("/[A-Za-z]+/", $family_name)) 
+                    if (empty($family_name)) {
+                        $errors[] = "Family name is required.";
+                    } elseif (!preg_match("/[A-Za-z]+/", $family_name)) {
                         $errors[] = "Family name can only be written in letters.";
-                
+                        }
+
                         // dob
-                    if (empty($dob)) $errors[] = "Date of birth is required.";
-                    if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/", $dob)) 
+                    if (empty($dob)) { $errors[] = "Date of birth is required.";
+                    } elseif (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/", $dob)) {
                         $errors[] = "Date of birth must be submitted in DD/MM/YYYY format.";
+                    } else {
+                        //SQL only accepts YYYY-MM-DD; formatting the data to insert in a way that can be received by SQL
+                        // need to convert slashes into dashes
+                        $converted_dob = strtotime(str_replace('/', '-', $dob));
+
+                        // if string to time fails to recognise valid date it will put error in array
+                        if ($converted_dob !== false) {
+                            $sql_dob = date("Y-m-d", strtotime($dob));
+                        } else {
+                            $errors[] = "Error with date of birth conversion.";
+                        }
+                    }
 
                     // gender
                     if (empty($gender)) $errors[] = "Gender is required.";
 
                     // address
-                    if (empty($street_address)) $errors[] = "Street address is required.";
-                    if (!preg_match("/^\d+\s[A-Za-z\s\.]+$/", $street_address)) 
+                    if (empty($street_address)) {
+                         $errors[] = "Street address is required.";
+                    } elseif (!preg_match("/^\d+\s[A-Za-z\s\.]+$/", $street_address)) {
                         $errors[] = "Street address has a max 40 characters; allows numbers, spaces and letters only.";
+                        }
 
-                    if (empty($suburb)) $errors[] = "Suburb is required.";
-                    if (!preg_match("/[A-Za-z\s]+/", $suburb)) 
+                    if (empty($suburb)) {
+                        $errors[] = "Suburb is required.";
+                    } elseif (!preg_match("/[A-Za-z\s]+/", $suburb)) {
                         $errors[] = "Street address has a max 40 characters; allows letters and spaces only.";
+                        }
 
                     if (empty($state)) $errors[] = "State is required.";
                     
-                    if (empty($postcode)) $errors[] = "Postcode is required.";
-                    if (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) 
+                    if (empty($postcode)) {
+                        $errors[] = "Postcode is required." ;
+                    } elseif (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) {
                         $errors[] = "Must be an Australia postcode; in the range of 0200 to 9944.";
+                        }
 
                     // contact
-                    if (empty($email_apply)) $errors[] = "Email address is required.";
-                    if (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_apply)) 
+                    if (empty($email_apply)) {
+                         $errors[] = "Email address is required.";
+                    } elseif (!preg_match("/[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/", $email_apply)) {
                         $errors[] = "Email must be properly formulated, i.e example@emailaddress.com.";
+                        }
 
-                    if (empty($mobile)) $errors[] = "Phone number is required.";
-                    if (!preg_match("/[0-9\s]+/", $mobile)) 
+                    if (empty($mobile)) {
+                        $errors[] = "Phone number is required.";
+                    } elseif (!preg_match("/[0-9\s]+/", $mobile)) {
                         $errors[] = "You are only allowed numbers and spaces in your phone number.";
+                        }
 
                 // skills field
                     //required technical skills
@@ -216,29 +232,77 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     // if there are errors, it will display in the HTML section below and not insert
                     } else {                       
                         // no errors and safe to proceed with inserting code into the eoi table in database
-                        $sql_insert = "INSERT INTO eoi 
-                                    (eoi_number, status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
-                                    skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
-                                 VALUES (
-                                    NULL, '$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', 
-                                    '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
-                                    '$requirements', '$pay', '$hours_start', '$hours_end'
-                                )";
+                        //$stmt used to prevent injection
+                        $stmt = $dbconn->prepare ("INSERT INTO eoi 
+                                    (status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
+                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-                        // getting the id for the row just inserted (i.e $sql_insert command) so that the eoi_number and timestamp can be echoed later
-                    if (mysqli_query($dbconn, $sql_insert)) {
-                        $last_id = mysqli_insert_id($dbconn);
+                        // if the above code doesn't work, error will be lodged in error log, and the sorry message will display.
+                        if ($stmt === false) {
+                            error_log("Error with database, couldn't prepare the insert statement: " . $dbconn->error);
+                            $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                        } else {
 
-                        // getting the eoi_number and timestamp data from table
-                        $query = "SELECT eoi_number, submission_time FROM eoi WHERE eoi_number = $last_id";
-                        $result_table = mysqli_query($dbconn, $query);
-                        $row = mysqli_fetch_assoc($result_table);
-                            // assigning that data to values
-                            $eoi_number = $row['eoi_number'];
-                            $submission_time = $row['submission_time'];
-                                // converting the time into hours:minutes am/pm DD-MM-YYYY
-                                $formatted_time = date("h:i a d-m-Y", strtotime($submission_time)); 
-                    
+                            //if the inserting is all fine, it is safe to bind the paradigms
+                            //eoi_number & time submission will be auto done in table, no uploading required
+                            $stmt->bind_param("sssssssssssssssiss", 
+                                                $status, 
+                                                $job_reference, 
+                                                $first_name, 
+                                                $family_name, 
+                                                $sql_dob, 
+                                                $gender, 
+                                                $street_address, 
+                                                $suburb, 
+                                                $state, 
+                                                $postcode, 
+                                                $email_apply, 
+                                                $mobile, 
+                                                $skills, 
+                                                $skills_other_textbox, 
+                                                $requirements, 
+                                                $salary_scale,  // the notch selected will be uploaded - then seen on website as converted $pay
+                                                $hours_start, 
+                                                $hours_end
+                                            );
+
+                        // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
+                        if (!$stmt->execute()) {
+                            error_log("Couldn't execute the insert statement (eoi): " . htmlspecialchars($stmt->error));
+                            $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                            } else {
+                                // last id successfully retrieved
+                                $last_id = $stmt->insert_id;
+
+                                // getting the eoi_number and timestamp data from table
+                                $id_stmt = $dbconn->prepare ("SELECT eoi_number, submission_time FROM eoi WHERE eoi_number = ?");
+
+                                if ($id_stmt === false) {
+                                    error_log("Error with database, couldn't prepare the select ID and submission time statement: " . $dbconn->error);
+                                    $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                                    } else {
+                                        $id_stmt->bind_param("i", $last_id);
+
+                                     if (!$id_stmt->execute()) {
+                                            error_log("Error with database, couldn't execute the select ID and submission time statement: " . $dbconn->error);
+                                            $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                                        } else {
+                                            $result = $id_stmt->get_result();
+                                            $row = $result->fetch_assoc();
+
+                                            // assigning that data to values
+                                            $eoi_number = $row['eoi_number'];
+                                            $submission_time = $row['submission_time'];
+                                            // converting the time into hours:minutes am/pm DD-MM-YYYY
+                                            $formatted_time = date("h:i a d-m-Y", strtotime($submission_time)); 
+                                        }
+                                    $id_stmt->close();
+                                }
+                            }
+                            $stmt->close();
+                        }
+
+                    //SAVING THE DATA
                     // concatenating the address in preparation for display in receipt page
                     $formatted_address = $street_address . "\n" . $suburb . ", " . $state . ", " . $postcode;
 
@@ -270,10 +334,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         //redirecting to receipt page
                         header("Location: receipt_eoi.php");
                         exit();
-
-                    } else {
-                        echo "<p class='red_text'>Error: ".mysqli_error($dbconn)."</p>";
-                    }
 
                 // closing database connection
                 mysqli_close($dbconn);
@@ -311,10 +371,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             //code to insert the input to the database or show the errors
                 if (!empty($errors)) {
                 // Display all error messages
+                    echo "<p><strong>Please ensure all of the below warnings are resolved before submitting.</strong></p>";
+
                     foreach ($errors as $error) {
                         echo "<p class='red_text'>".htmlspecialchars($error)."</p>";
                     }
-                        echo "<p><strong>Please ensure all errors are resolved before submitting.</strong></p>";
 
                     // Back button to get to apply.php
                     echo "<form action='apply.php' method='get'>

@@ -47,8 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             //line to run the above table creating code
             mysqli_query($dbconn,$sql_create_contact);
 
-            // make sure form was submitted with POST
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // listing what everything means
                 // make sure the status for a new form is 'new'
                     $status = "New";
                     
@@ -90,24 +89,53 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             
             } else {                        
                     // inserting code into the eoi table in database
-                    $sql_insert_contact = "INSERT INTO contact (
+                    $stmt = $dbconn->prepare ("INSERT INTO contact (
                             enquiry_number, status, reason, name, email, enquiry
                             )
                             VALUES (
-                                NULL, '$status', '$reason', '$contact_name','$email_contact', '$enquiry_box'
-                            )";
+                                NULL, ?, ?, ?, ?, ?
+                            )");
+                    
+                    // if the above code doesn't work, error will be lodged in error log, and the sorry message will display.
+                    if ($stmt === false) {
+                        error_log("Error with database, couldn't prepare the insert statement: " . $dbconn->error);
+                        $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                        } else {
+
+                        //if the inserting is all fine, it is safe to bind the paradigms
+                        $stmt->bind_param("sssss", $status, $reason, $contact_name, $email_contact, $enquiry_box);
 
                         // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
-                     if (mysqli_query($dbconn, $sql_insert_contact)) {
-                        $last_id = mysqli_insert_id($dbconn);
+                     if (!$stmt->execute()) {
+                        error_log("Couldn't execute the insert statement (contact): " . htmlspecialchars($stmt->error));
+                        $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                        } else {
+                            // last id successfully retrieved
+                            $last_id = $stmt->insert_id;
 
-                        // getting the eoi_number and timestamp data from table
-                        $query = "SELECT enquiry_number, submission_time FROM contact WHERE enquiry_number = $last_id";
-                        $result_table = mysqli_query($dbconn, $query);
-                        $row = mysqli_fetch_assoc($result_table);
-                        $submission_time = $row['submission_time'];
-                        $formatted_time = date("h:i a d-m-Y", strtotime($submission_time));
+                            // getting the eoi_number and timestamp data from table
+                            $id_stmt = $dbconn->prepare ("SELECT enquiry_number, submission_time FROM contact WHERE enquiry_number = ?");
 
+                            if ($id_stmt === false) {
+                                error_log("Error with database, couldn't prepare the select ID and submission time statement: " . $dbconn->error);
+                                $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                                } else {
+                                    $id_stmt->bind_param("i", $last_id);
+                                     if (!$id_stmt->execute()) {
+                                            error_log("Error with database, couldn't execute the select ID and submission time statement: " . $dbconn->error);
+                                            $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                                        } else {
+                                            $result = $id_stmt->get_result();
+                                            $row = $result->fetch_assoc();
+
+                                            $submission_time = $row['submission_time'];
+                                            $formatted_time = date("h:i a d-m-Y", strtotime($submission_time));
+                                        }
+                                    $id_stmt->close();
+                                }
+                            }
+                            $stmt->close();
+                        }
 
                 // Storing this data into a session receipt to then access on receipt page. Stops the data being resubmitted on refreshing the page.
 
@@ -127,12 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         //redirecting to receipt page
                         header("Location: contact_receipt.php");
                         exit();
-
-                    } else {
-                        echo "<p class='red_text'>Error: ".mysqli_error($dbconn)."</p>";
-                    }
                 }
-            }
             ?>
 
 <!DOCTYPE html>
@@ -163,11 +186,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             <?php
                 // errors array will display in html form
             if (!empty($errors)) {
+                
+                echo "<p><strong>Please ensure to fill out all form details before submitting.</strong></p>";
                 // Display all error messages
                 foreach ($errors as $error) {
                     echo "<p class='red_text'>".htmlspecialchars($error)."</p>";
                         }
-                    echo "<p><strong>Please ensure to fill out all form details before submitting.</strong></p>";
 
                     // Back button to get to apply.php
                     echo "<form action='contact.php' method='get'>
