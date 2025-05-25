@@ -31,6 +31,7 @@
                 if ($dbconn) {
                     $query = "SELECT * FROM jobs";
                     $result = mysqli_query($dbconn, $query);
+                    echo "<p>Find and explore a world filled with oportunities in the tech field. While finding out what qualifiacations you need to succeed.</p>";
                     echo "<table>";
                     echo "<tbody>";
                     for ($i = 0; $i < mysqli_num_rows($result); $i++){
