@@ -234,11 +234,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         // no errors and safe to proceed with inserting code into the eoi table in database
                         //$stmt used to prevent injection
                         $stmt = $dbconn->prepare ("INSERT INTO eoi 
-                                    (status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
-                                    skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
-                                 VALUES (
-                                    NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
-                                )");
+                                    (status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
+                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
                         // if the above code doesn't work, error will be lodged in error log, and the sorry message will display.
                         if ($stmt === false) {
@@ -248,7 +245,26 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                             //if the inserting is all fine, it is safe to bind the paradigms
                             //eoi_number & time submission will be auto done in table, no uploading required
-                            $stmt->bind_param('$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', '$requirements', '$pay', '$hours_start', '$hours_end');
+                            $stmt->bind_param("sssssssssssssssiss", 
+                                                $status, 
+                                                $job_reference, 
+                                                $first_name, 
+                                                $family_name, 
+                                                $sql_dob, 
+                                                $gender, 
+                                                $street_address, 
+                                                $suburb, 
+                                                $state, 
+                                                $postcode, 
+                                                $email_apply, 
+                                                $mobile, 
+                                                $skills, 
+                                                $skills_other_textbox, 
+                                                $requirements, 
+                                                $salary_scale,  // the notch selected will be uploaded - then seen on website as converted $pay
+                                                $hours_start, 
+                                                $hours_end
+                                            );
 
                         // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
                         if (!$stmt->execute()) {
