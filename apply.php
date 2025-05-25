@@ -71,7 +71,7 @@
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         $raw_job_reference = htmlspecialchars($row['job_id']);  // getting id data from table
-                                        $job_reference = . str_pad($job_id, 5, "0", STR_PAD_LEFT); // Ensuring the job ID is still 5 digits
+                                       // $job_reference = . str_pad($job_id, 5, 0, STR_PAD_LEFT); // Ensuring the job ID is still 5 digits
                                         echo "<option value=\"$job_reference\">$job_reference</option>";
                                     }
                                 } else {

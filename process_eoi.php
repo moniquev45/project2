@@ -216,18 +216,32 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     // if there are errors, it will display in the HTML section below and not insert
                     } else {                       
                         // no errors and safe to proceed with inserting code into the eoi table in database
-                        $sql_insert = "INSERT INTO eoi 
+                        //$stmt used to prevent injection
+                        $stmt = $dbconn->prepare ("INSERT INTO eoi 
                                     (eoi_number, status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
                                     skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
                                  VALUES (
-                                    NULL, '$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', 
-                                    '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
-                                    '$requirements', '$pay', '$hours_start', '$hours_end'
-                                )";
+                                    NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                                )");
 
-                        // getting the id for the row just inserted (i.e $sql_insert command) so that the eoi_number and timestamp can be echoed later
-                    if (mysqli_query($dbconn, $sql_insert)) {
-                        $last_id = mysqli_insert_id($dbconn);
+                        // if the above code doesn't work, error will be lodged in error log, and the sorry message will display.
+                        if ($stmt === false) {
+                            error_log("Error with database, couldn't prepare the insert statement: " . $dbconn->error);
+                            $errors[] = "<p class='red_text'> Sorry, an unexpected error has occurred, please try again.</p>";
+                        }
+
+                        //if the inserting is all fine, it is safe to bind the paradigms
+                        $stmt->bind_param(NULL, '$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', 
+                                    '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
+                                    '$requirements', '$pay', '$hours_start', '$hours_end');
+
+                        // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
+                        if (!$stmt->execute()) {
+                            error_log("Prepare failed: " . htmlspecialchars($stmt->error) .);
+                            $errors[] = "<p class='red_text'> Sorry, an unexpected error has occurred, please try again.</p>";
+                            } else {
+                                // last id successfully retrieved
+                                $last_id = $stmt->insert_id;
 
                         // getting the eoi_number and timestamp data from table
                         $query = "SELECT eoi_number, submission_time FROM eoi WHERE eoi_number = $last_id";
@@ -311,10 +325,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             //code to insert the input to the database or show the errors
                 if (!empty($errors)) {
                 // Display all error messages
+                    echo "<p><strong>Please ensure all of the below warnings are resolved before submitting.</strong></p>";
+
                     foreach ($errors as $error) {
                         echo "<p class='red_text'>".htmlspecialchars($error)."</p>";
                     }
-                        echo "<p><strong>Please ensure all errors are resolved before submitting.</strong></p>";
 
                     // Back button to get to apply.php
                     echo "<form action='apply.php' method='get'>
