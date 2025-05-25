@@ -236,7 +236,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                         // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
                         if (!$stmt->execute()) {
-                            error_log("Couldn't execute the insert statement (eoi): " . htmlspecialchars($stmt->error) .);
+                            error_log("Couldn't execute the insert statement (eoi): " . htmlspecialchars($stmt->error));
                             $errors[] = "Sorry, an unexpected error has occurred, please try again.";
                             } else {
                                 // last id successfully retrieved
