@@ -186,11 +186,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             <?php
                 // errors array will display in html form
             if (!empty($errors)) {
+                
+                echo "<p><strong>Please ensure to fill out all form details before submitting.</strong></p>";
                 // Display all error messages
                 foreach ($errors as $error) {
                     echo "<p class='red_text'>".htmlspecialchars($error)."</p>";
                         }
-                    echo "<p><strong>Please ensure to fill out all form details before submitting.</strong></p>";
 
                     // Back button to get to apply.php
                     echo "<form action='contact.php' method='get'>

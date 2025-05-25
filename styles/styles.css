@@ -5,7 +5,7 @@ author: Monique Vilardo, Riley Tuckett, Stacey Millers, Victoria Rogers
 
 created: 30/03/2025
 
-last modified: 14/04/2025
+last modified: 26/05/2025
 
 description: index.html, jobs.html, apply.html, about.html
 */
@@ -612,7 +612,12 @@ right, right next to the employment details, and it allows the data to take up 5
     width: 100%;
     margin-bottom: 10px; 
     }    
-    other_skills
+
+  /* SKILLS FIELD | the text boxes label margin and width*/
+ .apply_textarea label {
+    width: 100%;
+    margin-bottom: 10px; 
+    }  
 
  /* SKILLS FIELD | Text Area - Box border formatting */
  .apply_textarea textarea {
