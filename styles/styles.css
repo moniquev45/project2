@@ -1083,8 +1083,8 @@ right, right next to the employment details, and it allows the data to take up 5
     padding: 8px;
     max-width: fit-content;
  }
- /* change the text to red (used for errors) */
-  .red_text {color: #ff0000;}
+ /* change the text to error text - gone more orange then red to ensure accessibility */
+  .red_text {color: #ff8c00;}
 
  /* BUTTONS Position & Size Adjustments*/
  #eoi_button {

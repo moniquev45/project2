@@ -193,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($state)) $errors[] = "State is required.";
                     
                     if (empty($postcode)) {
-                        $errors[] = "Postcode is required."
+                        $errors[] = "Postcode is required." ;
                     } elseif (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) {
                         $errors[] = "Must be an Australia postcode; in the range of 0200 to 9944.";
                         }
@@ -210,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     } elseif (!preg_match("/[0-9\s]+/", $mobile)) {
                         $errors[] = "You are only allowed numbers and spaces in your phone number.";
                         }
-                        
+
                 // skills field
                     //required technical skills
                     if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
