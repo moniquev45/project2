@@ -371,7 +371,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             //code to insert the input to the database or show the errors
                 if (!empty($errors)) {
                 // Display all error messages
-                    echo "<p><strong>Please ensure all of the below warnings are resolved before submitting.</strong></p>";
+                    echo "<p><strong>Please note that your form was unable to submit due to the following issues:</strong></p>";
 
                     foreach ($errors as $error) {
                         echo "<p class='red_text'>".htmlspecialchars($error)."</p>";

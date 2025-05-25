@@ -186,8 +186,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             <?php
                 // errors array will display in html form
             if (!empty($errors)) {
-                
-                echo "<p><strong>Please ensure to fill out all form details before submitting.</strong></p>";
+
+                echo "<p><strong>Please note that your form was unable to submit due to the following issues:</strong></p>";
                 // Display all error messages
                 foreach ($errors as $error) {
                     echo "<p class='red_text'>".htmlspecialchars($error)."</p>";
