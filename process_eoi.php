@@ -218,7 +218,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         // no errors and safe to proceed with inserting code into the eoi table in database
                         //$stmt used to prevent injection
                         $stmt = $dbconn->prepare ("INSERT INTO eoi 
-                                    (eoi_number, status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
+                                    (status, job_reference, first_name, family_name, dob, gender, street_address, suburb, state, postcode, email_apply, mobile, 
                                     skills, skills_other, requirements, salary_scale, hours_start, hours_end) 
                                  VALUES (
                                     NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
@@ -227,32 +227,50 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         // if the above code doesn't work, error will be lodged in error log, and the sorry message will display.
                         if ($stmt === false) {
                             error_log("Error with database, couldn't prepare the insert statement: " . $dbconn->error);
-                            $errors[] = "<p class='red_text'> Sorry, an unexpected error has occurred, please try again.</p>";
+                            $errors[] = "Sorry, an unexpected error has occurred, please try again.";
                         } else {
 
                             //if the inserting is all fine, it is safe to bind the paradigms
-                            $stmt->bind_param(NULL, '$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', 
-                                    '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', 
-                                    '$requirements', '$pay', '$hours_start', '$hours_end');
+                            //eoi_number & time submission will be auto done in table, no uploading required
+                            $stmt->bind_param('$status', '$job_reference', '$first_name', '$family_name', '$sql_dob', '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email_apply', '$mobile', '$skills', '$skills_other_textbox', '$requirements', '$pay', '$hours_start', '$hours_end');
 
                         // getting the id for the row just inserted (i.e step 5) so that the eoi_number and timestamp can be echoed later
                         if (!$stmt->execute()) {
-                            error_log("Prepare failed: " . htmlspecialchars($stmt->error) .);
-                            $errors[] = "<p class='red_text'> Sorry, an unexpected error has occurred, please try again.</p>";
+                            error_log("Couldn't execute the insert statement (eoi): " . htmlspecialchars($stmt->error) .);
+                            $errors[] = "Sorry, an unexpected error has occurred, please try again.";
                             } else {
                                 // last id successfully retrieved
                                 $last_id = $stmt->insert_id;
 
-                        // getting the eoi_number and timestamp data from table
-                        $query = "SELECT eoi_number, submission_time FROM eoi WHERE eoi_number = $last_id";
-                        $result_table = mysqli_query($dbconn, $query);
-                        $row = mysqli_fetch_assoc($result_table);
-                            // assigning that data to values
-                            $eoi_number = $row['eoi_number'];
-                            $submission_time = $row['submission_time'];
-                                // converting the time into hours:minutes am/pm DD-MM-YYYY
-                                $formatted_time = date("h:i a d-m-Y", strtotime($submission_time)); 
-                    
+                                // getting the eoi_number and timestamp data from table
+                                $id_stmt = $dbconn->prepare ("SELECT eoi_number, submission_time FROM eoi WHERE eoi_number = ?");
+
+                                if ($id_stmt === false) {
+                                    error_log("Error with database, couldn't prepare the select ID and submission time statement: " . $dbconn->error);
+                                    $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                                    } else {
+                                        $id_stmt->bind_param("i", $last_id);
+
+                                     if (!$id_stmt->execute()) {
+                                            error_log("Error with database, couldn't execute the select ID and submission time statement: " . $dbconn->error);
+                                            $errors[] = "Sorry, an unexpected error has occurred, please try again.";
+                                        } else {
+                                            $result = $id_stmt->get_result();
+                                            $row = $result->fetch_assoc();
+
+                                            // assigning that data to values
+                                            $eoi_number = $row['eoi_number'];
+                                            $submission_time = $row['submission_time'];
+                                            // converting the time into hours:minutes am/pm DD-MM-YYYY
+                                            $formatted_time = date("h:i a d-m-Y", strtotime($submission_time)); 
+                                        }
+                                    $id_stmt->close();
+                                }
+                            }
+                            $stmt->close();
+                        }
+
+                    //SAVING THE DATA
                     // concatenating the address in preparation for display in receipt page
                     $formatted_address = $street_address . "\n" . $suburb . ", " . $state . ", " . $postcode;
 
@@ -284,10 +302,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                         //redirecting to receipt page
                         header("Location: receipt_eoi.php");
                         exit();
-
-                    } else {
-                        echo "<p class='red_text'>Error: ".mysqli_error($dbconn)."</p>";
-                    }
 
                 // closing database connection
                 mysqli_close($dbconn);
