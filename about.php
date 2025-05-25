@@ -32,42 +32,41 @@
 
             <!--This is the individual team information blocks-->
             <div class="Individual_Profiles">
-                    <?php
+            <?php
             require_once "settings.php";
 
-            $dbconn = mysqli_connect($host, $user, $pwd, $db);
-            if ($dbconn) {
-                $query = "SELECT * FROM about";
-                $result = mysqli_query($dbconn, $query);
-                
-                echo "<table>";
-                //Creating the headings for each column in the table
-                echo "<thead> 
-                        <tr>
-                            <th>Member</th>
-                            <th>Contributions</th>
-                            <th>Experience</th>
-                            <th>Hobbies</th>
-                            <th>Favourites</th>
-                        </tr>
-                    </thead>";
-                echo "<tbody>";
+          if ($dbconn) {
+            $query = "SELECT * FROM about";
+            $result = mysqli_query($dbconn, $query);
 
-                    //For each row of data print in the original format in a dynamic style
+            if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr class='Member_Table_Row'>";
-
-                    // Member Name -> collects the team member name and prints in a h2 style
-                    echo "<td class='Member_Table_Data'>";
-                    echo "<section>";
+                    //Printing the team member name above the table in a h2 style
+                    echo "<section class='Individual_Profile'>";
                     echo "<hr>";
                     echo "<div class='Member_Name'>";
                     echo "<h2 id='" . htmlspecialchars($row['member_name']) . "'>" . htmlspecialchars($row['member_name']) . "</h2>";
                     echo "</div>";
-                    echo "</section>";
-                    echo "</td>";
 
-                    // Contributions -> foreach row in the database print the member's contribution, making a new row for each * it reads creating a new $line
+                    // Beginning of table
+                    echo "<table class='Member_Table'>";
+                    echo "<thead> 
+                            <tr>
+                                <th>Contributions</th>
+                                <th>Experience</th>
+                                <th>Hobbies</th>
+                                <th>Favourites</th>
+                            </tr>
+                        </thead>";
+                    echo "<tbody>";
+                    echo "<tr class='Member_Table_Row'>";
+
+
+                    //Using a foreach function to run a test of "each * that is seen, explode the prior text, and then create the variable line to be printed
+                    //This function is used for each part of the table as each part has multiple list items
+
+                    
+                    // Contributions 
                     echo "<td><ul>";
                     foreach (explode("*", $row['member_contribution']) as $line) {
                         echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
@@ -96,16 +95,19 @@
                     echo "</ul></td>";
 
                     echo "</tr>";
+                    echo "</tbody>";
+                    echo "</table>";
+                    echo "</section>";
                 }
-
-                echo "</tbody>";
-                echo "</table>";
-
-                mysqli_close($dbconn);
             } else {
-                echo "<p>Database connection failed.</p>";
+                echo "<p>Error fetching data.</p>";
             }
-            ?>
+            mysqli_close($dbconn);
+        } else {
+            echo "<p>Database connection failed.</p>";
+        }
+
+        ?>
 
 
             </div>
