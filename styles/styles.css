@@ -263,23 +263,41 @@ from one background colour to another. */
     transition: 0.5s;
 }
 
+.qualifications_and_skills_short_list{
+    padding: 10px 10px;
+    margin: 10px 10px;
+}
+
 /* This makes the apply button on the job listing page look nice. */
 .Apply_Here{
-    text-decoration: none;
-    padding: 15px 15px;
+    padding: 10px 10px;
+    padding-left: 70px;
+    padding-right: 70px;
     border: 4px solid #065321;
     background-color: #065321;
     border-radius: 8px;
-    color: #cffdd1;
     text-align: center;
+    margin: 20px 20px;
+    color: #cffdd1;
+    text-decoration: none;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+}
+
+.Apply_Here:hover{
+    background-color: #cffdd1;
 }
 
 /* This makes it so that when you hover over the apply button it changes text & background colour with a 0.5s transition. */
-.Apply_Here:hover{
+.Apply_Here:hover a{
     color: #065321;
-    background-color: #cffdd1;
     /* When you hover it transitions from the original state to the hover state. */
     transition: 0.5s;
+}
+
+.Apply_Here a{
+    color: #cffdd1;
+    text-decoration: none; 
 }
 
 /* This makes the main image on the job specific Data Analyst page to be the certain image, and be 

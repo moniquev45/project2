@@ -90,7 +90,7 @@
                                         title='Extended Job Description' class='See_More'>see more
                                     </a>";
                                     echo "<br><br><br>";
-                                    echo "<a href='apply.php' target='_blank' title='Go to Apply For Job Page' class='Apply_Here'>Apply Here</a>";
+                                    
                                     echo "<hr>";
                                 echo "</section>";
                             echo "</td>";
@@ -98,6 +98,7 @@
                                 echo "<aside>";
                                     #More Info
                                     echo "<br>";
+                                    echo "<div id='qualifications_and_skills_short_list'>";
                                     echo "<h3>Required Qualifications/Skills:</h3>";
                                     echo "<p>(In order of importance)</p>";
                                     $job_qualifications_skills = array_filter(array_map('trim', explode('*', $row['job_qualifications_or_skills'])));
@@ -106,11 +107,18 @@
                                         echo "<li>$job_singular_qualifications_skills</li>"; 
                                     }
                                     echo "</ol>";
+                                    echo "</div>";
+                                    echo "</tr>";
+                                    echo "<tr>";
+                                    echo "<td colspan='2'>";
+                                    echo "<div class='Apply_Here'>";
                                     #This sends the user to the apply page where they can fill out a job application.
-                                    
+                                    echo "<a href='apply.php' target='_blank' title='Go to Apply For Job Page'>Apply Here</a>";
+                                    echo "</div>";
+                                    echo "</td>";
+                                    echo "</tr>";
                                 echo "</aside>";
                             echo "</td>";
-                        echo "</tr>";
                     }
                     echo "</tbody>";
                     echo "</table>";
