@@ -9,12 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 ?>
 
 <?php
-// debugging error reporting turned on
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-?>
-
-<?php
  // including database settings
     require_once("settings.php");
 
@@ -188,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($suburb)) {
                         $errors[] = "Suburb is required.";
                     } elseif (!preg_match("/[A-Za-z\s]+/", $suburb)) {
-                        $errors[] = "Street address has a max 40 characters; allows letters and spaces only.";
+                        $errors[] = "Suburb has a max 40 characters; allows letters and spaces only.";
                         }
 
                     if (empty($state)) $errors[] = "State is required.";
@@ -196,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($postcode)) {
                         $errors[] = "Postcode is required." ;
                     } elseif (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) {
-                        $errors[] = "Must be an Australia postcode; in the range of 0200 to 9944.";
+                        $errors[] = "Must be an Australian postcode.";
                         }
 
                     // contact
@@ -217,13 +211,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
 
                     //if checkbox for 'yes other skills' is checked, the other skills needs to be filled in
-                    if (isset($_POST["yes_other_skills"])) {
+                    if (in_array("other_skills", $raw_data_skills)) {
                         // if other skills textbox is empty an error will show
                         if (empty($skills_other_textbox)) $errors[] = "You selected 'Yes' to possessing other skills. Please ensure to write them in the textbox.";
                         } else {
                             // 'yes' to other skills checkbox has not been checked, can proceed as normal
                         }
-
                     // rest of form inputs aren't required or pattern based
                     
                     //checking if there are errors
@@ -390,9 +383,3 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         <?php include 'footer.inc'; ?>
     </body>
 </html>
-
-<!--TO DO: 
-need monique's table data to echo.
-skills to have its own seperate table? currently a string data
-print receipt/email?
-Resume Sections?-->

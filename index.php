@@ -24,13 +24,13 @@
 
         <main>
             <!--Main body of the page-->
-            <h1 id="Home_Title">The Best Big Brain Group</h1>
-            <p id="TitlePgraph">Delivering Software since 1988</p>
-            <div id="Home_Sections">
+            <h1 id="home_title">The Best Big Brain Group</h1>
+            <p id="titlepgraph">Delivering Software since 1988</p>
+            <div id="home_sections">
                 <!--A paragraph that describes the company-->
-                <div id="Who_we_are">
+                <div id="who_we_are">
                     <h2>Who we are:</h2>
-                    <p id="Light_Background_Text">
+                    <p id="light_background_text">
                         We are a dynamic organization dedicated to bridging the gap between talented individuals and 
                         job opportunities in the data analytics industry. We aim to empower job seekers to enhance their expertise 
                         and connect with leading companies in the tech world. Whether you're a fresh graduate looking to break into 
@@ -38,15 +38,15 @@
                         the resources and support needed to succeed in the ever-evolving field of computer science.
                     </p>
                 </div>
-                
+
                 <!--The company graphic-->
-                <figure id="Company_Graphic">
+                <figure id="company_graphic">
                     <img src="images/Company_Graphic.png" alt="Company Graphic">
                     <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
                 </figure>
 
                 <!--A paragraph that introduces the company-->
-                <div id="What_we_do">
+                <div id="what_we_do">
                     <h2>What we do:</h2>
                     <p>
                         We specialize in data analysis and job placement services. Our team of experts works tirelessly to 
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <!--A paragraph that describes the company mission-->
-            <div id="Our_Mission">
+            <div id="our_mission">
                 <h2>Our Mission:</h2>
                 <p>
                     Our mission is to empower job seekers by providing them with the tools and resources they need to 
@@ -68,7 +68,7 @@
             </div>
             <br>
             <!--Short introduction to the group members-->
-            <div id="Meet_Us">
+            <div id="meet_us">
                 <h2>Meet Us:</h2>
                 <h3>Riley Tuckett</h3>
                 <p>

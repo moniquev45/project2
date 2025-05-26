@@ -1,9 +1,5 @@
  <!-- The error and database connection php code-->
 <?php
-    // debugging error reporting turned on
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
     // including database settings
     require_once("settings.php");
 
