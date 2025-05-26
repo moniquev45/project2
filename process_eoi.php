@@ -297,7 +297,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
                     //SAVING THE DATA
                     // concatenating the address in preparation for display in receipt page
-                    $formatted_address = $street_address . "\n" . $suburb . ", " . $state . ", " . $postcode;
+                    $formatted_address = $street_address . ", \n" . $suburb . ", " . $state . " " . $postcode;
 
                     // Storing this data into a session receipt to then access on the process receipt page. Stops the data being resubmitted when refreshing the page.
 
