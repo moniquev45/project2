@@ -901,9 +901,8 @@ right, right next to the employment details, and it allows the data to take up 5
 
 .Individual_Profiles {
     display: block;
-    width: 100%;
     box-sizing: border-box;
-    background-color: #b0ffb4;
+    background-color: #e0ffe1;;
     border-radius: 25px;
     margin: 15px 25px;
     padding: 15px;
@@ -911,7 +910,7 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 
 .Individual_Profiles:hover {
-    background-color: #4EB774;
+    background-color: #a6eac6;
 }
 
 .Individual_Profiles table {

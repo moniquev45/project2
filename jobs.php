@@ -26,6 +26,7 @@
         <main>
                              
             <?php
+                #This connects the webpage to the database and if it does work it should print a line stateing unable to connect to database.
                 require_once "settings.php";
                 $dbconn = mysqli_connect($host, $user, $pwd, $db);
                 if ($dbconn) {
@@ -34,6 +35,10 @@
                     echo "<p>Find and explore a world filled with oportunities in the tech field. While finding out what qualifiacations you need to succeed.</p>";
                     echo "<table>";
                     echo "<tbody>";
+
+                    #This creates an index number ($i) and tests if it is less than the amount of rows in the database, if it isn't it will 
+                    #run the code in the forloop while increasing the index number by one. It will stop once it the index number is equal to the
+                    #number of rows in the jobs database table.
                     for ($i = 0; $i < mysqli_num_rows($result); $i++){
                         $row = mysqli_fetch_assoc($result);
                         echo "<tr class='jobs_table_row'>";
