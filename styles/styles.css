@@ -903,10 +903,12 @@ right, right next to the employment details, and it allows the data to take up 5
     display: block;
     box-sizing: border-box;
     background-color: #e0ffe1;;
-    border-radius: 25px;
+    border: 1px solid #065321;
+    border-radius: 8px;
     margin: 15px 25px;
     padding: 15px;
     transition: background-color 0.3s ease;
+
 }
 
 .Individual_Profiles:hover {
