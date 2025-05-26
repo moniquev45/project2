@@ -583,8 +583,8 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /* This forces the hyperlinks to the mangers emails and bolder so you can tell it is special but it doesn't look like a link. */
 .reporting_to_jobs_specific{
-    text-decoration: none;
     color: #011e0a;
+    font-weight: bold;
 }
 
 /* This changes the h1 titles of the jobs to have its own short hand font property. */
