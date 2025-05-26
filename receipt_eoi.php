@@ -60,7 +60,7 @@ session_start();
                     echo "<tr><td><strong>Date of Birth:</strong></td> <td>".htmlspecialchars($receipt['dob'])."</td></tr>";
                     echo "<tr><td><strong>Gender:</strong></td> <td>".htmlspecialchars($receipt['gender'])."</td></tr>";
                 // Address
-                    echo "<tr><td><strong>Your Selected Skillset:</strong></td> <td>".nl2br(htmlspecialchars($receipt['formatted_address']))."</td></tr>";
+                    echo "<tr><td><strong>Your Address:</strong></td> <td>".nl2br(htmlspecialchars($receipt['formatted_address']))."</td></tr>";
                 // Contact
                     echo "<tr><td><strong>Email Address:</strong></td> <td>".htmlspecialchars($receipt['email_apply'])."</td></tr>";
                     echo "<tr><td><strong>Phone Number:</strong></td> <td>".htmlspecialchars($receipt['mobile'])."</td></tr>";
