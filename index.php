@@ -24,8 +24,11 @@
 
         <main id="home_main">
             <!--Main body of the page-->
-            <h1 id="home_title">The Best Big Brain Group</h1>
-            <p id="titlepgraph">Delivering Software since 1988</p>
+            <div id="home_title">
+                <h1>The Best Big Brain Group</h1>
+                <p>Delivering Software since 1988</p>
+            </div>
+
             <div id="home_sections">
                 <!--A paragraph that describes the company-->
                 <div id="who_we_are">

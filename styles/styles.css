@@ -988,87 +988,153 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /* About Page Styling */
 /*Page resizing*/
-@media only screen and (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-    .header {
-        font-size: 24px;
-    }
-
-    #About_Team {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
+/* Default: Mobile-first layout */
+#About_Team {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
         "img"
         "team"
         "info";
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.team_photo {
+    grid-area: img;
+}
+
+.team_profile {
+    grid-area: team;
+}
+
+.individual_profiles {
+    grid-area: info;
+}
+
+.team_photo img {
+    display: block;
+    width: 100%;
+    border: 7px black solid;
+    margin: 10px auto;
+}
+
+.individual_profiles h2 {
+    font-size: 18px;
+}
+
+.individual_profiles table {
+    width: 100%;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+/* Larger screen (tablet and desktop) */
+@media only screen and (min-width: 769px) {
+    #About_Team {
+        grid-template-columns: 4fr 1fr;
+        grid-template-areas: 
+            "img team"
+            "info team";
     }
 
-    .Individual_Profules h2 {
+    .team_photo {
+    grid-area: img;
+    }
+
+    .team_profile {
+        grid-area: team;
+    }
+
+    .individual_profiles {
+        grid-area: info;
+    }
+
+    .team_photo img {
+        display: block;
+        width: 100%;
+        border: 7px black solid;
+        margin: 10px auto;
+    }
+
+    .individual_profiles h2 {
+        font-size: 24px;
+    }
+
+    .individual_profiles table {
+        font-size: 14px;
+    }
+    }
+
+    /*About Page styling of blocks*/
+    /*Team profile blocking*/
+    .team_member_table {
+        word-spacing: 0;
+        padding: 5; 
+        margin-bottom:20px; 
+        width:300px;
+    }
+
+    /*Individual Profiles*/
+    .individual_profiles h2 {
         font-size: 18px;
     }
 
-    .Team_Photo img {
+    .individual_profiles table {
         width: 100%;
-        margin: 5px;
-    }
-
-    .Individual_Profiles table{
-        width: 100%;
+        font-size: 12px;
         padding-left: 10px;
-        font-size: 12px;           
+        border-collapse: collapse;
     }
-}
 
-.Individual_Profiles {
-    display: block;
-    box-sizing: border-box;
-    background-color: #e0ffe1;;
-    border: 1px solid #065321;
-    border-radius: 8px;
-    margin: 15px 25px;
-    padding: 15px;
-    transition: background-color 0.3s ease;
+    .individual_profiles td {
+        vertical-align: top;
+        text-align: left;
+    }
 
-}
+    .member_table {
+        background-color: #b0ffb4;
+        border: none;
+        border-radius: 25px;
+    }
 
-.Individual_Profiles:hover {
-    background-color: #a6eac6;
-}
+    .member_table th, .member_table td {
+        padding: 8px;
+    }
 
-.Individual_Profiles table {
-    width: 100%;
-    margin: 0;
-    border-collapse: collapse;
-}
-
-.Individual_Profiles td {
-    padding: 8px;
-    vertical-align: top;
-    text-align: left;
-}
+    .member_table thead th {
+        position: sticky;
+        top: 0;
+        background-color: #b0ffb4;
+    }
 
 
 /*Homepage styling*/
 
 /*Homepage background graphic*/
 #home_main {
-    background-image: url('../images/company_graphic.png');
-    background-size:contain;
+    background-image: url('../images/company_background.jpg');
+    background-size: cover; /* Ensures the background image covers the entire section */
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
 }
 
-#home_title{
-    text-align: center; /* Aligns the title to the center */
+#home_title {
+    display: flex;                /* Use flexbox for centering */
+    flex-direction: column;       /* Stack children vertically */
+    align-items: center;          /* Center horizontally */
+    justify-content: center;      /* Center vertically */
+    margin: 4px auto;
+    width: 40%;
+    text-align: center;
+    border: 5px double #000000;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.676);
+    float: none;                  /* Remove invalid float */
 }
 
-#titlepgraph {
-    text-align: center; /* Aligns the paragraph to the center */
-    color: #000000; /* Sets the text color to black for accessability purposes*/
-}
 
 /*Properly aligns the sections of the home page*/
 
@@ -1089,6 +1155,15 @@ right, right next to the employment details, and it allows the data to take up 5
     width: 30%;
 }
 
+#who_we_are,
+#what_we_do{
+    border: 5px double #000000; /* Sets the border of the division to a double line */
+    border-radius: 8px; /* Rounds the corners of the division */
+    text-align: center; /* Aligns the text to the center */
+    background-color: rgba(255, 255, 255, 0.676); /* Sets the background color of the division */
+    padding: 20px; /* Adds padding inside the division */
+}
+
 #company_graphic img {
     width: 50%;
     height: auto;
@@ -1105,6 +1180,11 @@ right, right next to the employment details, and it allows the data to take up 5
 #our_mission p{
     /* Sets the text color of the paragraph to black for accessability purposes*/
     color: #000000;
+    border: 5px double #000000; /* Sets the border of the division to a double line */
+    border-radius: 8px; /* Rounds the corners of the division */
+    text-align: center; /* Aligns the text to the center */
+    background-color: rgba(255, 255, 255, 0.676); /* Sets the background color of the division */
+    padding: 20px; /* Adds padding inside the division */
 }
 
 #meet_us{

@@ -44,7 +44,7 @@
                     //Printing the team member name above the table in a h2 style
                     echo "<section class='individual_profile'>";
                     echo "<hr>";
-                    echo "<div class='member_Nnme'>";
+                    echo "<div class='member_Name'>";
                     echo "<h2 id='" . htmlspecialchars($row['member_name']) . "'>" . htmlspecialchars($row['member_name']) . "</h2>";
                     echo "</div>";
 
@@ -101,11 +101,7 @@
                 } else {
                     echo "<p>Error fetching data.</p>";
                 }
-                mysqli_close($dbconn);
-            } else {
-                echo "<p>Database connection failed.</p>";
             }
-
         ?>
 
         <!-- This is the overall team information to be printed -->
@@ -119,34 +115,35 @@
                     </ul>
                     <p><strong>Team Members</strong></p>
         <?php
-        if ($result) {
-            // Reset result pointer
-            mysqli_data_seek($result, 0);
+            $query = "SELECT * FROM about";
+            $result2 = mysqli_query($dbconn, $query);
+            if ($result2) {
+                while ($row = mysqli_fetch_assoc($result2)) {
+                    echo "<table class='team_member_table'>";
+                    echo "<tbody>";
 
-            echo "<table class='team_summary_table'>";
-            echo "<thead><tr><th>Name</th><th>Student ID</th><th>Degree</th></tr></thead><tbody>";
+                    // Name cell spanning two rows
+                    echo "<tr>";
+                    echo "<td rowspan='2' style='font-weight:bold; vertical-align:middle;'>" . htmlspecialchars($row['member_name']) . "</td>";
+                    echo "<td>Student ID: " . htmlspecialchars($row['member_student_id']) . "</td>";
+                    echo "</tr>";
 
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr class='team_profile'>";
-                echo "<td class='team_member_name'><h3 class='team_member_identification'>" . htmlspecialchars($row['member_name']) . "</h3></td>";
-                echo "<td class='team_member_id'>" . htmlspecialchars($row['member_student_id']) . "</td>";
-                echo "<td class='member_degree'>" . htmlspecialchars($row['member_degree']) . "</td>";
-                echo "</tr>";
+                    // Degree row
+                    echo "<tr>";
+                    echo "<td>Degree: " . htmlspecialchars($row['member_degree']) . "</td>";
+                    echo "</tr>";
+
+                    echo "</tbody>";
+                    echo "</table>";
+                }
             }
-
-            echo "</tbody></table>";
-        } else {
-            echo "<p>Error fetching data.</p>";
-        }
-        ?>
-        </div>
+        ?>`
         <?php
         // Close DB connection
         if ($dbconn) {
             mysqli_close($dbconn);
         }
         ?>
-
         </main>
          <!-- Including footer file -->
         <?php include 'footer.inc'; ?>
