@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($suburb)) {
                         $errors[] = "Suburb is required.";
                     } elseif (!preg_match("/[A-Za-z\s]+/", $suburb)) {
-                        $errors[] = "Street address has a max 40 characters; allows letters and spaces only.";
+                        $errors[] = "Suburb has a max 40 characters; allows letters and spaces only.";
                         }
 
                     if (empty($state)) $errors[] = "State is required.";
@@ -196,7 +196,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($postcode)) {
                         $errors[] = "Postcode is required." ;
                     } elseif (!preg_match("/(0[289][0-9]{2})|([123456789][0-9]{3})/", $postcode)) {
-                        $errors[] = "Must be an Australia postcode; in the range of 0200 to 9944.";
+                        $errors[] = "Must be an Australian postcode.";
                         }
 
                     // contact
@@ -390,9 +390,3 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         <?php include 'footer.inc'; ?>
     </body>
 </html>
-
-<!--TO DO: 
-need monique's table data to echo.
-skills to have its own seperate table? currently a string data
-print receipt/email?
-Resume Sections?-->
