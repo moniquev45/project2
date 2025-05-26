@@ -1145,7 +1145,7 @@ right, right next to the employment details, and it allows the data to take up 5
     position: absolute;
     inset: 0;
     z-index: -1; /* Places the background behind the content */
-    background-image: url('../images/company_background.jpg');
+    background-image: url('images/company_background.jpg');
     background-size: cover; /* Ensures the background image covers the entire section */
     background-repeat: no-repeat;
     background-attachment: scroll;
