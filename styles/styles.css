@@ -929,18 +929,18 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /*Homepage styling*/
 
-#Home_Title{
+#home_title{
     text-align: center; /* Aligns the title to the center */
 }
 
-#TitlePgraph {
+#titlepgraph {
     text-align: center; /* Aligns the paragraph to the center */
     color: #000000; /* Sets the text color to black for accessability purposes*/
 }
 
 /*Properly aligns the sections of the home page*/
 
-#Home_Sections {
+#home_sections {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -949,14 +949,14 @@ right, right next to the employment details, and it allows the data to take up 5
     gap: 2%;
 }
 
-#Who_we_are,
-#What_we_do,
-#Company_Graphic {
+#who_we_are,
+#what_we_do,
+#company_graphic {
     float: none;
     width: 30%;
 }
 
-#Company_Graphic img {
+#company_graphic img {
     width: 50%;
     height: auto;
     border-radius: 8px;
@@ -964,17 +964,17 @@ right, right next to the employment details, and it allows the data to take up 5
     margin: 0 auto;
 }
 
-#Our_Mission{
+#our_mission{
     display: inline; /* Allows the text to be inline with the rest of the page */
     text-align: center; /* Aligns the text to the center */
     width: 40%; /* Restricts the width of the division to 40% */
 }
-#Our_Mission p{
+#our_mission p{
     /* Sets the text color of the paragraph to black for accessability purposes*/
     color: #000000;
 }
 
-#Meet_Us{
+#meet_us{
     clear: both; /* Clears the float of the previous divisions */
     border: 5px double #000000; /* Sets the border of the division to a double line */
     border-radius: 8px; /* Rounds the corners of the division */
@@ -987,13 +987,13 @@ right, right next to the employment details, and it allows the data to take up 5
     height: 425px; /* Sets a specified height of the image */
     overflow: scroll; /* Allows the division to scroll if the content overflows */
 }
-#Meet_Us h3{
+#meet_us h3{
     /*Sets the size of the header to medium*/
     font-size: medium;
     color: black; /* Sets the text color of the header to black for accessability purposes*/
 }
 
-#Meet_Us p{
+#meet_us p{
     /* Sets the text color of the paragraph to black for accessability purposes*/
     color: #000000;
 }
