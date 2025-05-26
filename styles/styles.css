@@ -1034,7 +1034,7 @@ right, right next to the employment details, and it allows the data to take up 5
 @media only screen and (min-width: 769px) {
     #about_team {
         display: grid;
-        grid-template-columns: 2fr 1fr;   /* Left column wider */
+        grid-template-columns: 3fr 2fr;   /* Left column wider */
         grid-template-rows: auto auto;    /* Two rows in left column */
         grid-template-areas:
             "img team"
