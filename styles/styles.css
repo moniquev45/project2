@@ -989,7 +989,7 @@ right, right next to the employment details, and it allows the data to take up 5
 /* About Page Styling */
 /*Page resizing*/
 /* Default: Mobile-first layout */
-#About_Team {
+#about_team {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -1032,25 +1032,29 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /* Larger screen (tablet and desktop) */
 @media only screen and (min-width: 769px) {
-    #About_Team {
-        grid-template-columns: 4fr 1fr;
-        grid-template-areas: 
+    #about_team {
+        display: grid;
+        grid-template-columns: 2fr 1fr;   /* Left column wider */
+        grid-template-rows: auto auto;    /* Two rows in left column */
+        grid-template-areas:
             "img team"
             "info team";
+        gap: 10px;
+        width: 100%;
     }
 
     .team_photo {
-    grid-area: img;
-    }
-
-    .team_profile {
-        grid-area: team;
+        grid-area: img;
     }
 
     .individual_profiles {
         grid-area: info;
     }
 
+    .team_profile {
+        grid-area: team;
+    }
+}
     .team_photo img {
         display: block;
         width: 100%;
@@ -1065,18 +1069,36 @@ right, right next to the employment details, and it allows the data to take up 5
     .individual_profiles table {
         font-size: 14px;
     }
-    }
+    
 
     /*About Page styling of blocks*/
     /*Team profile blocking*/
-    .team_member_table {
+    .team_profile {
         word-spacing: 0;
-        padding: 5; 
+        padding: 5px; 
         margin-bottom:20px; 
-        width:300px;
+        max-width: 100%;
+        border-radius: 25px;
+        background-color: #b0ffb4;
+        font-size: 12px;
     }
 
+    .team_member_table td {
+        font: 12px;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+    }
+
+
     /*Individual Profiles*/
+    .individual_profile {
+        background-color: #b0ffb4;
+        border: none;
+        border-radius: 25px;
+        padding: 10px;
+        margin: 20px;
+    }
     .individual_profiles h2 {
         font-size: 18px;
     }
@@ -1092,12 +1114,10 @@ right, right next to the employment details, and it allows the data to take up 5
         vertical-align: top;
         text-align: left;
     }
-
-    .member_table {
-        background-color: #b0ffb4;
-        border: none;
-        border-radius: 25px;
-    }
+    .individual_profile h2 {
+        padding-top: 5px;
+        padding-left: 10px;
+    } 
 
     .member_table th, .member_table td {
         padding: 8px;
@@ -1108,7 +1128,6 @@ right, right next to the employment details, and it allows the data to take up 5
         top: 0;
         background-color: #b0ffb4;
     }
-
 
 /*Homepage styling*/
 
@@ -1132,7 +1151,6 @@ right, right next to the employment details, and it allows the data to take up 5
     border: 5px double #000000;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.676);
-    float: none;                  /* Remove invalid float */
 }
 
 
