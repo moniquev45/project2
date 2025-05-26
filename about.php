@@ -31,7 +31,7 @@
             </div>
 
             <!--This is the individual team information blocks-->
-            <div class="Individual_Profiles">
+            <div class="individual_profiles">
             <?php
             require_once "settings.php";
             $dbconn = mysqli_connect($host, $user, $pwd, $db);
@@ -42,14 +42,14 @@
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     //Printing the team member name above the table in a h2 style
-                    echo "<section class='Individual_Profile'>";
+                    echo "<section class='individual_profile'>";
                     echo "<hr>";
-                    echo "<div class='Member_Name'>";
+                    echo "<div class='member_Nnme'>";
                     echo "<h2 id='" . htmlspecialchars($row['member_name']) . "'>" . htmlspecialchars($row['member_name']) . "</h2>";
                     echo "</div>";
 
                     // Beginning of table
-                    echo "<table class='Member_Table'>";
+                    echo "<table class='member_table'>";
                     echo "<thead> 
                             <tr>
                                 <th>Contributions</th>
@@ -59,13 +59,12 @@
                             </tr>
                         </thead>";
                     echo "<tbody>";
-                    echo "<tr class='Member_Table_Row'>";
 
 
                     //Using a foreach function to run a test of "each * that is seen, explode the prior text, and then create the variable line to be printed
                     //This function is used for each part of the table as each part has multiple list items
 
-                    
+                    echo "<tr class='member_table_row'>";
                     // Contributions 
                     echo "<td><ul>";
                     foreach (explode("*", $row['member_contribution']) as $line) {
@@ -108,10 +107,10 @@
             }
 
         ?>
-            </div>
-            <!--This is the overall team information-->
-            <div class="Team_Profile">
-                    <h2>The Best Big Brain Group</h2>
+
+        <!-- This is the overall team information to be printed -->
+        <div class="team_profile">
+        <h2>The Best Big Brain Group</h2>
                     <p>Welcome to the best group you have ever seen</p>
                     <ul>
                         <li>Wednesday</li>
@@ -119,21 +118,35 @@
                         <li>Rahul Raghavan</li>
                     </ul>
                     <p><strong>Team Members</strong></p>
-                    <dl>
-                        <dt>Monique</dt>
-                            <dd>Student ID: 105910625</dd>
-                            <dd>Bachelors of Engineering (Honours)/Bachelors of Computer Science</dd>
-                        <dt>Riley</dt>
-                            <dd>Student ID: 105925988</dd>
-                            <dd>Bachelors of Engineering (Honours)/Bachelors of Computer Sceince</dd>
-                        <dt>Stacey</dt>
-                            <dd>Student ID: 105904848</dd>
-                            <dd>Bachelor of Games &amp; Interactivity / Bachelor of Computer Science </dd>
-                        <dt>Vic</dt>
-                            <dd>Student ID: 105864492</dd>
-                            <dd>Bachelor of Computer Science</dd>
-                    </dl>
-            </div>
+        <?php
+        if ($result) {
+            // Reset result pointer
+            mysqli_data_seek($result, 0);
+
+            echo "<table class='team_summary_table'>";
+            echo "<thead><tr><th>Name</th><th>Student ID</th><th>Degree</th></tr></thead><tbody>";
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr class='team_profile'>";
+                echo "<td class='team_member_name'><h3 class='team_member_identification'>" . htmlspecialchars($row['member_name']) . "</h3></td>";
+                echo "<td class='team_member_id'>" . htmlspecialchars($row['member_student_id']) . "</td>";
+                echo "<td class='member_degree'>" . htmlspecialchars($row['member_degree']) . "</td>";
+                echo "</tr>";
+            }
+
+            echo "</tbody></table>";
+        } else {
+            echo "<p>Error fetching data.</p>";
+        }
+        ?>
+        </div>
+        <?php
+        // Close DB connection
+        if ($dbconn) {
+            mysqli_close($dbconn);
+        }
+        ?>
+
         </main>
          <!-- Including footer file -->
         <?php include 'footer.inc'; ?>
