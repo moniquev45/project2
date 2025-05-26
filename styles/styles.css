@@ -1133,6 +1133,8 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /*Homepage background graphic*/
 #home_main {
+    background-color: rgba(255, 255, 255, 0.2);
+    background-blend-mode: lighten; /* Blends the background image with the background color */
     background-image: url('../images/company_background.jpg');
     background-size: cover; /* Ensures the background image covers the entire section */
     background-repeat: no-repeat;
