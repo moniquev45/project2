@@ -1,2 +1,56 @@
-//TODO Create manager registration page
-//TODO Create manager login page
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <!--Charset Declaration-->
+        <meta charset="utf-8">
+        <!--Page Description for File-->
+        <meta name="description" content="A page containing each group member's enhancements to the project.">
+        <!--Key Words for File-->
+        <meta name="keywords" content="Enhancements, Project, Group Members, Data Analytics, Job Placement">
+        <!--Author Information-->
+        <meta name="author" content="Riley Tuckett">
+
+        <title>Enhancements Page</title>
+        <!--Icon for the browser-->
+        <link rel="icon" href="images/Pear_Logo_Backgroundless.png" type="image/png">
+        <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
+
+        <link rel="stylesheet" href="styles/styles.css">
+        
+    </head>
+    <body>
+        <!-- Inserting the Header -->
+        <?php include 'header.inc'; ?>
+        <main>
+            <div class="enhancements">
+            <h1>Enhancements by Group Members</h1>
+            <p>This page showcases the enhancements made by each group member to the project.</p>
+
+            <section id="riley_tuckett">
+                <h2>Riley Tuckett</h2>
+                <p>Riley Tuckett has contributed to the enhancements by implementing the user authentication system, ensuring secure access for managers and users.</p>
+                <li>Developed the initial project structure and implemented the user authentication system.</li>
+                <li>Created the manager login and registration pages, ensuring secure password handling.</li>
+                <li>Designed the database schema for user management and job placement data.</li>
+            </section>
+
+            <section id="victoria_rogers">
+                <h2>Victoria Rogers</h2>
+                <p></p>
+            </section>
+
+            <section id="stacey_millers">
+                <h2>Stacey Millers</h2>
+                <p></p>
+            </section>
+
+            <section id="monique_vilardo">
+                <h2>Monique Vilardo</h2>
+                <p></p>
+            </section>
+        </div>
+        </main>
+        <!-- Including footer file -->
+        <?php include 'footer.inc'; ?>
+    </body>
+</html>
