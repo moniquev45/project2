@@ -1128,7 +1128,6 @@ right, right next to the employment details, and it allows the data to take up 5
     .member_table thead th {
         position: sticky;
         top: 0;
-        background-color: #b0ffb4;
     }
 
 /*Homepage styling*/
