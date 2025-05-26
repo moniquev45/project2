@@ -11,8 +11,8 @@ if (!isset($_SESSION["login_attempts"])) {
 }
 
 if (isset($_SESSION["locked"])) {
-    $locked_time = $SESSION["locked"];
-    if ((time() - $lockedTime) < 30) {
+    $locked_time = $_SESSION["locked"];
+    if ((time() - $locked_time) < 30) {
         $errors[] = "Too many failed attempts, please wait your 30 second wait time and then retry";
     } else {
         unset($_SESSION["locked"]);
