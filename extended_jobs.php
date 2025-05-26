@@ -151,7 +151,7 @@
                                 #Index is just a random variable used to help count.
                                 $index = 0;
                                 #This is a while loop and states while the index is less than the count it will get the
-                                #job qualifications
+                                #job qualifications and essental/preferred of that specific index and print it out into the table.
                                 while ($index < count($job_qualifications_skills)){
                                     $row_job_qualifications_skills = $job_qualifications_skills[$index];
                                     $row_job_essential_or_preferred = $job_essential_or_preferred[$index];
@@ -171,14 +171,22 @@
                         #This is a list of benifits that I made up if the user was successful in getting the job.
                         echo "<h2 class='job_headers_other_page'>Benefits:</h2>";
                         echo "<div class='benifits_of_job'>";
+                        #Next section chatgpt was used to aid in the code. 
+                        #Prompt used: how to make a block of information in php like In need apples. Pears are good. Potatoes are nice. and have it so that it turns this into a list.
+                        
+                        #Trim removes any white space, explode splits the string, at the asterics.
+                        #array_filter, removes any null, or empty peices in the array.
+                        #array_map, applies the trim onto every peice of this new array. 
                         $job_benifits = array_filter(array_map('trim', explode('*', $row['job_benifits'])));
+                        #CHATGPT ASSISTED CODE FINISHES HERE.
                         echo "<ul>";
+                        #This states for each job benifit in job benifits it prints it out as a line in the unordered list.
                         foreach ($job_benifits as $job_singular_benifits) {
                             echo "<li>$job_singular_benifits</li>"; 
                         }
                         echo "</ul>";
                         echo "</div>";
-
+                        
                         #This button allows the users to apply for the job.
                         echo "<div class='apply_here_extended_page'>";
                             echo "<a href='apply.php' target='_blank' title='Application of Jobs'>Apply Here</a>";
