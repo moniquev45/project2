@@ -1133,11 +1133,24 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /*Homepage background graphic*/
 #home_main {
+    position: relative;
+    z-index: 1; /* Ensures the main content is above the background */
+}
+
+/* Display the background image on the homepage */
+/* done this way so that the background image's opacity can be changed easily */
+#home_main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1; /* Places the background behind the content */
     background-image: url('../images/company_background.jpg');
-    background-size: cover; /* Ensures the background image covers the entire section */
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
+    opacity: 0.4;
+    pointer-events: none;
 }
 
 #home_title {
