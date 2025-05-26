@@ -4,13 +4,13 @@
         <!--Charset Declaration-->
         <meta charset="utf-8">
         <!--Page Description for File-->
-        <meta name="description" content="Homepage for the group project">
+        <meta name="description" content="Home">
         <!--Key Words for File-->
-        <meta name="keywords" content="Data analysis, group project, home page">
+        <meta name="keywords" content="Data Analytics, Job Placement, Computer Science, Careers, Empowerment">
         <!--Author Information-->
         <meta name="author" content="Riley Tuckett" >
 
-        <title>Homepage</title>
+        <title>Best Big Brain Group</title>
         <!--Icon for the browser-->
         <link rel="icon" href="images/Pear_Logo_Backgroundless.png" type="image/png">
         <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
@@ -22,7 +22,7 @@
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
 
-        <main>
+        <main id="home_main">
             <!--Main body of the page-->
             <h1 id="home_title">The Best Big Brain Group</h1>
             <p id="titlepgraph">Delivering Software since 1988</p>
@@ -41,7 +41,7 @@
 
                 <!--The company graphic-->
                 <figure id="company_graphic">
-                    <img src="images/Company_Graphic.png" alt="Company Graphic">
+                    <img src="images/company_graphic.png" alt="Company Graphic">
                     <!-- Logo Link: https://www.shutterstock.com/image-vector/green-pear-vector-icon-logo-design-2308212369 -->
                 </figure>
 

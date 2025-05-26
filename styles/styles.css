@@ -1038,6 +1038,15 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /*Homepage styling*/
 
+/*Homepage background graphic*/
+#home_main {
+    background-image: url('../images/company_graphic.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+}
+
 #home_title{
     text-align: center; /* Aligns the title to the center */
 }
@@ -1048,6 +1057,7 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 
 /*Properly aligns the sections of the home page*/
+
 
 #home_sections {
     display: flex;
