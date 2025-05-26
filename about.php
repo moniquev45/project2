@@ -144,8 +144,15 @@
             mysqli_close($dbconn);
         }
         ?>
+    
+
+
         </div>
+        
+    
         </main>
+        
+        
         <!-- Including footer file -->
         <?php include 'footer.inc'; ?>
     </body>
