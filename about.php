@@ -21,11 +21,11 @@
         <!-- Inserting the Header -->
         <?php include 'header.inc'; ?>
 
-        <main id="About_Team">
+        <main id="about_team">
             <!--This is the team photo-->
-            <div class="Team_Photo">
+            <div class="team_photo">
                 <figure>
-                    <img id="Photo_Team" src="images/Team_Photo.png" alt="The team in front of Swinburne university. From left to right the order is Stacey, Vic, Riley and Monique">
+                    <img id="photo_team" src="images/Team_Photo.png" alt="The team in front of Swinburne university. From left to right the order is Stacey, Vic, Riley and Monique">
                     <figcaption>The Best Big Brain Group (Left - Right) Stacey, Vic, Riley, Monique</figcaption>
                 </figure>
             </div>
@@ -33,76 +33,76 @@
             <!--This is the individual team information blocks-->
             <div class="individual_profiles">
             <?php
-            require_once "settings.php";
-            $dbconn = mysqli_connect($host, $user, $pwd, $db);
-            if ($dbconn) {
-            $query = "SELECT * FROM about";
-            $result = mysqli_query($dbconn, $query);
+                require_once "settings.php";
+                $dbconn = mysqli_connect($host, $user, $pwd, $db);
+                if ($dbconn) {
+                $query = "SELECT * FROM about";
+                $result = mysqli_query($dbconn, $query);
 
-            if ($result) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    //Printing the team member name above the table in a h2 style
-                    echo "<section class='individual_profile'>";
-                    echo "<hr>";
-                    echo "<div class='member_Name'>";
-                    echo "<h2 id='" . htmlspecialchars($row['member_name']) . "'>" . htmlspecialchars($row['member_name']) . "</h2>";
-                    echo "</div>";
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        //Printing the team member name above the table in a h2 style
+                        echo "<section class='individual_profile'>";
+                        echo "<div class='member_name'>";
+                        echo "<h2 id='" . htmlspecialchars($row['member_name']) . "'>" . htmlspecialchars($row['member_name']) . "</h2>";
+                        echo "</div>";
 
-                    // Beginning of table
-                    echo "<table class='member_table'>";
-                    echo "<thead> 
-                            <tr>
-                                <th>Contributions</th>
-                                <th>Experience</th>
-                                <th>Hobbies</th>
-                                <th>Favourites</th>
-                            </tr>
-                        </thead>";
-                    echo "<tbody>";
+                        // Beginning of table
+                        echo "<table class='member_table'>";
+                        echo "<thead> 
+                                <tr>
+                                    <th>Contributions</th>
+                                    <th>Experience</th>
+                                    <th>Hobbies</th>
+                                    <th>Favourites</th>
+                                </tr>
+                            </thead>";
+                        echo "<tbody>";
 
 
-                    //Using a foreach function to run a test of "each * that is seen, explode the prior text, and then create the variable line to be printed
-                    //This function is used for each part of the table as each part has multiple list items
+                        //Using a foreach function to run a test of "each * that is seen, explode the prior text, and then create the variable line to be printed
+                        //This function is used for each part of the table as each part has multiple list items
 
-                    echo "<tr class='member_table_row'>";
-                    // Contributions 
-                    echo "<td><ul>";
-                    foreach (explode("*", $row['member_contribution']) as $line) {
-                        echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
+                        echo "<tr class='member_table_row'>";
+                        // Contributions 
+                        echo "<td><ul>";
+                        foreach (explode("*", $row['member_contribution']) as $line) {
+                            echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
+                        }
+                        echo "</ul></td>";
+
+                        // Experience
+                        echo "<td><ul>";
+                        foreach (explode("*", $row['member_experience']) as $line) {
+                            echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
+                        }
+                        echo "</ul></td>";
+
+                        // Hobbies
+                        echo "<td><ul>";
+                        foreach (explode("*", $row['member_hobby']) as $line) {
+                            echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
+                        }
+                        echo "</ul></td>";
+
+                        // Favourites
+                        echo "<td><ul>";
+                        foreach (explode("*", $row['member_favourite']) as $line) {
+                            echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
+                        }
+                        echo "</ul></td>";
+
+                        echo "</tr>";
+                        echo "</tbody>";
+                        echo "</table>";
+                        echo "</section>";
                     }
-                    echo "</ul></td>";
-
-                    // Experience
-                    echo "<td><ul>";
-                    foreach (explode("*", $row['member_experience']) as $line) {
-                        echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
+                    } else {
+                        echo "<p>Error fetching data.</p>";
                     }
-                    echo "</ul></td>";
-
-                    // Hobbies
-                    echo "<td><ul>";
-                    foreach (explode("*", $row['member_hobby']) as $line) {
-                        echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
-                    }
-                    echo "</ul></td>";
-
-                    // Favourites
-                    echo "<td><ul>";
-                    foreach (explode("*", $row['member_favourite']) as $line) {
-                        echo "<li>" . htmlspecialchars(trim($line)) . "</li>";
-                    }
-                    echo "</ul></td>";
-
-                    echo "</tr>";
-                    echo "</tbody>";
-                    echo "</table>";
-                    echo "</section>";
                 }
-                } else {
-                    echo "<p>Error fetching data.</p>";
-                }
-            }
-        ?>
+            ?>
+        </div>
 
         <!-- This is the overall team information to be printed -->
         <div class="team_profile">
@@ -144,8 +144,9 @@
             mysqli_close($dbconn);
         }
         ?>
+        </div>
         </main>
-         <!-- Including footer file -->
+        <!-- Including footer file -->
         <?php include 'footer.inc'; ?>
     </body>
 </html>
