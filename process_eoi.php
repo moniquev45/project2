@@ -211,13 +211,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     if (empty($skills)) $errors[] = "Skill(s) need to be selected.";
 
                     //if checkbox for 'yes other skills' is checked, the other skills needs to be filled in
-                    if (isset($_POST["yes_other_skills"])) {
+                    if (in_array("other_skills", $raw_data_skills)) {
                         // if other skills textbox is empty an error will show
                         if (empty($skills_other_textbox)) $errors[] = "You selected 'Yes' to possessing other skills. Please ensure to write them in the textbox.";
                         } else {
                             // 'yes' to other skills checkbox has not been checked, can proceed as normal
                         }
-
                     // rest of form inputs aren't required or pattern based
                     
                     //checking if there are errors
