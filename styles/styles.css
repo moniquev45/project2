@@ -1140,6 +1140,7 @@ right, right next to the employment details, and it allows the data to take up 5
     background-position: center center;
     opacity: 0.4;
     pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.676);
 }
 
 #home_title {
@@ -1152,7 +1153,6 @@ right, right next to the employment details, and it allows the data to take up 5
     text-align: center;
     border: 5px double #000000;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.676);
 }
 
 
