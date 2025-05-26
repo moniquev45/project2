@@ -1077,10 +1077,11 @@ right, right next to the employment details, and it allows the data to take up 5
         word-spacing: 0;
         padding: 5px; 
         margin-bottom:20px; 
-        max-width: 100%;
-        border-radius: 25px;
-        background-color: #b0ffb4;
+        max-width: 90%;
+        border-radius: 8px;
+        background-color: #e0ffe1;
         font-size: 12px;
+        border: 1px solid #065321;
     }
 
     .team_member_table td {
@@ -1093,11 +1094,12 @@ right, right next to the employment details, and it allows the data to take up 5
 
     /*Individual Profiles*/
     .individual_profile {
-        background-color: #b0ffb4;
+        background-color: #e0ffe1;
         border: none;
-        border-radius: 25px;
+        border-radius: 8px;
         padding: 10px;
         margin: 20px;
+        border: 1px solid #065321;
     }
     .individual_profiles h2 {
         font-size: 18px;
