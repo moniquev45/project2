@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: index.php");
                 exit();
             } else {
-                $_SESSION["login_attempts"]++
+                $_SESSION["login_attempts"]++;
                 $errors[] = "Incorrect password.";
             }
         } else {
