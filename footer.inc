@@ -20,6 +20,11 @@
                 Github:
                 <a class="footer_links" href="https://github.com/moniquev45/project2.git" target="_blank">This website's github repository</a>
             </div>
+            <!--Hyperlink to the enhancements page-->
+            <div class="enhancements_link_footer">
+                Enhancements:
+                <a class="footer_links" href="enhancements.php">This website's enhancements</a>
+            </div>
             <!--Forces there to be a line break below to not squish all the the hyperlinks to the border of the page.-->
             <p class="copyright_in_footer">
             &copy; <strong>
