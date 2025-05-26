@@ -46,11 +46,13 @@
 
                         echo "<main>";
                         echo "<figure>";
-                            echo "<img src='styles/images/Office_People.jpg' alt='People Working' id='Job_Discription_Image_Background'/>";
+                            $hero_image = $row['job_hero_image'];
+                            echo "<img src='$hero_image' alt='Hero_Image' id='job_discription_image_background'/>";
                             #Link: https://www.google.com/search?vsrid=CNCPsbvgxpG9NxACGAEiJDgyM2YyZmI3LTQzNWItNDc0Yi04OGM0LTBiOGFjYzc4MDY2Mw&gsessionid=r7G_iOIHqvPCke7rTfiTYwYqEN2lcGfisdj_PeWX98yyJWL3ILRbDA&lsessionid=7IuduqD-ns7X9cfKggASLH8id-WmTKsEhVLKTIt4l4m_kU4q66bMUg&vsdim=1000,416&vsint=CAIqDAoCCAcSAggKGAEgATojChYNAAAAPxUAAAA_HQAAgD8lAACAPzABEOgHGKADJQAAgD8&lns_mode=un&source=lns.web.gisbubb&udm=26&lns_surface=26&lns_vfs=e&qsubts=1744556620873&biw=829&bih=646&hl=en-AU#vhid=6S08ssutfThiCM&vssid=mosaic -->
                         echo "</figure>";
                         #This is the job heading, with the job title.
-                        echo "<h1 class='Job_Headers_Other_Page'>Data Analyst</h1>";
+                        $job_title = $row['job_title'];
+                        echo "<h1 class='job_headers_other_page'>$job_title</h1>";
                         echo "<br>";
                         #This table contains main employment details and the employment summary and is used because it
                         #makes it easier to format things side by side with each other.
@@ -58,16 +60,18 @@
                             echo "<tbody>";
                                 echo "<tr>";
                                     #Main Employment Details Information
-                                    echo "<td class='Main_Employment_Details_Background'>";
+                                    echo "<td class='main_employment_details_background'>";
                                         echo "<hr>";
                                         #Company Logo
                                         echo "<div>";
-                                            echo "<h3 class='Random_Company_Names'>Company: Pear </h3>";
+                                            $company = $row['job_company'];
+                                            $company_styled = "Company: " . $company;
+                                            echo "<h3 class='random_company_names'>$company_styled</h3>";
                                             #Logo From https://www.facebook.com/photo.php?fbid=276912169616293&id=276912036282973&set=a.276912066282970&locale=th_TH
                                             echo "<figure>";
                                                 $logo = $row['job_logo'];
                                                 $logo_link = $row['job_logo_link'];
-                                                echo "<a href= '$logo_link' target='_blank'><img src='$logo' alt='Company Logo' class='Companies_Logo_Image'/></a>";
+                                                echo "<a href= '$logo_link' target='_blank'><img src='$logo' alt='Company Logo' class='companies_logo_image'/></a>";
                                             echo "</figure>";
                                         echo "</div>";
                                         echo "<br><br><br>";
@@ -86,15 +90,15 @@
                                         $job_id = $row['job_id'];
                                         $formatted_job_id = "Job Reference Number: #" . str_pad($job_id, 5, "0", STR_PAD_LEFT);
 
-                                        echo "<p class='Main_Employment_Details'>$location</p>";
-                                        echo "<p class='Main_Employment_Details'>$department</p>";
-                                        echo "<p class='Main_Employment_Details'>$employment_type</p>";
-                                        echo "<p class='Main_Employment_Details'>$formatted_total_salary</p>";
-                                        echo "<p class='Main_Employment_Details'>Reports To: <a class='Reporting_To_Jobs_Specific' href='mailto: $manager_email'> $manager </a></p>";
-                                        echo "<p class='Main_Employment_Details'>$formatted_job_id</p>";
+                                        echo "<p class='main_employment_details'>$location</p>";
+                                        echo "<p class='main_employment_details'>$department</p>";
+                                        echo "<p class='main_employment_details'>$employment_type</p>";
+                                        echo "<p class='main_employment_details'>$formatted_total_salary</p>";
+                                        echo "<p class='main_employment_details'>Reports To: <a class='reporting_to_jobs_specific' href='mailto: $manager_email'> $manager </a></p>";
+                                        echo "<p class='main_employment_details'>$formatted_job_id</p>";
                                         echo "<br>";
                                     echo "</td>";
-                                    echo "<td class='Employment_Summary'>";
+                                    echo "<td class='employment_summary'>";
                                         echo "<h2>Summary:</h2>";
                                         $summary = $row['job_summary'];
                                         echo "<p> $summary </p>";
@@ -106,27 +110,27 @@
                         echo "</table>";
                         echo "<br>";
 
-                        echo "<h2 class='Job_Headers_Other_Page'>Required Qualifications:</h2>";
+                        echo "<h2 class='job_headers_other_page'>Required Qualifications:</h2>";
 
                         $job_qualifications_skills = array_filter(array_map('trim', explode('*', $row['job_full_qualifications_or_skills'])));
                         $job_essential_or_preferred = array_filter(array_map('trim', explode('*', $row['job_essential_or_preferred'])));
 
-                        echo "<table class='Qualifications_Whole_Table'>";
+                        echo "<table class='qualifications_whole_table'>";
                             echo "<tbody>";
-                                echo "<tr class='Qualifications_Table_Row'>";
-                                echo "<th class='Qualifications_Table_Header'>Qualifications</th>";
-                                echo "<th class='Qualifications_Table_Header'>Essential or Preffered</th>";
+                                echo "<tr class='qualifications_table_row'>";
+                                echo "<th class='qualifications_table_header'>Qualifications</th>";
+                                echo "<th class='qualifications_table_header'>Essential or Preffered</th>";
                                 echo "</tr>";
 
                                 $index = 0;
                                 while ($index < count($job_qualifications_skills)){
                                     $row_job_qualifications_skills = $job_qualifications_skills[$index];
                                     $row_job_essential_or_preferred = $job_essential_or_preferred[$index];
-                                    echo "<tr class='Qualifications_Table_Row'>";
-                                        echo "<td class='Qualifications_Table'> ";
+                                    echo "<tr class='qualifications_table_row'>";
+                                        echo "<td class='qualifications_table'> ";
                                             echo "<p>$row_job_qualifications_skills</p>";
                                         echo "</td>";
-                                        echo "<td class='Qualifications_Table_Essential_Preffered'>";
+                                        echo "<td class='qualifications_table_essential_preffered'>";
                                             echo "<p>$row_job_essential_or_preferred</p>";
                                         echo "</td>";
                                     echo "</tr>";
@@ -138,8 +142,8 @@
                         echo "<br>";
 
                         #This is a list of benifits that I made up if the user was successful in getting the job.
-                        echo "<h2 class='Job_Headers_Other_Page'>Benefits:</h2>";
-                        echo "<div class='Benifits_Of_Job'>";
+                        echo "<h2 class='job_headers_other_page'>Benefits:</h2>";
+                        echo "<div class='benifits_of_job'>";
                         $job_benifits = array_filter(array_map('trim', explode('*', $row['job_benifits'])));
                         echo "<ul>";
                         foreach ($job_benifits as $job_singular_benifits) {
@@ -149,9 +153,9 @@
                         echo "</div>";
                         echo "<br><br><br>";
                         #This button allows the users to apply for the job.
-                        echo "<a href='apply.php' target='_blank' title='Application of Jobs' class='Apply_Here'>Apply Here</a>";
+                        echo "<a href='apply.php' target='_blank' title='Application of Jobs' class='apply_here'>Apply Here</a>";
                         #This button sends the user back to the job listings page.
-                        echo "<a href='jobs.php' title='Job Page' class='Back_Button_Job_Page'>Back</a>";
+                        echo "<a href='jobs.php' title='Job Page' class='back_button_job_page'>Back</a>";
                         echo "<br><br>";
 
                     echo "</main>";

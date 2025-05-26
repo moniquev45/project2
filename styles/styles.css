@@ -57,7 +57,7 @@ nav a:hover {
 }
 
 /* Company logo styling */
-.Company_Logo{
+.company_logo{
     border-radius: 100%;
     height: 60px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -94,7 +94,7 @@ nav a:hover {
 }
 
 /* Company name styling */
-.Company_Name{
+.company_name{
     color: #011e0a;
     text-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
 }
@@ -190,28 +190,28 @@ footer a:hover {
 }
 
 /* The colour for the footer links on all pages. */
-.Footer_Links{
+.footer_links{
     color: #011508;
 }
 
 /* This forces the Jira Link in the footer to the centre. */
-.Jira_Link_Footer{
+.jira_link_footer{
     text-align: center;
 }
 
 /* This forces the company email in the footer on all pages to the centre. */
-.Company_Email{
+.company_email{
     text-align: center;
 }
 
 /* Company copy right styling. */
-.Copyright_in_footer{
+.copyright_in_footer{
     text-align: center;
     color: #011e0a;
 }
 
 /*Website github link styling*/
-.Github_Link_Footer{
+.github_link_footer{
     text-align: center;
 }
 
@@ -221,27 +221,27 @@ data_anaylst_job_page.html and junior_software_developer_job_page.html. Although
 the CSS page as many of the classes are used in both job listing and job specific pages. */
 
 /* This forces the company names to the left to allow the company logo float on the right of the same line. */
-.Random_Company_Names{
+.random_company_names{
     float: left;
 }
 
 /* This forces the company location to the right of the page. */
-.Company_Location{
+.company_location{
     float: right;
 }
 
 /* This forces the job salary to the left on the main job page. */
-.Job_Salary_Job_Page{
+.job_salary_job_page{
     float: left;
 }
 
 /* This forces all job reference numbers to the right of the page. */
-.Job_Reference_Number_Job_Page{
+.job_reference_number_job_page{
     float: right;
 }
 
 /* This class makes the table of job listings, specifically the main data section is nice and covers 75% of the page. */
-.Jobs_Table_Data{
+.jobs_table_data{
     width: 75%;
     display: table-cell;
     border: 1px solid #065321;
@@ -252,13 +252,13 @@ the CSS page as many of the classes are used in both job listing and job specifi
 }
 
 /* This forces each row in the table to have the same background colour. */
-.Jobs_Table_Row{
+.jobs_table_row{
     background-color: #e0ffe1;
 }
 
 /* When a user hovers their cursur over the row it highlights it and has a nice transition to make it look smooth when going
 from one background colour to another. */
-.Jobs_Table_Row:hover{
+.jobs_table_row:hover{
     background-color: #a6eac6;
     transition: 0.5s;
 }
@@ -269,7 +269,7 @@ from one background colour to another. */
 }
 
 /* This makes the apply button on the job listing page look nice. */
-.Apply_Here{
+.apply_here{
     padding: 5px 5px;
     padding-left: 70px;
     padding-right: 70px;
@@ -284,25 +284,25 @@ from one background colour to another. */
     transition: 0.5s;
 }
 
-.Apply_Here:hover{
+.apply_here:hover{
     background-color: #cffdd1;
 }
 
 /* This makes it so that when you hover over the apply button it changes text & background colour with a 0.5s transition. */
-.Apply_Here:hover a{
+.apply_here:hover a{
     color: #065321;
     /* When you hover it transitions from the original state to the hover state. */
     transition: 0.5s;
 }
 
-.Apply_Here a{
+.apply_here a{
     color: #cffdd1;
     text-decoration: none; 
 }
 
 /* This makes the main image on the job specific Data Analyst page to be the certain image, and be 
 reactive if you shrink or expand your screen. */
-#Job_Discription_Image_Background{
+#job_discription_image_background{
     width: fit-content;
     max-width: 1300px;
     height: 300px;
@@ -314,7 +314,7 @@ reactive if you shrink or expand your screen. */
 }
 
 /* The general company logo styling that makes it round and have a shadow. */
-.Companies_Logo_Image{
+.companies_logo_image{
     border-radius: 100%;
     height: 40px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -323,21 +323,21 @@ reactive if you shrink or expand your screen. */
 
 /* This makes the job position align horizontaly and wrap if the page is squished in a way that the two peices of content
 can't fit on the same line. */
-.Job_Position_And_Logo{
+.job_position_and_logo{
     /* Makes things aligned horizontaly. */
     display: flex;
     flex-wrap: wrap;
 }
 
 /* This is the job titles and forces them left while allowing it to stay on one line while sharing space with the logo. */
-.Job_Title{
+.job_title{
     /* Allows the job title to take as much space as possible on the line while still allowing the logo to share the area. */
     flex: 1;
     text-align: left;
 }
 
 /* This formats the reporting to person, email link forces it left and makes it a specific colour. */
-.Reporting_To_Job{
+.reporting_to_job{
     color:  #011508;
     text-align: left;
     float: left;
@@ -345,7 +345,7 @@ can't fit on the same line. */
 
 /* This formats the see more button and aligns the text to the center of the section, but forces it to the right of the page,
 with a transition for when you hover over it, it's smooth. */
-.See_More{
+.see_more{
     color:  #011508;
     text-align: center;
     float: right;
@@ -354,7 +354,7 @@ with a transition for when you hover over it, it's smooth. */
 
 /* This make sure that if you hover over the see more putton it changes the colour of the background and text,
 while also making it appear more like a proper button rather than a hyperlink with a nice transition to top it off. */
-.See_More:hover{
+.see_more:hover{
     border: 1px solid #065321;
     background-color: #065321;
     color:  #cffdd1;
@@ -364,13 +364,13 @@ while also making it appear more like a proper button rather than a hyperlink wi
 }
 
 /* This is for the job specific pages, for their main employment details font size be a little bigger than the generic one. */
-.Main_Employment_Details{
+.main_employment_details{
     font-size: 18px;
 }
 
 /* This is for the job specific pages, and forces the qualifications part to be 75% of the total table width, as well as
 makes the edges curved and nice. */
-.Qualifications_Table{
+.qualifications_table{
     width: 75%;
     display: table-cell;
     border: 1px solid #065321;
@@ -383,7 +383,7 @@ makes the edges curved and nice. */
 
 /* This is for the job specific pages, and is the essential/preffered side of the table and does the same things as the one above
 except makes it the size of 25% of its total table width. */
-.Qualifications_Table_Essential_Preffered{
+.qualifications_table_essential_preffered{
     width: 25%;
     display: table-cell;
     border: 1px solid #065321;
@@ -395,25 +395,25 @@ except makes it the size of 25% of its total table width. */
 }
 
 /* This is so when you hover over the essential/preferred information it changes colour and adds some interactivity into the page. */
-.Qualifications_Table_Essential_Preffered:hover{
+.qualifications_table_essential_preffered:hover{
     background-color: #a6eac6;
     transition: 0.5s;
 }
 
 /* This makes all rows have a simular colour and have space between all the content. */
-.Qualifications_Table_Row{
+.qualifications_table_row{
     background-color: #e0ffe1;
     padding: 20px;
 }
 
 /* This is so when you hover over the main qualifications information it changes colour and adds some interactivity into the page. */
-.Qualifications_Table:hover{
+.qualifications_table:hover{
     background-color: #a6eac6;
     transition: 0.5s;
 }
 
 /* This gets the header of the qualifications table on the job specifc pages to have darker mroe vibrant colours. */
-.Qualifications_Table_Header{
+.qualifications_table_header{
     background-color: #4EB774;
     display: table-cell;
     border: 1px solid #065321;
@@ -426,7 +426,7 @@ except makes it the size of 25% of its total table width. */
 
 /* This makes all the employment details on the job specific pages live in a content box and float it to the left so the summary
 can go to the right this also makes this section take up 45% of the full page. */
-.Main_Employment_Details_Background{
+.main_employment_details_background{
     background-color: #e0ffe1;
     border: 1px solid #065321;
     padding: 12px;
@@ -439,14 +439,14 @@ can go to the right this also makes this section take up 45% of the full page. *
 
 /* This makes the qualifications table in the job specific pages align into the center of the page while also being reactive
 to if the page is streched or shrunk. */
-.Qualifications_Whole_Table{
+.qualifications_whole_table{
     margin-left: auto;
     margin-right: auto;
 }
 
 /* This makes the employment summary on the job specific pages to have a certain colour and background and forces it to the 
 right, right next to the employment details, and it allows the data to take up 50% of the full page width. */
-.Employment_Summary{
+.employment_summary{
     background-color: #e0ffe1;
     border: 1px solid #065321;
     padding: 12px;
@@ -458,7 +458,7 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 
 /* Makes the Benifits in the job specific pages align to the centre and take up 1000px of the page. */
-.Benifits_Of_Job{
+.benifits_of_job{
     background-color: #e0ffe1;
     border: 1px solid #065321;
     padding: 12px;
@@ -471,7 +471,7 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 
 /* This makes the back button on the job specific page look nice and look like a button and not like a hyperlink. */
-.Back_Button_Job_Page{
+.back_button_job_page{
     text-decoration: none;
     padding: 15px 15px;
     border: 4px solid #065321;
@@ -484,7 +484,7 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 
 /* This makes the button revert colours on the job specific page when it is hovered on, and has a nice transition. */
-.Back_Button_Job_Page:hover{
+.back_button_job_page:hover{
     color: #065321;
     background-color: #cffdd1;
     /* When you hover it transitions from the original state to the hover state. */
@@ -493,7 +493,7 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 
 /* This makes the headers on the job specific page have a double boder to sperate sections from each other. */
-.Job_Headers_Other_Page{
+.job_headers_other_page{
     text-align: center;
     padding: 8px;
     border-top: 5px double ;
@@ -501,14 +501,14 @@ right, right next to the employment details, and it allows the data to take up 5
 }
 
 /* This forces the hyperlinks to the mangers emails and bolder so you can tell it is special but it doesn't look like a link. */
-.Reporting_To_Jobs_Specific{
+.reporting_to_jobs_specific{
     text-decoration: none;
     color: #011e0a;
     font-weight: bold;
 }
 
 /* This changes the h1 titles of the jobs to have its own short hand font property. */
-#Data_Anaylst_Job_Title, #Junior_Software_Developer_Job_Title {
+#data_anaylst_job_title, #junior_software_developer_job_title {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 28px;
     font-style: normal;

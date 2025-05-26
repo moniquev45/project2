@@ -36,22 +36,22 @@
                     echo "<tbody>";
                     for ($i = 0; $i < mysqli_num_rows($result); $i++){
                         $row = mysqli_fetch_assoc($result);
-                        echo "<tr class='Jobs_Table_Row'>";
-                            echo "<td class='Jobs_Table_Data'>";
+                        echo "<tr class='jobs_table_row'>";
+                            echo "<td class='jobs_table_data'>";
                                 echo "<section>";
                                     echo "<hr>";
-                                    echo "<div class='Job_Position_And_Logo'>";
+                                    echo "<div class='job_position_and_logo'>";
                                     # Job Info
-                                    echo "<h2 class='Job_Title' id='Data_Anaylst_Job_Title'>". $row['job_title'] ."</h2>";
+                                    echo "<h2 class=job_title' id='data_anaylst_job_title'>". $row['job_title'] ."</h2>";
                                     # Logo From https://www.facebook.com/photo.php?fbid=276912169616293&id=276912036282973&set=a.276912066282970&locale=th_TH
                                     echo "<figure>";
                                         $logo_link = $row['job_logo_link'];
                                         $logo = $row['job_logo'];
-                                        echo "<a href= '$logo_link' target='_blank'><img src='$logo' alt='Pear Company Logo' class='Companies_Logo_Image'/></a>";
+                                        echo "<a href= '$logo_link' target='_blank'><img src='$logo' alt='Pear Company Logo' class='companies_logo_image'/></a>";
                                     echo "</figure>";
                                     echo "</div>";
-                                    echo "<div class='Random_Company_Names'>". $row['job_company'] . "</div>";
-                                    echo "<div class='Company_Location'>". $row['job_location'] . "</div>";
+                                    echo "<div class='random_company_names'>". $row['job_company'] . "</div>";
+                                    echo "<div class='company_location'>". $row['job_location'] . "</div>";
                                     echo "<br><br>";
                                     echo "<hr>";
                                     echo "<div>";
@@ -60,10 +60,10 @@
                                     $job_salary_max = (string)$row['job_salary_max'];
                                     $formatted_job_salary_max = "$ $job_salary_max";
                                     $formatted_total_salary = "Salary: $formatted_job_salary_min  -  $formatted_job_salary_max";
-                                    echo "<h4 class='Job_Salary_Job_Page'> $formatted_total_salary </h4>";
+                                    echo "<h4 class='job_salary_job_page'> $formatted_total_salary </h4>";
                                     $job_id = $row['job_id'];
                                     $formatted_job_id = "Job Reference Number: #" . str_pad($job_id, 5, "0", STR_PAD_LEFT);
-                                    echo "<h4 class='Job_Reference_Number_Job_Page'> $formatted_job_id </h4>";
+                                    echo "<h4 class='job_reference_number_job_page'> $formatted_job_id </h4>";
                                     echo "</div>";
                                     echo "<br><br><br>";
                                     echo "<p>The daily duties and responsibilities include:</p>";
@@ -80,21 +80,21 @@
                                     echo "</ul>";
                                     $manager_email = $row['job_manager_email'];
                                     $manager = $row['job_manager'];
-                                    echo "<p class='Reporting_To_Job'>If Successful You Will Be Reporting To: ";
-                                    echo "<a class='Footer_Links' href='mailto: $manager_email '> $manager </a>";
+                                    echo "<p class='reporting_to_job'>If Successful You Will Be Reporting To: ";
+                                    echo "<a class='footer_links' href='mailto: $manager_email '> $manager </a>";
                                     echo "</p>";
                                     echo "<br>";
                                     # This is the See More Button where you can press and it uses a hyperlink to send you to a whole big page
                                     # with all the job listing info.
                                     echo "<a href='extended_jobs.php?job_id=$job_id' target='_blank'
-                                        title='Extended Job Description' class='See_More'>see more
+                                        title='Extended Job Description' class='see_more'>see more
                                     </a>";
                                     echo "<br><br><br>";
                                     
                                     echo "<hr>";
                                 echo "</section>";
                             echo "</td>";
-                            echo "<td class='Jobs_Table_Data'>";
+                            echo "<td class='jobs_table_data'>";
                                 echo "<aside>";
                                     #More Info
                                     echo "<br>";
@@ -111,7 +111,7 @@
                                     echo "</tr>";
                                     echo "<tr>";
                                     echo "<td colspan='2'>";
-                                    echo "<div class='Apply_Here'>";
+                                    echo "<div class='apply_here'>";
                                     #This sends the user to the apply page where they can fill out a job application.
                                     echo "<a href='apply.php' target='_blank' title='Go to Apply For Job Page'>Apply Here</a>";
                                     echo "</div>";
