@@ -156,6 +156,7 @@
                         echo "<div class='apply_here_extended_page'>";
                             echo "<a href='apply.php' target='_blank' title='Application of Jobs'>Apply Here</a>";
                         echo "</div>";
+                        echo "<div class='back_button_job_page'>";
                         #This button sends the user back to the job listings page.
                             echo "<a href='jobs.php' title='Job Page'>Back</a>";
                         echo "</div>";
