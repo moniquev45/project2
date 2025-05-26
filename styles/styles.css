@@ -63,12 +63,14 @@ nav a:hover {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* This makes the manager login icon a circle, with and shadow and makes it a specific hieght. */
 .manager_icon{
     border-radius: 100%;
     height: 40px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* This styles the textof the manager login button. */
 .manager_icon_text{
     text-decoration: none;
     border: 3px solid #cffdd1;
@@ -77,14 +79,16 @@ nav a:hover {
     color: #065321;
     text-align: center;
     padding: 2px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 
+/* This makes the manager icon text go to the centre. */
 #manager_images{
     text-align: center;
 }
 
+/* This makes the button when it is hovered on change colour. */
 .manager_icon_text:hover {
     text-decoration: none;
     color: #cffdd1;
@@ -289,22 +293,25 @@ from one background colour to another. */
     transition: 0.5s;
 }
 
+/* This makes it so that when you hover over the apply button it changes text & background colour with a 0.5s transition. */
 .apply_here:hover{
     background-color: #cffdd1;
 }
 
-/* This makes it so that when you hover over the apply button it changes text & background colour with a 0.5s transition. */
+/* This makes it so that when you hover over the apply button it changes text & background colour with a 0.5s transition, specific for text. */
 .apply_here:hover a{
     color: #065321;
     /* When you hover it transitions from the original state to the hover state. */
     transition: 0.5s;
 }
 
+/* This makes the apply button on the job listing page look nice, specific for text. */
 .apply_here a{
     color: #cffdd1;
     text-decoration: none; 
 }
 
+/* This makes the apply button on the job listing extended page look nice. */
 .apply_here_extended_page{
     padding: 5px 5px;
     border: 4px solid #065321;
@@ -320,6 +327,7 @@ from one background colour to another. */
     float: left;
 }
 
+/* This makes the apply button on the job listing extended page look nice, specific for text. */
 .apply_here_extended_page a{
     text-align: center;
     color: #cffdd1;
@@ -328,12 +336,14 @@ from one background colour to another. */
     transition: 0.5s;
 }
 
+/* This makes the apply button on the job extended listing page look nice, specific for text. */
 .apply_here_extended_page:hover a{
     color: #065321;
     /* When you hover it transitions from the original state to the hover state. */
     transition: 0.5s;
 }
 
+/* This makes the apply button on the job extended listing page look nice. */
 .apply_here_extended_page:hover {
     background-color: #cffdd1;
 }
@@ -516,6 +526,7 @@ right, right next to the employment details, and it allows the data to take up 5
     margin-bottom: 20px;
 }
 
+/* This makes the button revert colours on the benifits when it is hovered on, and has a nice transition. */
 .benifits_of_job:hover{
     background-color: #a6eac6;
     /* When you hover it transitions from the original state to the hover state. */
@@ -536,6 +547,7 @@ right, right next to the employment details, and it allows the data to take up 5
     width: 45%;
 }
 
+/* This makes the back button on the job specific page look nice and look like a button and not like a hyperlink, specific for the text. */
 .back_button_job_page a{
     text-align: center;
     color: #cffdd1;
@@ -553,6 +565,7 @@ right, right next to the employment details, and it allows the data to take up 5
     float: right;
 }
 
+/* This makes the button revert colours on the job specific page when it is hovered on, and has a nice transition, specific for the text on the page. */
 .back_button_job_page:hover a{
     text-align: center;
     color: #065321;
@@ -618,6 +631,7 @@ right, right next to the employment details, and it allows the data to take up 5
     color: #011508;
 }
 
+/*This is to add extra padding and or margin space so that the containers dont colapse on each other.*/
 #company_and_logo_extended{
     margin-bottom: 10px;
     padding-bottom: 20px;
