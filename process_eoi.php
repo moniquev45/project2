@@ -127,11 +127,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                 //Checkbox - sanitising and reformatting data
                 // raw data from the form being put into an array and sanatised
                 $raw_data_skills = isset($_POST["skills"]) ? array_map('sanitise_input', $_POST["skills"]) : [];
-                    // formatting each skill in the array to have capitals, remove the underscore and put in a space instead
+                     // formatting each skill in the array to have capitals, remove the underscore and put in a space instead
                     $formatting_skills = array_map(function($skill) { 
                         return ucwords(str_replace('_',' ',$skill));
-                    }, $raw_data_skills);
-                    // joins all the formatted skills together, and adds a break between
+                     }, $raw_data_skills);
+                     // joins all the formatted skills together, and adds a break between
                     $skills = implode(",\n", $formatting_skills);
 
                 //form validation - errors for if required inputs aren't there and if patterns aren't adhered to

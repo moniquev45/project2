@@ -39,11 +39,6 @@
                 <p></p>
             </section>
 
-            <section id="stacey_millers">
-                <h2>Stacey Millers</h2>
-                <p></p>
-            </section>
-
             <section id="monique_vilardo">
                 <h2>Monique Vilardo</h2>
                 <p></p>
