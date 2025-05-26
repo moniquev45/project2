@@ -150,25 +150,20 @@
 
                                 #Index is just a random variable used to help count.
                                 $index = 0;
-                                if (count($job_qualifications_skills) == count($row_job_essential_or_preferred)){
-                                    #This is a while loop and states while the index is less than the count it will get the
-                                    #job qualifications
-                                    while ($index < count($job_qualifications_skills)){
-                                        $row_job_qualifications_skills = $job_qualifications_skills[$index];
-                                        $row_job_essential_or_preferred = $job_essential_or_preferred[$index];
-                                        echo "<tr class='qualifications_table_row'>";
-                                            echo "<td class='qualifications_table'> ";
-                                                echo "<p>$row_job_qualifications_skills</p>";
-                                            echo "</td>";
-                                            echo "<td class='qualifications_table_essential_preffered'>";
-                                                echo "<p>$row_job_essential_or_preferred</p>";
-                                            echo "</td>";
-                                        echo "</tr>";
-                                        $index += 1;
-                                    }
-                                }else {
-                                    echo "<tr><td>The ratio between the number of qualifications/skills to essentail/preferred variables are not equal. 
-                                    If you are listing the job please edit the data base to make them equal.</td></tr>";
+                                #This is a while loop and states while the index is less than the count it will get the
+                                #job qualifications
+                                while ($index < count($job_qualifications_skills)){
+                                    $row_job_qualifications_skills = $job_qualifications_skills[$index];
+                                    $row_job_essential_or_preferred = $job_essential_or_preferred[$index];
+                                    echo "<tr class='qualifications_table_row'>";
+                                        echo "<td class='qualifications_table'> ";
+                                            echo "<p>$row_job_qualifications_skills</p>";
+                                        echo "</td>";
+                                        echo "<td class='qualifications_table_essential_preffered'>";
+                                            echo "<p>$row_job_essential_or_preferred</p>";
+                                        echo "</td>";
+                                    echo "</tr>";
+                                    $index += 1;
                                 }
                             echo "</tbody>";
                         echo "</table>";
