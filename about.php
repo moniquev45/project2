@@ -34,7 +34,7 @@
             <div class="Individual_Profiles">
             <?php
             require_once "settings.php";
-
+            $dbconn = mysqli_connect($host, $user, $pwd, $db);
             if ($dbconn) {
             $query = "SELECT * FROM about";
             $result = mysqli_query($dbconn, $query);
