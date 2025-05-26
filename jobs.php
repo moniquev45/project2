@@ -37,7 +37,7 @@
                     #This is just a line of text explaining to the user the purpose of the page and what they can do with it.
                     echo "<p>**Find and explore a world filled with opportunities in the tech field. Scroll down and view 
                     various job listings with their daily duties and baseline qualifications. Press the see more button to view all aspects of what the job
-                    entails, from benifits to, all skills nessacary for you to perform your best in your chosen field.</p>";
+                    entails, from job benefits to all the required skills necessary for you to perform in your chosen field.</p>";
 
                     #This creates the table that the data will be stored in.
                     echo "<table>";
