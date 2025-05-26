@@ -1114,21 +1114,27 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /*Homepage background graphic*/
 #home_main {
-    background-image: url('../images/company_graphic.png');
-    background-size:contain;
+    background-image: url('../images/company_background.jpg');
+    background-size: cover; /* Ensures the background image covers the entire section */
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
 }
 
-#home_title{
-    text-align: center; /* Aligns the title to the center */
+#home_title {
+    display: flex;                /* Use flexbox for centering */
+    flex-direction: column;       /* Stack children vertically */
+    align-items: center;          /* Center horizontally */
+    justify-content: center;      /* Center vertically */
+    margin: 4px auto;
+    width: 40%;
+    text-align: center;
+    border: 5px double #000000;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.676);
+    float: none;                  /* Remove invalid float */
 }
 
-#titlepgraph {
-    text-align: center; /* Aligns the paragraph to the center */
-    color: #000000; /* Sets the text color to black for accessability purposes*/
-}
 
 /*Properly aligns the sections of the home page*/
 
@@ -1149,6 +1155,15 @@ right, right next to the employment details, and it allows the data to take up 5
     width: 30%;
 }
 
+#who_we_are,
+#what_we_do{
+    border: 5px double #000000; /* Sets the border of the division to a double line */
+    border-radius: 8px; /* Rounds the corners of the division */
+    text-align: center; /* Aligns the text to the center */
+    background-color: rgba(255, 255, 255, 0.676); /* Sets the background color of the division */
+    padding: 20px; /* Adds padding inside the division */
+}
+
 #company_graphic img {
     width: 50%;
     height: auto;
@@ -1165,6 +1180,11 @@ right, right next to the employment details, and it allows the data to take up 5
 #our_mission p{
     /* Sets the text color of the paragraph to black for accessability purposes*/
     color: #000000;
+    border: 5px double #000000; /* Sets the border of the division to a double line */
+    border-radius: 8px; /* Rounds the corners of the division */
+    text-align: center; /* Aligns the text to the center */
+    background-color: rgba(255, 255, 255, 0.676); /* Sets the background color of the division */
+    padding: 20px; /* Adds padding inside the division */
 }
 
 #meet_us{
