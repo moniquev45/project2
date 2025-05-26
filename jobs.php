@@ -56,8 +56,8 @@
                         $company = $row['job_company'];
                         $location = $row['job_location'];
                          #This styles and max and min salary in the salary range and prints it out in a easy to read format, that has 2 decimal places.
-                        $job_salary_min = number_format($row['job_salary_min']);
-                        $job_salary_max = number_format($row['job_salary_max']);
+                        $job_salary_min = number_format($row['job_salary_min'], 2);
+                        $job_salary_max = number_format($row['job_salary_max'], 2);
                         $job_id = $row['job_id'];
                         $manager_email = $row['job_manager_email'];
                         $manager = $row['job_manager'];
