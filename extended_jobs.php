@@ -35,6 +35,7 @@
                         $main_job_id = $_GET["job_id"];
                         $searched_job = null;
 
+                        #It starts at 0 and for every row in the jobs table that 
                         for ($i = 0; $i < mysqli_num_rows($result); $i++){
                             $row = mysqli_fetch_assoc($result);
 
@@ -148,7 +149,7 @@
                         }
                         echo "</ul>";
                         echo "</div>";
-                        
+
                         #This button allows the users to apply for the job.
                         echo "<div class='apply_here_extended_page'>";
                             echo "<a href='apply.php' target='_blank' title='Application of Jobs'>Apply Here</a>";
