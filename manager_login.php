@@ -72,11 +72,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!--Charset Declaration-->
         <meta charset="utf-8">
         <!--Page Description for File-->
-        <meta name="description" content="">
+        <meta name="description" content="Login page for managers to access the system.">
         <!--Key Words for File-->
-        <meta name="keywords" content="">
+        <meta name="keywords" content="Login, Manager, Access, System">
         <!--Author Information-->
-        <meta name="author" content="">
+        <meta name="author" content="Riley Tuckett, Victoria Rogers">
 
         <title>Manager Login</title>
         <!--Icon for the browser-->

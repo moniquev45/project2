@@ -4,11 +4,11 @@
         <!--Charset Declaration-->
         <meta charset="utf-8">
         <!--Page Description for File-->
-        <meta name="description" content="">
+        <meta name="description" content="A page containing the manager's EOI management system, allowing managers to view, filter, and update EOIs.">
         <!--Key Words for File-->
-        <meta name="keywords" content="">
+        <meta name="keywords" content="EOI Table, Manager, EOI Management, Job Reference, Status Update">
         <!--Author Information-->
-        <meta name="author" content="">
+        <meta name="author" content="Riley Tuckett">
 
         <title>Manager Page</title>
         <!--Icon for the browser-->

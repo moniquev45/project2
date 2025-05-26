@@ -1147,3 +1147,27 @@ right, right next to the employment details, and it allows the data to take up 5
 .delete-form a {
     margin-left: 10px;
 }
+
+/* Enhancement page styling */
+
+.enhancements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+#riley_tuckett{
+    text-align: center;
+}
+
+#victoria_rogers{
+    text-align: center;
+}
+#stacey_millers{
+    text-align: center;
+}
+#monique_vilardo{
+    text-align: center;
+}

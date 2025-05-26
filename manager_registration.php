@@ -69,11 +69,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!--Charset Declaration-->
         <meta charset="utf-8">
         <!--Page Description for File-->
-        <meta name="description" content="">
+        <meta name="description" content="Page for manager registration.">
         <!--Key Words for File-->
-        <meta name="keywords" content="">
+        <meta name="keywords" content="Registration, Manager, Data Analytics, Job Placement">
         <!--Author Information-->
-        <meta name="author" content="">
+        <meta name="author" content="Riley Tuckett">
 
         <title>Manager Registration</title>
         <!--Icon for the browser-->
