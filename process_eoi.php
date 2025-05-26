@@ -9,12 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 ?>
 
 <?php
-// debugging error reporting turned on
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-?>
-
-<?php
  // including database settings
     require_once("settings.php");
 
