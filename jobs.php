@@ -32,7 +32,9 @@
                 if ($dbconn) {
                     $query = "SELECT * FROM jobs";
                     $result = mysqli_query($dbconn, $query);
-                    echo "<p>Find and explore a world filled with oportunities in the tech field. While finding out what qualifiacations you need to succeed.</p>";
+                    echo "<p>**Find and explore a world filled with opportunities in the tech field. Scroll down and view 
+                    various job listings with their daily duties and baseline qualifications. Press the see more button to view all aspects of what the job
+                    entails, from benifits to, all skills nessacary for you to perform your best in your chosen field.</p>";
                     echo "<table>";
                     echo "<tbody>";
 
@@ -45,21 +47,24 @@
                             echo "<td class='jobs_table_data'>";
                                 echo "<section>";
                                     echo "<hr>";
-                                    echo "<div class='job_position_and_logo'>";
-                                    # Job Info
-                                    echo "<h2 class=job_title' id='data_anaylst_job_title'>". $row['job_title'] ."</h2>";
-                                    # Logo From https://www.facebook.com/photo.php?fbid=276912169616293&id=276912036282973&set=a.276912066282970&locale=th_TH
-                                    echo "<figure>";
-                                        $logo_link = $row['job_logo_link'];
-                                        $logo = $row['job_logo'];
-                                        echo "<a href= '$logo_link' target='_blank'><img src='$logo' alt='Pear Company Logo' class='companies_logo_image'/></a>";
-                                    echo "</figure>";
+                                    echo "<div id = 'job_main_information'>";
+                                    echo "<div class ='job_position_and_logo'>";
+                                        # Job Info
+                                        echo "<h2 class='job_title' id='data_anaylst_job_title'>". $row['job_title'] ."</h2>";
+                                        # Logo From https://www.facebook.com/photo.php?fbid=276912169616293&id=276912036282973&set=a.276912066282970&locale=th_TH
+                                        echo "<figure>";
+                                            $logo_link = $row['job_logo_link'];
+                                            $logo = $row['job_logo'];
+                                            echo "<a href= '$logo_link' target='_blank'><img src='$logo' alt='Pear Company Logo' class='companies_logo_image'/></a>";
+                                        echo "</figure>";
+                                        echo "</div>";
+                                        echo "<div class='random_company_names'>". $row['job_company'] . "</div>";
+                                        echo "<div class='company_location'>". $row['job_location'] . "</div>";
                                     echo "</div>";
-                                    echo "<div class='random_company_names'>". $row['job_company'] . "</div>";
-                                    echo "<div class='company_location'>". $row['job_location'] . "</div>";
-                                    echo "<br><br>";
-                                    echo "<hr>";
-                                    echo "<div>";
+                                    echo "<div class = 'line_break'>";
+                                        echo "<hr>";
+                                    echo "</div>";
+                                    echo "<div id = 'salary_and_job_number'>";
                                     $job_salary_min = (string)$row['job_salary_min'];
                                     $formatted_job_salary_min = "$ $job_salary_min";
                                     $job_salary_max = (string)$row['job_salary_max'];
@@ -70,39 +75,42 @@
                                     $formatted_job_id = "Job Reference Number: #" . str_pad($job_id, 5, "0", STR_PAD_LEFT);
                                     echo "<h4 class='job_reference_number_job_page'> $formatted_job_id </h4>";
                                     echo "</div>";
-                                    echo "<br><br><br>";
-                                    echo "<p>The daily duties and responsibilities include:</p>";
-                                    #Next section chatgpt was used to aid in the understanding of the code. 
-                                    #Prompt used: how to make a block of information in php like In need apples. Pears are good. Potatoes are nice. and have it so that it turns this into a list.
-                                    #Trim removes any white space, explode splits the string, at the asterics.
-                                    #array_filter, removes any null, or empty peices in the array.
-                                    #array_map, applies the trim onto every peice of this new array. 
-                                    $job_info = array_filter(array_map('trim', explode('*', $row['job_information'])));
-                                    echo "<ul>";
-                                    foreach ($job_info as $job_info_line) {
-                                        echo "<li>$job_info_line</li>"; 
-                                    }
-                                    echo "</ul>";
-                                    $manager_email = $row['job_manager_email'];
-                                    $manager = $row['job_manager'];
-                                    echo "<p class='reporting_to_job'>If Successful You Will Be Reporting To: ";
-                                    echo "<a class='footer_links' href='mailto: $manager_email '> $manager </a>";
-                                    echo "</p>";
-                                    echo "<br>";
-                                    # This is the See More Button where you can press and it uses a hyperlink to send you to a whole big page
-                                    # with all the job listing info.
-                                    echo "<a href='extended_jobs.php?job_id=$job_id' target='_blank'
-                                        title='Extended Job Description' class='see_more'>see more
-                                    </a>";
-                                    echo "<br><br><br>";
-                                    
-                                    echo "<hr>";
+                                    echo "<div id = 'job_responsibilities'>";
+                                        echo "<p>The daily duties and responsibilities include:</p>";
+                                        #Next section chatgpt was used to aid in the understanding of the code. 
+                                        #Prompt used: how to make a block of information in php like In need apples. Pears are good. Potatoes are nice. and have it so that it turns this into a list.
+                                        #Trim removes any white space, explode splits the string, at the asterics.
+                                        #array_filter, removes any null, or empty peices in the array.
+                                        #array_map, applies the trim onto every peice of this new array. 
+                                        $job_info = array_filter(array_map('trim', explode('*', $row['job_information'])));
+                                        echo "<ul>";
+                                        foreach ($job_info as $job_info_line) {
+                                            echo "<li>$job_info_line</li>"; 
+                                        }
+                                        echo "</ul>";
+                                    echo "</div>";
+                                    echo "<div id = 'manager_and_see_more'>";
+                                        echo "<div class ='job_manager'>";
+                                            $manager_email = $row['job_manager_email'];
+                                            $manager = $row['job_manager'];
+                                            echo "<p class='reporting_to_job'>If Successful You Will Be Reporting To: ";
+                                            echo "<a class = 'job_manager' href='mailto: $manager_email '> $manager </a>";
+                                            echo "</p>";
+                                        echo "</div>";
+                                        # This is the See More Button where you can press and it uses a hyperlink to send you to a whole big page
+                                        # with all the job listing info.
+                                        echo "<a href='extended_jobs.php?job_id=$job_id' target='_blank'
+                                            title='Extended Job Description' class='see_more'>see more
+                                        </a>";
+                                    echo "</div>";
+                                    echo "<div class = 'line_break'>";
+                                        echo "<hr>";
+                                    echo "</div>";
                                 echo "</section>";
                             echo "</td>";
                             echo "<td class='jobs_table_data'>";
                                 echo "<aside>";
                                     #More Info
-                                    echo "<br>";
                                     echo "<div id='qualifications_and_skills_short_list'>";
                                     echo "<h3>Required Qualifications/Skills:</h3>";
                                     echo "<p>(In order of importance)</p>";

@@ -53,7 +53,6 @@
                         #This is the job heading, with the job title.
                         $job_title = $row['job_title'];
                         echo "<h1 class='job_headers_other_page'>$job_title</h1>";
-                        echo "<br>";
                         #This table contains main employment details and the employment summary and is used because it
                         #makes it easier to format things side by side with each other.
                         echo "<table>";
@@ -63,7 +62,7 @@
                                     echo "<td class='main_employment_details_background'>";
                                         echo "<hr>";
                                         #Company Logo
-                                        echo "<div>";
+                                        echo "<div id='company_and_logo_extended'>";
                                             $company = $row['job_company'];
                                             $company_styled = "Company: " . $company;
                                             echo "<h3 class='random_company_names'>$company_styled</h3>";
@@ -74,8 +73,9 @@
                                                 echo "<a href= '$logo_link' target='_blank'><img src='$logo' alt='Company Logo' class='companies_logo_image'/></a>";
                                             echo "</figure>";
                                         echo "</div>";
-                                        echo "<br><br><br>";
-                                        echo "<hr>";
+                                        echo "<div class = 'line_break'>";
+                                            echo "<hr>";
+                                        echo "</div>";
 
                                         $location = "Location: " . $row['job_location'];
                                         $department = "Department: " . $row['job_department'];
@@ -96,7 +96,7 @@
                                         echo "<p class='main_employment_details'>$formatted_total_salary</p>";
                                         echo "<p class='main_employment_details'>Reports To: <a class='reporting_to_jobs_specific' href='mailto: $manager_email'> $manager </a></p>";
                                         echo "<p class='main_employment_details'>$formatted_job_id</p>";
-                                        echo "<br>";
+                                        echo "<hr>";
                                     echo "</td>";
                                     echo "<td class='employment_summary'>";
                                         echo "<h2>Summary:</h2>";
@@ -108,7 +108,6 @@
                                 echo "</tr>";
                             echo "</tbody>";
                         echo "</table>";
-                        echo "<br>";
 
                         echo "<h2 class='job_headers_other_page'>Required Qualifications:</h2>";
 
@@ -139,8 +138,6 @@
                             echo "</tbody>";
                         echo "</table>";
 
-                        echo "<br>";
-
                         #This is a list of benifits that I made up if the user was successful in getting the job.
                         echo "<h2 class='job_headers_other_page'>Benefits:</h2>";
                         echo "<div class='benifits_of_job'>";
@@ -151,7 +148,7 @@
                         }
                         echo "</ul>";
                         echo "</div>";
-                        echo "<br><br><br>";
+                        
                         #This button allows the users to apply for the job.
                         echo "<div class='apply_here_extended_page'>";
                             echo "<a href='apply.php' target='_blank' title='Application of Jobs'>Apply Here</a>";

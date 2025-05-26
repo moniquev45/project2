@@ -358,6 +358,7 @@ reactive if you shrink or expand your screen. */
     height: 40px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     float: right;
+    
 }
 
 /* This makes the job position align horizontaly and wrap if the page is squished in a way that the two peices of content
@@ -389,6 +390,7 @@ with a transition for when you hover over it, it's smooth. */
     text-align: center;
     float: right;
     transition: 0.5s;
+    margin-top: 17px;
 }
 
 /* This make sure that if you hover over the see more putton it changes the colour of the background and text,
@@ -400,6 +402,8 @@ while also making it appear more like a proper button rather than a hyperlink wi
     transition: 0.5s;
     padding: 4px;
     border-radius: 8px;
+    text-decoration: none;
+    margin-top: 17px;
 }
 
 /* This is for the job specific pages, for their main employment details font size be a little bigger than the generic one. */
@@ -509,6 +513,7 @@ right, right next to the employment details, and it allows the data to take up 5
     margin-right: auto;
     /* When you hover it transitions from the original state to the hover state. */
     transition: 0.5s;
+    margin-bottom: 20px;
 }
 
 .benifits_of_job:hover{
@@ -567,7 +572,6 @@ right, right next to the employment details, and it allows the data to take up 5
 .reporting_to_jobs_specific{
     text-decoration: none;
     color: #011e0a;
-    font-weight: bold;
 }
 
 /* This changes the h1 titles of the jobs to have its own short hand font property. */
@@ -576,6 +580,47 @@ right, right next to the employment details, and it allows the data to take up 5
     font-size: 28px;
     font-style: normal;
     font-weight: bold;
+}
+
+/*This is to add extra padding and or margin space so that the containers dont colapse on each other.*/
+#manager_and_see_more{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+/*This is to add extra padding and or margin space so that the containers dont colapse on each other.*/
+.line_break{
+    padding-top: 30px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+/*This is to add extra padding and or margin space so that the containers dont colapse on each other.*/
+#job_position_and_logo{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/*This is to add extra padding and or margin space so that the containers dont colapse on each other.*/
+#salary_and_job_number{
+    padding-bottom: 20px;
+}
+
+/*This is to add extra padding and or margin space so that the containers dont colapse on each other.*/
+#job_responsibilities{
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+/*Makes the manager link dark green.*/
+.job_manager{
+    color: #011508;
+}
+
+#company_and_logo_extended{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 
