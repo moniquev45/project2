@@ -36,7 +36,11 @@
 
             <section id="victoria_rogers">
                 <h2>Victoria Rogers</h2>
-                <p></p>
+                <p>Victoria Rogers has contributed to the enhancements by implementing a login attempt counter that locks a user out after 3 failed password attempts</p>
+                <li>Building from Riley's login process I created a counter system which passes people who enter the password correctly or returns the error message that its the wrong password</li>
+                <li>Implemented a timer system which reads the current time from the browser and counts down 30 seconds</li>
+                <li>If attempts are made before the time has reset, a reminder that you have to wait the timer pops up</li>
+                <li>Once the user has processed the correct password after more than one attempt, or after waiting the 30 seconds, the counter resets to try again</li>
             </section>
 
             <section id="monique_vilardo">
