@@ -150,7 +150,7 @@
 
                                 #Index is just a random variable used to help count.
                                 $index = 0;
-                                if count($job_qualifications_skills) == count($row_job_essential_or_preferred){
+                                if (count($job_qualifications_skills) == count($row_job_essential_or_preferred)){
                                     #This is a while loop and states while the index is less than the count it will get the
                                     #job qualifications
                                     while ($index < count($job_qualifications_skills)){
