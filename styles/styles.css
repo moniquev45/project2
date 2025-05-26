@@ -305,6 +305,40 @@ from one background colour to another. */
     text-decoration: none; 
 }
 
+.apply_here_extended_page{
+    padding: 5px 5px;
+    border: 4px solid #065321;
+    background-color: #065321;
+    border-radius: 8px;
+    text-align: center;
+    color: #cffdd1;
+    text-decoration: none;
+    margin-bottom: 20px;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+    width: 45%;
+    float: left;
+}
+
+.apply_here_extended_page a{
+    text-align: center;
+    color: #cffdd1;
+    text-decoration: none;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+}
+
+.apply_here_extended_page:hover a{
+    color: #065321;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+}
+
+.apply_here_extended_page:hover {
+    background-color: #cffdd1;
+}
+
+
 /* This makes the main image on the job specific Data Analyst page to be the certain image, and be 
 reactive if you shrink or expand your screen. */
 #job_discription_image_background{
@@ -473,28 +507,52 @@ right, right next to the employment details, and it allows the data to take up 5
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+}
+
+.benifits_of_job:hover{
+    background-color: #a6eac6;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
 }
 
 /* This makes the back button on the job specific page look nice and look like a button and not like a hyperlink. */
 .back_button_job_page{
-    text-decoration: none;
-    padding: 15px 15px;
+    padding: 5px 5px;
+    text-align: center;
     border: 4px solid #065321;
     background-color: #065321;
     border-radius: 8px;
-    color: #cffdd1;
-    padding: 8px;
-    text-align: center;
     float: right;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
+    margin-bottom: 20px;
+    width: 45%;
+}
+
+.back_button_job_page a{
+    text-align: center;
+    color: #cffdd1;
+    text-decoration: none;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
 }
 
 /* This makes the button revert colours on the job specific page when it is hovered on, and has a nice transition. */
 .back_button_job_page:hover{
-    color: #065321;
+    text-align: center;
     background-color: #cffdd1;
     /* When you hover it transitions from the original state to the hover state. */
     transition: 0.5s;
     float: right;
+}
+
+.back_button_job_page:hover a{
+    text-align: center;
+    color: #065321;
+    /* When you hover it transitions from the original state to the hover state. */
+    transition: 0.5s;
 }
 
 /* This makes the headers on the job specific page have a double boder to sperate sections from each other. */

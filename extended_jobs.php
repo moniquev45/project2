@@ -153,10 +153,12 @@
                         echo "</div>";
                         echo "<br><br><br>";
                         #This button allows the users to apply for the job.
-                        echo "<a href='apply.php' target='_blank' title='Application of Jobs' class='apply_here'>Apply Here</a>";
+                        echo "<div class='apply_here_extended_page'>";
+                            echo "<a href='apply.php' target='_blank' title='Application of Jobs'>Apply Here</a>";
+                        echo "</div>";
                         #This button sends the user back to the job listings page.
-                        echo "<a href='jobs.php' title='Job Page' class='back_button_job_page'>Back</a>";
-                        echo "<br><br>";
+                            echo "<a href='jobs.php' title='Job Page'>Back</a>";
+                        echo "</div>";
 
                     echo "</main>";
                     } else echo "Information lost.";
