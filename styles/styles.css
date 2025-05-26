@@ -988,66 +988,126 @@ right, right next to the employment details, and it allows the data to take up 5
 
 /* About Page Styling */
 /*Page resizing*/
-@media only screen and (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-    .header {
-        font-size: 24px;
-    }
-
-    #About_Team {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
+/* Default: Mobile-first layout */
+#About_Team {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
         "img"
         "team"
         "info";
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.team_photo {
+    grid-area: img;
+}
+
+.team_profile {
+    grid-area: team;
+}
+
+.individual_profiles {
+    grid-area: info;
+}
+
+.team_photo img {
+    display: block;
+    width: 100%;
+    border: 7px black solid;
+    margin: 10px auto;
+}
+
+.individual_profiles h2 {
+    font-size: 18px;
+}
+
+.individual_profiles table {
+    width: 100%;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+/* Larger screen (tablet and desktop) */
+@media only screen and (min-width: 769px) {
+    #About_Team {
+        grid-template-columns: 4fr 1fr;
+        grid-template-areas: 
+            "img team"
+            "info team";
     }
 
-    .Individual_Profules h2 {
+    .team_photo {
+    grid-area: img;
+    }
+
+    .team_profile {
+        grid-area: team;
+    }
+
+    .individual_profiles {
+        grid-area: info;
+    }
+
+    .team_photo img {
+        display: block;
+        width: 100%;
+        border: 7px black solid;
+        margin: 10px auto;
+    }
+
+    .individual_profiles h2 {
+        font-size: 24px;
+    }
+
+    .individual_profiles table {
+        font-size: 14px;
+    }
+    }
+
+    /*About Page styling of blocks*/
+    /*Team profile blocking*/
+    .team_member_table {
+        word-spacing: 0;
+        padding: 5; 
+        margin-bottom:20px; 
+        width:300px;
+    }
+
+    /*Individual Profiles*/
+    .individual_profiles h2 {
         font-size: 18px;
     }
 
-    .Team_Photo img {
+    .individual_profiles table {
         width: 100%;
-        margin: 5px;
-    }
-
-    .Individual_Profiles table{
-        width: 100%;
+        font-size: 12px;
         padding-left: 10px;
-        font-size: 12px;           
+        border-collapse: collapse;
     }
-}
 
-.Individual_Profiles {
-    display: block;
-    box-sizing: border-box;
-    background-color: #e0ffe1;;
-    border: 1px solid #065321;
-    border-radius: 8px;
-    margin: 15px 25px;
-    padding: 15px;
-    transition: background-color 0.3s ease;
+    .individual_profiles td {
+        vertical-align: top;
+        text-align: left;
+    }
 
-}
+    .member_table {
+        background-color: #b0ffb4;
+        border: none;
+        border-radius: 25px;
+    }
 
-.Individual_Profiles:hover {
-    background-color: #a6eac6;
-}
+    .member_table th, .member_table td {
+        padding: 8px;
+    }
 
-.Individual_Profiles table {
-    width: 100%;
-    margin: 0;
-    border-collapse: collapse;
-}
-
-.Individual_Profiles td {
-    padding: 8px;
-    vertical-align: top;
-    text-align: left;
-}
+    .member_table thead th {
+        position: sticky;
+        top: 0;
+        background-color: #b0ffb4;
+    }
 
 
 /*Homepage styling*/
