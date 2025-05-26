@@ -1164,6 +1164,7 @@ right, right next to the employment details, and it allows the data to take up 5
     text-align: center;
     border: 5px double #000000;
     border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.676); /* Sets the background color of the division */
 }
 
 
