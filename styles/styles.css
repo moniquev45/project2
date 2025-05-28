@@ -11,7 +11,7 @@ description: index.html, jobs.html, apply.html, about.html
 */
 
 /* This forces all the text on the website to be part of the same font family/font style. */
-* { font-family: Georgia, 'Times New Roman', Times, serif}
+* { font-family: Calibri, 'Times New Roman', Times, serif}
 
 /* This forces all paragraphs to have a similar colour, to make the website continuous. */
 p {color: #011e0a;}
