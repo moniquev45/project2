@@ -99,29 +99,31 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
                     $pay = number_format(($salary_scale * 10000) + 50000);
 
                     // working hours
-                    $raw_hours_start = isset($_POST['hours_start']) ? sanitise_input($_POST['hours_start']): "";
-                        // formatting time so it comes out with a pm or am 
-                        if (!empty($raw_hours_start)) {
+                        // Initialize variables
+                        $hours_start = null;
+                        $hours_end = null;
+                        $errors = [];
+
+                        // Process hours_start
+                        if (!empty($_POST['hours_start'])) {
+                            $raw_hours_start = sanitise_input($_POST['hours_start']);
                             $time_string = strtotime($raw_hours_start);
-                                if ($time_string !== false) {
-                                    $hours_start = date("g:i A", $time_string); // g is for hour, i is for minutes, A is for AM or PM
-                                } else {
-                                    $errors[] = "Invalid start time format.";
-                                }
-                            }else {
-                            $hours_start = " "; //data not provided
+                            if ($time_string !== false) {
+                                $hours_start = date("g:i A", $time_string);
+                            } else {
+                                $errors[] = "Invalid start time format.";
+                            }
                         }
 
-                    $raw_hours_end = isset($_POST['hours_end']) ? sanitise_input($_POST['hours_end']): "";
-                        if (!empty($raw_hours_end)) {
+                        // Process hours_end
+                        if (!empty($_POST['hours_end'])) {
+                            $raw_hours_end = sanitise_input($_POST['hours_end']);
                             $time_string_end = strtotime($raw_hours_end);
-                                if ($time_string_end !== false) {
-                                    $hours_end = date("g:i A", $time_string_end);
-                                } else {
-                                    $errors[] = "Invalid end time format.";
-                                }
+                            if ($time_string_end !== false) {
+                                $hours_end = date("g:i A", $time_string_end);
                             } else {
-                            $hours_end = " "; //data not provided
+                                $errors[] = "Invalid end time format.";
+                            }
                         }
 
                 //Checkbox - sanitising and reformatting data
